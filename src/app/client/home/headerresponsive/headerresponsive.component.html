@@ -1,0 +1,49 @@
+<mat-nav-list>
+  <a mat-list-item (click)="onSidenavClose()">
+    <img src="../../../../assets/images/web-logo.png" alt="" routerLink="/" class="logo" />
+  </a>
+  <!-- if -->
+  <ng-container *ngIf="!userNameSigin else signInSuccess">
+    <a mat-list-item (click)="onSidenavClose()" routerLink="signin">
+      <mat-icon class="iconHeader">login</mat-icon> Đăng Nhập
+    </a>
+    <a mat-list-item (click)="onSidenavClose()" routerLink="signup">
+      <mat-icon class="iconHeader">app_registration</mat-icon> Đăng Kí
+    </a>
+  </ng-container>
+  <!-- else -->
+  <ng-template #signInSuccess>
+    <a mat-list-item *ngIf="userNameSigin">
+      <button mat-button [matMenuTriggerFor]="menu" class="account">
+        <mat-icon> account_circle </mat-icon>{{ userNameSigin | uppercase}}
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="admin" (click)="onSidenavClose()" *ngIf="userTypeCode==='QuanTri'">
+            <mat-icon class="iconHeader">admin_panel_settings</mat-icon> Admin
+          </button>
+          <button mat-menu-item>
+            <mat-icon>info</mat-icon> Thông Tin Người Dùng
+          </button>
+          <button mat-menu-item (click)="handleLogOut()">
+            <mat-icon class="iconHeader">exit_to_app</mat-icon> Đăng Xuất
+          </button>
+        </mat-menu>
+      </button>
+    </a>
+  </ng-template>
+  <!-- accordion -->
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Hệ Thống Rạp
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <button mat-button *ngFor="let item of logoCinemaHeader" class="btnLogo"
+        routerLink="/cinemadetail/{{item.maHeThongRap}}" (click)="onSidenavClose()">
+        <img src={{item.logo}} alt="" width="35px" height="35px">
+      </button>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <!-- accordion -->
+</mat-nav-list>

@@ -1,0 +1,131 @@
+<div class="movieDetail">
+    <div class="wrapMovieDetail">
+        <div class="bgMovieDetail">
+            <img src="{{ movieDetail?.hinhAnh }}" alt="" />
+        </div>
+        <div class="container introMovieDetail" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+            <div class="images" fxLayout.gt-md="100%">
+                <img src="{{ movieDetail?.hinhAnh }}" alt="" />
+                <label class="modalPlay" (click)="showModalVideo(movieDetail?.trailer)">
+                    <mat-icon class="iconPlay"> play_arrow </mat-icon>
+                </label>
+            </div>
+            <div class="intro" fxLayout.gt-md="100%">
+                <p>
+                    Ngày Khởi Chiếu :
+                    {{ movieDetail?.ngayKhoiChieu | date: "dd-MM-YYYY" }}
+                </p>
+                <p>
+                    <span class="maPhim">{{ movieDetail?.maPhim }}</span>{{ movieDetail?.tenPhim?.slice(0,20)}}
+                </p>
+            </div>
+            <div class="rating" fxLayout.gt-md="100%">
+                <div class="progress">
+                    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="danhGia">
+                    </mat-progress-spinner>
+                    <span class="danhGia">{{ movieDetail?.danhGia }}</span>
+                </div>
+                <p>{{ movieDetail?.danhGia }} Người Đánh Giá</p>
+                <span class="star">
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star</mat-icon>
+                    <mat-icon>star_half</mat-icon>
+                    <mat-icon>star_outline</mat-icon>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="movieTab">
+    <div class="container" style="max-width: 900px">
+        <mat-tab-group>
+            <mat-tab label="Thông Tin">
+                <div class="infoMovie row">
+                    <table class="info col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <tr>
+                            <td>Tên Phim : {{ movieDetail?.tenPhim }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bí Danh : {{ movieDetail?.biDanh?.toUpperCase() }}</td>
+                        </tr>
+                        <tr>
+                            <td>Ngày Khởi Chiếu : {{ movieDetail?.ngayKhoiChieu | date: "dd-MM-YYYY" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mã Phim : {{ movieDetail?.maPhim }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mã Nhóm : {{ movieDetail?.maNhom }}</td>
+                        </tr>
+                    </table>
+                    <div class="info col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <p>Mô Tả : {{ movieDetail?.moTa?.slice(0,250)}}</p>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Lịch Chiếu">
+                <div class="sheduleMovie">
+                    <div class="logoCinema">
+                        <mat-accordion>
+                            <mat-expansion-panel hideToggle>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Hệ Thống Rạp </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="row">
+                                    <button mat-button class="btnLogo col-xs-4 col-md-4 col-lg-2"
+                                        *ngFor="let item of logoCinemaMovieDetail"
+                                        (click)="getCodeCinema(item.maHeThongRap)">
+                                        <img src="{{ item.logo }}" alt="" width="40px" height="40px"
+                                            style="border: 1px solid #ebebec; border-radius: 50%;" />
+                                    </button>
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+                    <div class="movieCinema">
+                        <nav mat-tab-nav-bar>
+                            <a mat-tab-link *ngFor="let item of scheDuleMovie"
+                                (click)="getSchedule(item.ngayChieuGioChieu)">{{ item.ngayChieuGioChieu | date:
+                                "dd-MM-YYYY" }}</a>
+                        </nav>
+                        <div class="listMovie" *ngIf="scheduleLenght > 0; else notSchedule">
+                            <p style="text-align: center; font-size: 13px">Chọn Ngày Chiếu</p>
+                            <div class="movie" *ngIf="scheDuleListMovie">
+                                <div class="images">
+                                    <img src="{{ imagesCinema?.img }}" alt="" />
+                                </div>
+                                <div class="info">
+                                    <p class="{{ imagesCinema?.code }}">
+                                        {{ scheDuleListMovie.thongTinRap.tenCumRap }} -
+                                        {{ scheDuleListMovie.thongTinRap.tenRap }}
+                                    </p>
+                                    <p>Phim : {{ scheDuleListMovie.tenPhim }}</p>
+                                    <p>Thời Lượng : {{ scheDuleListMovie.thoiLuong }} Phút</p>
+                                    <p>
+                                        Ngày Chiếu :
+                                        {{
+                                        scheDuleListMovie.ngayChieuGioChieu | date: "dd-MM-YYYY"
+                                        }}
+                                    </p>
+                                    <p>
+                                        Giờ Chiếu :
+                                        <span class="timerStart {{ imagesCinema?.code }}"
+                                            (click)="bookingTicket(scheDuleListMovie.maLichChieu)">{{ timerStart }} ~
+                                            <span class="timerEnd">{{ timerEnd }}</span></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #notSchedule>
+                            <p style="text-align: center; font-size: 13px">
+                                Không Có Xuất Chiếu
+                            </p>
+                        </ng-template>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

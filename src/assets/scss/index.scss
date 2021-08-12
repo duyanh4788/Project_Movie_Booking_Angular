@@ -1,0 +1,48 @@
+@import "./variables.scss";
+@import "./extendTab.scss";
+@import "./container.scss";
+@import "./Grid/mainGrid.scss";
+
+// @import "../../../../../assets/scss/index.scss";
+
+/* scroll maNhom */
+::ng-deep .mat-primary::-webkit-scrollbar {
+    @include scrollbar;
+}
+::ng-deep .mat-primary::-webkit-scrollbar-thumb {
+    @include scrollbarThumb;
+}
+::ng-deep .mat-primary::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $color-white-2;
+    border-radius: 10px;
+}
+
+//  select
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: $color-gray-1 !important;
+    display: none !important;
+}
+::ng-deep .mat-select-value-text {
+    color: $color-gray-2 !important;
+    font-size: 12px !important;
+}
+::ng-deep .mat-select-arrow {
+    color: $color-gray-2 !important;
+}
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $color-gray-2 !important;
+}
+// spinner
+::ng-deep .mat-progress-spinner svg {
+    width: 50px !important;
+    height: 50px !important;
+}
+::ng-deep .mat-snack-bar-container {
+    color: $color-black-2;
+    font-weight: 500;
+    background: $background-3;
+}
+
+::ng-deep .mat-simple-snackbar {
+    justify-content: space-around !important;
+}

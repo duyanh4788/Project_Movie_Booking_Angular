@@ -1,0 +1,42 @@
+<div class="backGroundsignIn">
+    <div class="wrapSignIn">
+        <h5>Đăng Nhập</h5>
+
+        <form (ngSubmit)="handleLogin()" #formSignIn="ngForm">
+
+            <!-- User name -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Tài Khoản</mat-label>
+                <input matInput ngModel name="username" required #username="ngModel" [(ngModel)]="userLogin.taiKhoan" />
+                <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" -->
+            </mat-form-field>
+            <!-- validation  -->
+            <ng-container *ngIf="username.invalid && (username.dirty || username.touched)">
+                <span class="errorValid" *ngIf="username.errors?.required">(*) Nhập Tài Khoản !</span>
+                <!-- <ng-container *ngIf="username.errors?.pattern || username.errors?.pattern">Email not found!!!</ng-container> -->
+            </ng-container>
+
+            <!-- User name -->
+
+            <!-- password -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Mật Khẩu</mat-label>
+                <input matInput ngModel name="password" required #password="ngModel" [(ngModel)]="userLogin.matKhau" />
+            </mat-form-field>
+            <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
+                <span class="errorValid" *ngIf="password.errors?.required">(*) Nhập Mật Khẩu !</span>
+            </ng-container>
+            <!-- password -->
+
+            <span class="notifySignIn">{{notifySignIn}}</span>
+
+            <!-- btn submit -->
+            <div class="btnSubmit">
+                <button mat-fab color="primary" type="submit" [disabled]="!formSignIn.valid">Submit</button>
+            </div>
+            <!-- btn submit -->
+
+        </form>
+    </div>
+
+</div>

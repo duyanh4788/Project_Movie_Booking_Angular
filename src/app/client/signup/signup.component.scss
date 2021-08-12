@@ -1,0 +1,53 @@
+@import "../../../assets/scss/index.scss";
+
+.backGroundsignUp {
+    background: url(../../../assets/images/background.jpg);
+    background-size: cover;
+    min-height: 600px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .wrapSignUp {
+        max-width: 500px;
+        width: 500px;
+        padding: 20px;
+        background-color: $background-3;
+        border-radius: $boderR5;
+        overflow: hidden;
+        backdrop-filter: blur(6px);
+        border: $border;
+        box-shadow: $box-shadow;
+        h5 {
+            text-align: center;
+            font-size: $fs20;
+            color: $color-black-2;
+        }
+        .example-full-width {
+            width: 100%;
+        }
+        .errorValid {
+            font-size: $fs10;
+            color: $color-red;
+        }
+        .notifySignUp {
+            color: $color-red;
+            font-size: $fs13;
+            margin-bottom: 20px;
+        }
+        .btnSubmit {
+            text-align: center;
+            margin-top: 20px;
+            button {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+mat-label {
+    color: $color-black-2;
+    font-size: $fs13;
+}
+::ng-deep .mat-placeholder-required {
+    color: $color-black-2 !important;
+}

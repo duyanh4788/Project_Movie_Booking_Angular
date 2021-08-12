@@ -1,0 +1,45 @@
+@import "../../../../assets/scss/index.scss";
+
+mat-nav-list {
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  .btnLogo {
+    ::ng-deep .mat-button-ripple.mat-ripple,
+    ::ng-deep .mat-button-focus-overlay {
+      top: 0px;
+      left: 15px;
+      right: 15px;
+      bottom: 0;
+      position: absolute;
+      pointer-events: none;
+      border-radius: 50%;
+    }
+    ::ng-deep .mat-ripple {
+      padding: 0 !important;
+    }
+  }
+  .account {
+    font-size: 15px;
+    font-weight: 300;
+    color: $color-black-2;
+  }
+  .iconHeader {
+    color: $color-white;
+    font-size: $fs20;
+    border-radius: 50%;
+    background: $color-gray-1;
+    font-size: 15px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+}
+.mat-list-item {
+  color: $color-black-2;
+  font-size: $fs15;
+}

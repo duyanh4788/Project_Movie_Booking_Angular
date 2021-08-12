@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto;
+}
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #fff;
+}
+body::-webkit-scrollbar-thumb {
+  background: #afafaf;
+  border-radius: 6px;
+}
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url(./assets/font/roboto/._Roboto-Light.ttf);
+}
+
+mat-dialog-container {
+  background: none !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+.mat-drawer-container {
+  background: none !important;
+  color: black;
+}

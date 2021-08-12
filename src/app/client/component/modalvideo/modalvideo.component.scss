@@ -1,0 +1,9 @@
+@import "../../../../assets/scss/index.scss";
+
+.mat-dialog-content {
+  padding: 0;
+  iframe {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}

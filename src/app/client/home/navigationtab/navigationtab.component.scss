@@ -1,0 +1,208 @@
+@import "../../../../assets/scss/index.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 50px 0;
+}
+:host ::ng-deep .mat-tab-labels {
+    flex-direction: column;
+    width: 100px !important;
+}
+::ng-deep .mat-tab-label {
+    opacity: 1 !important;
+    min-width: 100px !important;
+}
+mat-tab-group {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    border: $border;
+    border-radius: $boderR5;
+}
+::ng-deep .mat-ripple {
+    padding: 40px 0 !important;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+mat-tab-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+:host ::ng-deep mat-ink-bar {
+    display: none;
+}
+:host ::ng-deep.mat-tab-label.mat-tab-label-active {
+    border: $border;
+}
+
+.btnLogo {
+    width: 100px;
+    height: 100px;
+}
+
+.tabNavigation {
+    .tabAddresCinema {
+        max-height: 482px;
+        padding: 5px;
+        overflow-y: scroll;
+        .addresCinema {
+            border-bottom: $border;
+            .active {
+                opacity: 1.5;
+                height: 75px;
+                margin: 5px;
+                padding: 10px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .address {
+                    margin-left: 10px;
+                    line-height: 10px;
+                    @include colorCinema;
+                    p {
+                        font-size: 13px;
+                        color: $color-gray-1;
+                    }
+                    .chiTiet {
+                        color: $color-red;
+                        font-weight: 500;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .notActive {
+                opacity: 0.5;
+                height: 75px;
+                margin: 5px;
+                padding: 10px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .address {
+                    margin-left: 10px;
+                    line-height: 10px;
+                    @include colorCinema;
+                    p {
+                        font-size: 13px;
+                        color: $color-gray-1;
+                    }
+                    .chiTiet {
+                        color: $color-red;
+                        font-weight: 500;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    .tabInfoMovieCinema {
+        padding: 5px;
+        .listMovie {
+            overflow-y: scroll;
+            max-height: 422px;
+            .infoMovie {
+                height: 100px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin: 5px;
+                padding: 10px;
+                border-bottom: $border;
+                cursor: pointer;
+                border: $border;
+                box-shadow: $box-shadow;
+                border-radius: $boderR5;
+                .labelMaPhim {
+                    background-color: $color-red;
+                    color: $color-white-2;
+                    padding: 2px;
+                    margin: 0 5px;
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                    border-radius: $boderR5;
+                }
+                @include colorCinema;
+                p {
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                }
+            }
+            .sheduleMovie {
+                height: 100px;
+                margin: 5px;
+                padding: 10px;
+                border: $border;
+                box-shadow: $box-shadow;
+                border-radius: $boderR5;
+                line-height: 15px;
+                font-size: $fs13;
+                color: $color-gray-1;
+                @include colorCinema;
+                .timerStart {
+                    border-radius: 5px;
+                    border: 1px solid;
+                    padding: 2px;
+                    cursor: pointer;
+                    .timerEnd {
+                        color: $color-gray-1;
+                    }
+                }
+            }
+            .infoMovie:hover,
+            .sheduleMovie:hover {
+                background-color: $color-white-2;
+            }
+        }
+    }
+}
+
+::ng-deep .mat-tab-nav-bar {
+    height: 50px !important;
+    align-items: center !important;
+}
+
+.tabAddresCinema::-webkit-scrollbar,
+.listMovie::-webkit-scrollbar {
+    @include scrollbar;
+}
+.tabAddresCinema::-webkit-scrollbar-thumb,
+.listMovie::-webkit-scrollbar-thumb {
+    @include scrollbarThumb;
+}
+
+@media (max-width: 1400px) {
+    .infoMovie {
+        p {
+            font-size: 10px !important;
+        }
+    }
+    .sheduleMovie {
+        font-size: 10px;
+    }
+}
+@media (max-width: 1200px) {
+    .addresCinema {
+        img {
+            width: 50px;
+            height: 60px;
+        }
+        .address {
+            line-height: 5px !important;
+            p {
+                font-size: 11px !important;
+            }
+        }
+    }
+}
+@media (max-width: 1000px) {
+    .mainNavigationTabs {
+        display: none;
+    }
+}

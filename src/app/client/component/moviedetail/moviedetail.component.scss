@@ -1,0 +1,203 @@
+@import "../../../../assets/scss/index.scss";
+
+.movieDetail {
+    overflow: hidden;
+    background: linear-gradient(#09181f, #133241);
+    .wrapMovieDetail {
+        position: relative;
+        font-size: $fs15;
+        color: $color-white-2;
+        font-weight: 500;
+        .bgMovieDetail img {
+            width: 100%;
+            height: 700px;
+            filter: blur(15px);
+        }
+        .introMovieDetail {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            .images {
+                position: relative;
+                img {
+                    width: 150px;
+                    height: 250px;
+                    border-radius: 5px;
+                }
+                .modalPlay {
+                    z-index: 2;
+                    opacity: 0;
+                    background-color: rgba(0, 0, 0, 0.356);
+                    border-radius: 50%;
+                    border: $border;
+                    width: 50px;
+                    height: 50px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    .iconPlay {
+                        font-size: 20px;
+                        color: $color-white;
+                    }
+                }
+            }
+            .intro {
+                display: block !important;
+                .maPhim {
+                    padding: 5px;
+                    background-color: $color-red;
+                    color: $color-white-2;
+                    font-size: $fs13;
+                    border-radius: $boderR5;
+                    margin-right: 5px;
+                }
+            }
+            .rating {
+                display: block !important;
+                .progress {
+                    position: relative;
+                    margin-left: 10px;
+                    margin-bottom: 10px;
+                    ::ng-deep .mat-progress-spinner svg {
+                        width: 100px !important;
+                        height: 100px !important;
+                    }
+                    .danhGia {
+                        position: absolute;
+                        top: 10%;
+                        left: 8%;
+                        font-size: 30px;
+                        border-radius: 50%;
+                        width: 80px;
+                        height: 80px;
+                        align-items: center;
+                        display: flex;
+                        justify-content: space-around;
+                        background-color: #00000054;
+                    }
+                }
+                .star {
+                    color: yellow;
+                }
+            }
+            .images:hover .modalPlay {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.movieTab {
+    width: 100%;
+    background: linear-gradient(#09181f, #133241);
+    color: $color-white-2;
+    font-size: $fs15;
+    font-weight: 400;
+    padding: 50px 0;
+    .infoMovie {
+        line-height: 30px;
+        .info {
+            width: 100%;
+        }
+    }
+    .sheduleMovie {
+        border: $border;
+        border-radius: $boderR5;
+        background-color: $background-3;
+        .btnLogo {
+            ::ng-deep .mat-button-ripple.mat-ripple,
+            ::ng-deep .mat-button-focus-overlay {
+                top: 15px;
+                left: 50px;
+                right: 50px;
+                bottom: 15px;
+                position: absolute;
+                pointer-events: none;
+                border-radius: 50%;
+            }
+            ::ng-deep .mat-ripple {
+                padding: 0 !important;
+            }
+        }
+        .movieCinema {
+            color: $color-black-2;
+            .listMovie {
+                overflow-y: scroll;
+                max-height: 300px;
+                padding: 10px;
+                .movie {
+                    border-bottom: $border;
+                    padding: 5px;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-start;
+                    .images {
+                        margin-right: 10px;
+                        img {
+                            width: 90px;
+                            height: 120px;
+                            border-radius: 5px;
+                        }
+                    }
+                    .info {
+                        line-height: 10px;
+                        font-size: $fs13;
+                        font-weight: $fw-300;
+                        @include colorCinema;
+                        .timerStart {
+                            border-radius: 5px;
+                            border: 1px solid;
+                            padding: 2px;
+                            cursor: pointer;
+                            .timerEnd {
+                                color: $color-gray-1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.listMovie::-webkit-scrollbar {
+    @include scrollbar;
+}
+.listMovie::-webkit-scrollbar-thumb {
+    @include scrollbarThumb;
+}
+
+@media (max-width: 600px) {
+    .introMovieDetail {
+        text-align: center;
+        line-height: 40px;
+        font-size: $fs13;
+    }
+}
+@media (max-width: 400px) {
+    .introMovieDetail {
+        font-size: $fs10;
+    }
+}
+@media (max-width: 360px) {
+    .movieTab {
+        font-size: $fs13;
+    }
+    .movie {
+        display: block !important;
+    }
+}
+
+
+::ng-deep .mat-tab-label-content {
+    color: $color-white-2;
+}
+::ng-deep mat-ink-bar {
+    display: none;
+}

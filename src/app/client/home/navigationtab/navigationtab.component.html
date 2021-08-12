@@ -1,0 +1,113 @@
+<div class="container mainNavigationTabs">
+    <mat-tab-group [@.disabled]="true">
+        <mat-tab *ngFor="let item of logoCinema">
+
+            <!-- logoCinema -->
+            <ng-template mat-tab-label>
+                <button mat-button (click)="getCodeSysTemCinema(item.maHeThongRap)" class="btnLogo">
+                    <img src={{item.logo}} alt="" width="50px" height="50px">
+                </button>
+            </ng-template>
+            <!-- logoCinema -->
+
+            <div class="tabNavigation" fxLayout="row wrap">
+                <!-- addressCinema -->
+                <div class="tabAddresCinema" fxFlex.gt-xs="45%">
+                    <div class="addresCinema" *ngFor="let item of systemCinema?.lstCumRap">
+                        <ng-container *ngIf="maCumRap === item.maCumRap else notActive">
+                            <div class="active">
+                                <img src={{itemImages.img}} alt="" width="60px" height="70px"
+                                    style="border-radius: 5px;">
+                                <span class="address">
+                                    <p class={{itemImages.code}}>{{item.tenCumRap}}</p>
+                                    <p>Địa Chỉ : {{item.diaChi}}</p>
+                                    <p class="chiTiet" (click)="getCodeGroupCinema(item.maCumRap)">[Chi Tiết]</p>
+                                </span>
+                            </div>
+                        </ng-container>
+                        <ng-template #notActive>
+                            <div class="notActive">
+                                <img src={{itemImages.img}} alt="" width="60px" height="70px"
+                                    style="border-radius: 5px;">
+                                <span class="address">
+                                    <p class={{itemImages.code}}>{{item.tenCumRap}}</p>
+                                    <p>Địa Chỉ : {{item.diaChi}}</p>
+                                    <p class="chiTiet" (click)="getCodeGroupCinema(item.maCumRap)">[Chi Tiết]</p>
+                                </span>
+                            </div>
+                        </ng-template>
+
+                    </div>
+
+                </div>
+                <!-- addressCinema -->
+
+                <!-- List Movie -->
+                <div class="tabInfoMovieCinema" fxFlex.gt-xs="55%">
+                    <!-- showTime if-->
+                    <ng-container *ngIf="listMovieCinema else hidenListMovie">
+                        <div class="navDateTime">
+                            <nav mat-tab-nav-bar>
+                                <!-- if -->
+                                <ng-container *ngIf="movieShowTime else hidenShovieShowTime">
+                                    <a mat-tab-link *ngFor="let item of movieShowTime"
+                                        (click)="getScheduleMovie(item)">{{item.ngayChieuGioChieu | date :
+                                        "dd-MM-YYYY"}}</a>
+                                </ng-container>
+                                <!-- else -->
+                                <ng-template #hidenShovieShowTime>
+                                    <nav mat-tab-nav-bar>
+                                        <a mat-tab-link>Vui Lòng Chọn Phim</a>
+                                    </nav>
+                                </ng-template>
+                            </nav>
+                        </div>
+                    </ng-container>
+                    <!-- else -->
+                    <ng-template #hidenListMovie></ng-template>
+                    <!-- showTime -->
+
+
+                    <!-- listMovie -->
+                    <div class="listMovie">
+                        <div fxLayout="row" *ngFor="let item of listMovieCinema">
+                            <!-- movie -->
+                            <div class="infoMovie" fxFlex.gt-sm="50%"
+                                (click)="getShowTimeCodes(item.lstLichChieuTheoPhim ,item.maPhim)">
+                                <img src={{item.hinhAnh}} alt="" width="60px" height="70px" style="border-radius: 5px;">
+                                <span class="labelMaPhim">{{item.maPhim}}</span>
+                                <p class="{{itemImages.code}}">{{item.tenPhim}}</p>
+                            </div>
+                            <!-- movie -->
+
+                            <!-- lichChieu if-->
+                            <ng-container *ngIf="item.maPhim === maPhim else hiden">
+                                <div class="sheduleMovie" fxFlex.gt-sm="50%">
+                                    <ng-container *ngIf="movieSchedule else showMovieSchedule">
+                                        <p>Code : {{movieSchedule?.maRap}} - {{movieSchedule?.tenRap}}</p>
+                                        <p>Giá Vé : {{giaVe}}</p>
+                                        <p>Giờ Chiếu : <span class="timerStart {{itemImages.code}}"
+                                                (click)="bookingTicket(movieSchedule?.maLichChieu)">{{timerStart}}<span
+                                                    class="timerEnd"> ~ {{timerEnd}}</span></span></p>
+                                    </ng-container>
+                                    <ng-template #showMovieSchedule>
+                                        <p>Chọn Phim & Ngày Chiếu Để Đặt Vé</p>
+                                    </ng-template>
+                                </div>
+                            </ng-container>
+                            <!-- else -->
+                            <ng-template #hiden>
+                                <div class="sheduleMovie" fxFlex.gt-sm="50%">
+                                    <p>Chọn Phim & Ngày Chiếu Để Đặt Vé</p>
+                                </div>
+                            </ng-template>
+                            <!-- lichChieu -->
+                        </div>
+                    </div>
+                    <!-- listMovie -->
+                </div>
+                <!-- List Movie -->
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

@@ -1,0 +1,70 @@
+<mat-toolbar [ngClass]="!panelOpenState ? 'header' : 'headerSetHeight'">
+  <div fxHide.gt-sm>
+    <!-- logo < 900px => open sidenav-->
+    <img src="../../../../assets/images/web-logo.png" alt="" (click)="onSidenavOpen()" class="logo" />
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="space-around" fxHide.sm fxHide.xs>
+    <!-- logo > 900px -->
+    <img src="../../../../assets/images/web-logo.png" alt="" class="logo" routerLink="/" />
+    <span class="example-spacer"></span>
+    <!-- accordion -->
+    <mat-accordion>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Hệ Thống Rạp
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <button mat-button *ngFor="let item of logoCinemaHeader" class="btnLogo"
+          routerLink="/cinemadetail/{{item.maHeThongRap}}">
+          <img src={{item.logo}} alt="" width="40px" height="40px">
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <!-- accordion -->
+    <span class="example-spacer"></span>
+    <!-- intro -->
+    <div class="intro">
+      <span>Lịch Chiếu</span>
+      <span>Cụm Rạp</span>
+      <span>Ứng Dụng</span>
+    </div>
+    <!-- intro -->
+    <span class="example-spacer"></span>
+
+    <!-- info login -->
+    <div class="login">
+      <!-- if -->
+      <ng-container *ngIf="!userNameSigin else signInSuccess">
+        <button mat-button routerLink="signup">
+          <mat-icon class="iconHeader">app_registration</mat-icon> Đăng Kí
+        </button>
+        <button mat-button routerLink="signin">
+          <mat-icon class="iconHeader">login</mat-icon> Đăng Nhập
+        </button>
+      </ng-container>
+      <!-- else -->
+      <ng-template #signInSuccess>
+        <button mat-button [matMenuTriggerFor]="menu" class="account">
+          <mat-icon> account_circle </mat-icon>{{ userNameSigin | uppercase}}
+
+          <mat-menu #menu="matMenu">
+            <!-- admin -->
+            <button mat-menu-item style="color: red;" routerLink="/admin" *ngIf="userTypeCode === 'QuanTri'">
+              <mat-icon class="iconHeader">admin_panel_settings</mat-icon> Admin
+            </button>
+            <!-- admin -->
+            <button mat-menu-item>
+              <mat-icon>info</mat-icon> Thông Tin Người Dùng
+            </button>
+            <button mat-menu-item (click)="handleLogOut()">
+              <mat-icon class="iconHeader">exit_to_app</mat-icon> Đăng Xuất
+            </button>
+          </mat-menu>
+        </button>
+      </ng-template>
+    </div>
+    <!-- info login -->
+
+  </div>
+</mat-toolbar>

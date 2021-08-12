@@ -1,0 +1,29 @@
+<div class="container" *ngIf="arrListMovie">
+
+    <div style="text-align: center;">
+        <mat-form-field>
+            <mat-select value={{maNhom}}>
+                <mat-option *ngFor="let ma of arrMaNhom" [value]="ma" (click)="getListCourses(ma)">Nhóm : {{ma}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <ngx-slick-carousel class="carouselListMovie" [config]="slideConfigMovie">
+        <div ngxSlickItem *ngFor="let item of arrListMovie" class="slideListMovie">
+            <div class="indexListMovie">
+                <img src={{item.hinhAnh}} alt="" width="100%" height="100%" />
+                <div class="infoMovie">
+                    <span class="codeMovie">{{item.maPhim}}</span>
+                    <span class="nameMovie">{{item.tenPhim | shortcut : 20}}</span>
+                </div>
+                <button class="btnMuaVe" routerLink="moviedetail/{{item.maPhim}}">Mua Vé</button>
+                <label class="modalPlay" (click)="showModalVideo(item.trailer)">
+                    <mat-icon class="iconPlay">
+                        play_arrow
+                    </mat-icon>
+                </label>
+            </div>
+        </div>
+    </ngx-slick-carousel>
+</div>

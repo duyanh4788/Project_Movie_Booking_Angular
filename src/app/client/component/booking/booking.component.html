@@ -1,0 +1,109 @@
+<div class="intro" *ngIf="infoMovie">
+    <mat-card class="cardInfoMovie">
+        <div class="row">
+            <mat-card-header class="col-lg-6">
+                <div mat-card-avatar class="{{infoMovie.tenCumRap.slice(0,3)}}"><span>{{infoMovie.tenCumRap
+                        |
+                        shortcut : 3}}</span></div>
+                <mat-card-title>{{infoMovie.tenCumRap}}</mat-card-title>
+                <mat-card-subtitle>{{infoMovie.diaChi}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-header class="col-lg-6">
+                <mat-card-title>{{infoMovie.tenRap}} - Phim : {{infoMovie.tenPhim}}</mat-card-title>
+                <mat-card-subtitle>Ngày Chiếu : {{infoMovie.ngayChieu}} - Giờ Chiếu : {{infoMovie.gioChieu}}
+                </mat-card-subtitle>
+            </mat-card-header>
+        </div>
+    </mat-card>
+</div>
+
+<div *ngIf="!valid" class="expiredCheckout">
+    <div class="modalMesage">
+        <span>Thời Gian Đặt Ghế Là 15s . Hãy Đặt Ghế Lại :D </span>
+        <p (click)="bokingTicketAgain()">Booking Again !</p>
+    </div>
+</div>
+
+<mat-stepper #stepper>
+    <!-- step 1 -->
+    <mat-step label="Chọn Ghế">
+        <div class="bookingChair">
+            <div class="timer">
+                <p>Thời Gian Đặt Ghế</p>
+                <span>{{countDownTimer}}</span>
+            </div>
+
+            <img src="../../../../assets/images/screen.png" alt="" class="green">
+            <ng-container *ngFor="let item of danhSachGhe">
+                <button [disabled]="item.daDat" [class]="item.choiceChair ? 'choiChair' : 'unChoiChair' "
+                    (click)="selectChair(item.maGhe)">{{item.tenGhe}}</button>
+            </ng-container>
+        </div>
+        <ng-container *ngIf="intoMoney > 0 else disableSteper">
+            <div class="btnStep">
+                <button mat-mini-fab color="wram" matStepperNext (click)="steperTwo()">Next</button>
+
+            </div>
+        </ng-container>
+
+        <ng-template #disableSteper>
+            <div class="btnStep">
+                <button mat-mini-fab color="wram" disabled>Next</button>
+            </div>
+        </ng-template>
+    </mat-step>
+    <!-- step 1 -->
+
+    <!-- step 2 -->
+    <mat-step label="Xác Nhận Đặt Vé">
+        <div class="infoMovie">
+            <mat-card class="cardInfoMovie" *ngIf="infoMovie">
+                <div class="bgImages">
+                    <img mat-card-image src={{infoMovie.hinhAnh}} alt="" class="imgBG">
+                    <img mat-card-image src={{infoMovie.hinhAnh}} alt="" class="imgShow">
+                </div>
+                <mat-card-content>
+                    <table *ngIf="intoMoney > 0">
+                        <thead>
+                            <tr>
+                                <th>Mã Ghế</th>
+                                <th>Số Ghế</th>
+                                <th>Loại Ghế</th>
+                                <th>Giá Vé</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let item of danhSachGhe ; let i = index">
+                            <tr *ngIf="item.choiceChair">
+                                <td>{{item.maGhe}}</td>
+                                <td>{{item.tenGhe}}</td>
+                                <td>{{item.loaiGhe === 'Thuong' ? 'Standar' : 'Vip' }}</td>
+                                <td>{{item.giaVe.toLocaleString()}} VND</td>
+                            </tr>
+                        </tbody>
+                        <tbody class="intoMoney" *ngIf="intoMoney > 0">
+                            <tr>
+                                <td colspan="4">Thành Tiền : {{intoMoney.toLocaleString()}} VND</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="btnStep">
+            <button mat-mini-fab color="wram" class="btnRight" matStepperPrevious (click)="backOne()">Back</button>
+            <button mat-mini-fab color="wram" matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <!-- step 2 -->
+
+    <!-- step 3 -->
+    <mat-step>
+        <ng-template matStepLabel>Đặt Vé</ng-template>
+        <p>You are now done.</p>
+        <div class="btnStep">
+            <button mat-mini-fab color="wram" class="btnRight" matStepperPrevious>Back</button>
+        </div>
+    </mat-step>
+    <!-- step 3 -->
+
+</mat-stepper>

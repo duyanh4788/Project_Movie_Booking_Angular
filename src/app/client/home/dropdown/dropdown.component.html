@@ -1,0 +1,96 @@
+<div class="container mainDropDown" style="margin-bottom: 50px;">
+    <div class="dropDown">
+        <!-- maNhom -->
+        <div class="drop">
+            <button mat-button [matMenuTriggerFor]="group">Nhóm : {{maNhom}}</button>
+            <mat-menu #group="matMenu">
+                <button mat-menu-item *ngFor="let ma of arrMaNhom" (click)="setMaNhom(ma)">{{ma}}</button>
+            </mat-menu>
+        </div>
+        <!-- maNhom -->
+
+        <!-- listMovie -->
+        <div class="drop">
+            <button mat-button [matMenuTriggerFor]="movie">{{nameMovie}}</button>
+            <mat-menu #movie="matMenu">
+                <button mat-menu-item *ngFor="let item of arrayListMovieDropdown"
+                    (click)="selectMovie(item.tenPhim , item.maPhim)">{{item.tenPhim}}</button>
+            </mat-menu>
+        </div>
+        <!-- listMovie -->
+
+        <!-- groupCinema -->
+        <div class="drop">
+            <!-- if -->
+            <ng-container *ngIf="sysTemCinema === undefined else maHeThongRap">
+                <button mat-button [matMenuTriggerFor]="groupCinema">{{nameGroupCinema}}</button>
+                <mat-menu #groupCinema="matMenu">
+                    <button mat-menu-item>Chọn Hệ Thống Rạp</button>
+                </mat-menu>
+            </ng-container>
+            <!-- else -->
+            <ng-template #maHeThongRap>
+                <button mat-button [matMenuTriggerFor]="groupCinema">{{nameGroupCinema}}</button>
+                <mat-menu #groupCinema="matMenu">
+                    <button mat-menu-item *ngFor="let item of sysTemCinema"
+                        (click)="selectCinema(item.maHeThongRap , item.cumRapChieu)">{{item.maHeThongRap}}</button>
+                </mat-menu>
+            </ng-template>
+        </div>
+        <!-- groupCinema -->
+
+        <!-- nameCinema -->
+        <div class="drop">
+            <!-- if -->
+            <ng-container *ngIf="theaterClusterCinema === undefined else tenCumRap">
+                <button mat-button [matMenuTriggerFor]="nameCinema">{{nameAddresCinema}}</button>
+                <mat-menu #nameCinema="matMenu">
+                    <button mat-menu-item>Chọn Cụm Rạp</button>
+                </mat-menu>
+            </ng-container>
+            <!-- else -->
+            <ng-template #tenCumRap>
+                <button mat-button [matMenuTriggerFor]="nameCinema">{{nameAddresCinema}}</button>
+                <mat-menu #nameCinema="matMenu">
+                    <button mat-menu-item *ngFor="let item of theaterClusterCinema"
+                        (click)="getShowTime(item.lichChieuPhim , item.tenCumRap)">{{item.tenCumRap}}</button>
+                </mat-menu>
+            </ng-template>
+        </div>
+        <!-- nameCinema -->
+
+        <!-- dateS -->
+        <div class="drop">
+            <!-- if -->
+            <ng-container *ngIf="showTimeCinema === undefined else ngayChieuGioChieu">
+                <button mat-button [matMenuTriggerFor]="dateS">{{dateCinema}}</button>
+                <mat-menu #dateS="matMenu">
+                    <button mat-menu-item>Chọn Ngày Chiếu Phim</button>
+                </mat-menu>
+            </ng-container>
+            <!-- else -->
+            <ng-template #ngayChieuGioChieu>
+                <button mat-button [matMenuTriggerFor]="dateS">{{dateCinema}}</button>
+                <mat-menu #dateS="matMenu">
+                    <button mat-menu-item *ngFor="let item of showTimeCinema"
+                        (click)="getDateTimer(item.ngayChieuGioChieu , item.maLichChieu)">{{item.ngayChieuGioChieu |
+                        date :
+                        "dd-MM-YYYY"}}</button>
+                </mat-menu>
+            </ng-template>
+        </div>
+        <!-- dateS -->
+
+        <!-- timer -->
+        <div class="drop">
+            <button mat-button>{{timerCinema}}</button>
+        </div>
+        <!-- timer -->
+
+        <!-- booking -->
+        <div class="drop">
+            <button class="booking" mat-button (click)="bookingTicket(showTimeCode)">Đặt Vé</button>
+        </div>
+        <!-- booking -->
+    </div>
+</div>

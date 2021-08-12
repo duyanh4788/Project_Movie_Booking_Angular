@@ -1,0 +1,46 @@
+@import "../../../../assets/scss/index.scss";
+
+.mainDropDown {
+    position: relative;
+    .dropDown {
+        max-width: 1200px;
+        height: 60px;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        border: $border;
+        box-shadow: $box-shadow;
+        padding: 0 20px;
+        border-radius: 10px;
+        background: $background-3;
+        color: $color-black-2;
+        display: flex;
+        align-items: center;
+        .drop {
+            border-right: $border;
+        }
+        .booking {
+            background-color: $color-gray-2;
+            color: $color-white;
+        }
+    }
+}
+
+::ng-deep .mat-menu-panel {
+    max-height: 200px !important;
+}
+::ng-deep .mat-menu-panel::-webkit-scrollbar {
+    width: 6px;
+    background-color: $background-3;
+}
+::ng-deep .mat-menu-panel::-webkit-scrollbar {
+    background: $color-gray-1;
+    border-radius: 6px;
+}
+
+@media (max-width: 1000px) {
+    .mainDropDown {
+        display: none !important;
+    }
+}

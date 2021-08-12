@@ -1,0 +1,39 @@
+<div class="footerCarousel">
+    <div class="container">
+        <div fxLayout="row wrap" fxLayoutAlign="space-around center">
+            <div class="rowIntro" fxFlex.gt-lg="50%" fxLayout="column" >
+                <span>
+                    <label>Ứng dụng tiện lợi dành cho người yêu điện ảnh</label>
+                    <p>
+                        Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và đổi
+                        quà hấp dẫn.
+                    </p>
+                    <button>
+                        <a target="_blank" href="https://apps.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197"
+                            rel="noreferrer">
+                            App miễn phí - Tải về ngay!
+                        </a>
+                    </button>
+                    <p>TIX có hai phiên bản
+                        <a target="_blank" href="https://apps.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197"
+                            rel="noreferrer">
+                            iOS
+                        </a>
+                        <a target="_blank" href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"
+                            rel="noreferrer">
+                            Android
+                        </a>
+                    </p>
+                </span>
+            </div>
+            <div class="rowCarousel" fxFlex.gt-lg="50%" fxLayout="column" >
+                <img src="../../../../../assets/images/mobile.png" alt="" class="mobile">
+                <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+                    <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+                        <img src="{{ slide.img }}" alt="" width="100%" height="100%" />
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+        </div>
+    </div>
+</div>
