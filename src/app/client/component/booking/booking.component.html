@@ -99,7 +99,9 @@
     <!-- step 3 -->
     <mat-step>
         <ng-template matStepLabel>Đặt Vé</ng-template>
-        <p>You are now done.</p>
+        <div class="bookingTicket">
+            <div class="example-ripple-container" matRipple (click)="bookingTicket()">Đặt Vé</div>
+        </div>
         <div class="btnStep">
             <button mat-mini-fab color="wram" class="btnRight" matStepperPrevious>Back</button>
         </div>
