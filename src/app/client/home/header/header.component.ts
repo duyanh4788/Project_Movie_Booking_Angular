@@ -35,16 +35,14 @@ export class HeaderComponent implements OnInit {
     this.sidenavOpen.emit()
   }
   handleLogOut() {
-    this.userNameSigin = null;
-    localStorage.clear();
+    this.signinService.setCurrentUserName(localStorage.removeItem("hoTen"))
+    this.signinService.setCurrentAccessToken(localStorage.removeItem("accessToken"))
+    this.signinService.setCurrentUserTypeCode(localStorage.removeItem("maLoaiNguoiDung"))
     this.snackBar.open("Đăng Xuất Thành Công", "", {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
       duration: this.durationInSeconds * 1000,
     });
-    this.signinService.setCurrentUserName(localStorage.removeItem("hoTen"))
-    this.signinService.setCurrentAccessToken(localStorage.removeItem("accessToken"))
-    this.signinService.setCurrentUserTypeCode(localStorage.removeItem("maLoaiNguoiDung"))
     this.router.navigate(["/signin"]);
   }
 

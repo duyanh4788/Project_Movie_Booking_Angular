@@ -1,5 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogoCinemaHeader } from 'src/app/core/models/header';
 import { HeaderService } from 'src/app/core/services/header/header.service';
@@ -18,9 +17,11 @@ export class HeaderresponsiveComponent implements OnInit {
   panelOpenState = false;
   logoCinemaHeader: LogoCinemaHeader[] | undefined;
 
+  // snackbar
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds = 2;
+  // snackbar
 
   @Output() sidenavClose = new EventEmitter();
 
@@ -34,8 +35,9 @@ export class HeaderresponsiveComponent implements OnInit {
     this.sidenavClose.emit();  // đóng sidenav
   };
   handleLogOut() {
-    this.userNameSigin = null;
-    localStorage.clear();
+    this.signinService.setCurrentUserName(localStorage.removeItem("hoTen"))
+    this.signinService.setCurrentAccessToken(localStorage.removeItem("accessToken"))
+    this.signinService.setCurrentUserTypeCode(localStorage.removeItem("maLoaiNguoiDung"))
     this.snackBar.open("Đăng Xuất Thành Công", "", {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
@@ -43,12 +45,16 @@ export class HeaderresponsiveComponent implements OnInit {
     });
     this.router.navigate(["/signin"]);
   }
+
   setUserNameLogin() {
-    this.signinService.shareUserName.subscribe((data) => this.userNameSigin = data);
+    this.signinService.shareUserName.subscribe((data) => {
+      this.userNameSigin = data
+    });
     this.signinService.shareUserTypeCode.subscribe((data) => {
       this.userTypeCode = data;
     });
   }
+
   getListLogoCinemaS() {
     this.headerService.getListLogoCinema().subscribe((data) => {
       this.logoCinemaHeader = data
