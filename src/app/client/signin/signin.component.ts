@@ -33,6 +33,9 @@ export class SigninComponent implements OnInit {
                 // hoTen
                 localStorage.setItem("hoTen", JSON.stringify(hoTen))
                 this.signinService.setCurrentUserName(hoTen)
+                // Account
+                localStorage.setItem("taiKhoan", JSON.stringify(taiKhoan))
+                this.signinService.setCurrentAccount(taiKhoan)
                 // userTypeCode
                 localStorage.setItem("maLoaiNguoiDung", JSON.stringify(maLoaiNguoiDung))
                 this.signinService.setCurrentUserTypeCode(maLoaiNguoiDung)

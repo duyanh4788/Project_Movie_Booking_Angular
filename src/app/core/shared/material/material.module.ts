@@ -25,6 +25,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   exports: [
@@ -54,6 +55,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatRadioModule,
     MatSnackBarModule,
     MatStepperModule,
+    MatRippleModule,
   ]
 })
 export class MaterialModule { }

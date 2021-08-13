@@ -17,7 +17,7 @@ export class SigninService {
   setCurrentAccessToken(value: any) {
     this.currentAccessToken.next(value)
   }
-  // Account
+  // hoTen
   private currentUserName = new BehaviorSubject(null)
   shareUserName = this.currentUserName.asObservable();
   getCurrentUserName(): any {
@@ -25,6 +25,15 @@ export class SigninService {
   }
   setCurrentUserName(value: any) {
     this.currentUserName.next(value)
+  }
+  // Account
+  private currentAccount = new BehaviorSubject(null)
+  shareAccount = this.currentAccount.asObservable();
+  getCurrentAccount(): any {
+    return this.currentAccount.value
+  }
+  setCurrentAccount(value: any) {
+    this.currentAccount.next(value)
   }
   // userTypeCode
   private currentUserTypeCode = new BehaviorSubject(null)
@@ -42,11 +51,16 @@ export class SigninService {
     if (accessToken) {
       this.setCurrentAccessToken(JSON.parse(accessToken))
     }
-    // Account
+    // hoTen
     const hoTen = localStorage.getItem("hoTen");
     if (hoTen) {
       this.setCurrentUserName(JSON.parse(hoTen))
     }
+     // Account
+     const taiKhoan = localStorage.getItem("taiKhoan");
+     if (taiKhoan) {
+       this.setCurrentAccount(JSON.parse(taiKhoan))
+     }
     // userTypeCode
     const maLoaiNguoiDung = localStorage.getItem("maLoaiNguoiDung");
     if (maLoaiNguoiDung) {

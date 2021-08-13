@@ -72,6 +72,31 @@
         color: #3e515d;
     }
 }
+.btnSample {
+    text-align: center;
+    font-size: $fs13;
+    color: $color-gray-1;
+    margin-top: 20px;
+    span {
+        margin-right: 10px;
+    }
+    button {
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        width: 20px;
+        height: 20px;
+    }
+    button:disabled {
+        background-color: $color-gray-1;
+    }
+    .choiChair {
+        background-color: $colorBhd;
+    }
+    .unChoiChair {
+        background-color: #3e515d;
+    }
+}
 // step 2
 .infoMovie {
     width: 100%;
@@ -136,11 +161,30 @@
         }
     }
 }
+// steper 3
+.bookingTicket {
+    display: flex;
+    justify-content: space-around;
+    .example-ripple-container {
+        background: url(../../../../assets/images/logotitle.png);
+        background-size: cover;
+        color: $colorBhd;
+        font-size: $fs15;
+        font-weight: bolder;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 // btn step
 .btnStep {
     text-align: center;
-    margin-top: 50px;
+    margin: 20px 0;
     .btnRight {
         margin-right: 10px;
     }
