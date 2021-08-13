@@ -39,3 +39,13 @@ export interface BookingChair {
     daDat: boolean;
     taiKhoanNguoiDat: string | null;
 }
+
+export interface ListTicketBooking {
+    maLichChieu?: number;
+    danhSachVe?: DanhSachVe[];
+    taiKhoanNguoiDung?: string;
+}
+export interface DanhSachVe {
+    maGhe?: number;
+    giaVe?: number;
+}

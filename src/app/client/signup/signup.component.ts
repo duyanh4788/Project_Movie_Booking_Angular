@@ -8,6 +8,7 @@ import {
 import { UserSignUp } from "src/app/core/models/signUp";
 import { LoadingService } from "src/app/core/services/loading/loading.service";
 import { SignupService } from "src/app/core/services/signup/signup.service";
+import ValidationMatchPass from "./validationMatch";
 
 @Component({
   selector: "app-signup",
@@ -57,6 +58,7 @@ export class SignupComponent implements OnInit {
           "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"
         ),
       ]),
+      conFirmMatKhau: new FormControl(null),
       hoTen: new FormControl("", [
         Validators.required,
         Validators.minLength(3),
@@ -73,6 +75,9 @@ export class SignupComponent implements OnInit {
         Validators.pattern("^[0-9]*$"),
       ]),
       maLoaiNguoiDung: new FormControl("Khách Hàng"),
+    }, {
+      // ValidationMatchPass => import ./validationMatch.ts
+      validators: [ValidationMatchPass.match('matKhau', 'conFirmMatKhau')]
     });
   }
 
@@ -116,4 +121,5 @@ export class SignupComponent implements OnInit {
   onClear() {
     this.formSignUp.reset();
   }
+  
 }

@@ -1,3 +1,4 @@
+<!-- test git  -->
 <ng-container *ngIf="!showInfoSignUp else showInfoUser">
     <div class="backGroundsignUp">
         <div class="wrapSignUp">
@@ -7,7 +8,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Tài khoản</mat-label>
                     <input matInput required formControlName="taiKhoan" />
-                    <mat-error *ngIf="formSignUp?.get('taiKhoan')?.errors?.required">(*) Do Not Empty </mat-error>
+                    <mat-error *ngIf="formSignUp?.get('taiKhoan')?.errors?.required">(*) Không được để trống </mat-error>
                     <mat-error *ngIf="formSignUp?.get('taiKhoan')?.errors?.minlength">(*) Cần trên 3 ký tự </mat-error>
                 </mat-form-field>
 
@@ -15,17 +16,25 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Mật khẩu</mat-label>
                     <input matInput required formControlName="matKhau" />
-                    <mat-error *ngIf="formSignUp?.get('matKhau')?.errors?.required">(*) Do Not Empty
+                    <mat-error *ngIf="formSignUp?.get('matKhau')?.errors?.required">(*) Không được để trống
                     </mat-error>
                     <mat-error *ngIf="formSignUp?.get('matKhau')?.errors?.pattern">(*) Mật Khẩu Không Hợp Lệ</mat-error>
-                    <!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  -->
+                </mat-form-field>
+
+                <!-- Confirm Mật Khẩu -->
+                <mat-form-field class="example-full-width">
+                    <mat-label>Xác Nhận Mật khẩu</mat-label>
+                    <input matInput formControlName="conFirmMatKhau" />
+                    <mat-error *ngIf=" formSignUp?.get('conFirmMatKhau')?.hasError('matching') && formSignUp.get('conFirmMatKhau')?.touched">
+                        Password Not Match
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- hoTen -->
                 <mat-form-field class="example-full-width">
                     <mat-label>Họ tên</mat-label>
                     <input matInput required formControlName="hoTen" />
-                    <mat-error *ngIf="formSignUp?.get('hoTen')?.errors?.required">(*) Do Not Empty
+                    <mat-error *ngIf="formSignUp?.get('hoTen')?.errors?.required">(*) Không được để trống
                     </mat-error>
                     <mat-error *ngIf="formSignUp?.get('hoTen')?.errors?.minlength">(*) Cần trên 3 ký tự </mat-error>
                 </mat-form-field>
@@ -39,14 +48,14 @@
                         </mat-option>
                     </mat-select>
                     <mat-error *ngIf="formSignUp.get('maNhom')?.errors?.required  && formSignUp.get('maNhom')?.touched">
-                        (*) Do Not Empty</mat-error>
+                        (*) Không được để trống</mat-error>
                 </mat-form-field>
 
                 <!-- email -->
                 <mat-form-field class="example-full-width">
                     <mat-label>Email</mat-label>
                     <input matInput required formControlName="email" />
-                    <mat-error *ngIf="formSignUp?.get('email')?.errors?.required">(*) Do Not Empty
+                    <mat-error *ngIf="formSignUp?.get('email')?.errors?.required">(*) Không được để trống
                     </mat-error>
                     <mat-error *ngIf="formSignUp?.get('email')?.errors?.pattern">(*) Email không hợp lệ
                     </mat-error>
@@ -56,7 +65,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Số điện thoại</mat-label>
                     <input matInput required formControlName="soDt" />
-                    <mat-error *ngIf="formSignUp?.get('soDt')?.errors?.required">(*) Do Not Empty
+                    <mat-error *ngIf="formSignUp?.get('soDt')?.errors?.required">(*) Không được để trống
                     </mat-error>
                     <mat-error *ngIf="formSignUp?.get('soDt')?.errors?.pattern">(*) Chỉ nhập số</mat-error>
                 </mat-form-field>
