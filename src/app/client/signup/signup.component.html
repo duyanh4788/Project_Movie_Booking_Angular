@@ -24,8 +24,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Xác Nhận Mật khẩu</mat-label>
                     <input matInput formControlName="conFirmMatKhau" />
-                    <mat-error
-                        *ngIf=" formSignUp?.get('conFirmMatKhau')?.hasError('matching') && formSignUp.get('conFirmMatKhau')?.touched">
+                    <mat-error *ngIf=" formSignUp?.get('conFirmMatKhau')?.hasError('matching') && formSignUp.get('conFirmMatKhau')?.touched">
                         Password Not Match
                     </mat-error>
                 </mat-form-field>
