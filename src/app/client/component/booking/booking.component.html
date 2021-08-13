@@ -39,6 +39,13 @@
                     (click)="selectChair(item.maGhe)">{{item.tenGhe}}</button>
             </ng-container>
         </div>
+
+        <div class="btnSample">
+            <span> <button disabled></button> Ghế Đã Đặt</span>
+            <span> <button class="choiChair"></button> Ghế Đang Chọn</span>
+            <span> <button class="unChoiChair"></button> Ghế Đang Trống</span>
+        </div>
+
         <ng-container *ngIf="intoMoney > 0 else disableSteper">
             <div class="btnStep">
                 <button mat-mini-fab color="wram" matStepperNext (click)="steperTwo()">Next</button>
@@ -100,7 +107,7 @@
     <mat-step>
         <ng-template matStepLabel>Đặt Vé</ng-template>
         <div class="bookingTicket">
-            <div class="example-ripple-container" matRipple (click)="bookingTicket()">Đặt Vé</div>
+            <div class="example-ripple-container" matRipple (click)="bookingTicket()"><span>Đặt Vé</span></div>
         </div>
         <div class="btnStep">
             <button mat-mini-fab color="wram" class="btnRight" matStepperPrevious>Back</button>
