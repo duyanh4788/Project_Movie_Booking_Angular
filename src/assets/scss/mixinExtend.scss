@@ -54,3 +54,13 @@
         margin-top: 20px;
     }
 }
+
+@mixin inputSearch {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: $color-white-2;
+    color: $color-gray-1;
+}

@@ -64,10 +64,10 @@ export class ListMoveComponent implements OnInit {
     public arrMaNhom: Array<any> = ['GP01', 'GP02', 'GP03', 'GP04', 'GP05', 'GP06', 'GP07', 'GP08', 'GP09', 'GP10',];
 
     ngOnInit(): void {
-        this.getListMovieS()
+        this.getListMovieDefault()
     }
 
-    getListCourses(maNhom: string) {
+    getListMovie(maNhom: string) {
         this.maNhom = maNhom
         this.arrListMovie = null
         if (this.arrListMovie === null) {
@@ -77,7 +77,7 @@ export class ListMoveComponent implements OnInit {
         }
     }
 
-    getListMovieS() {
+    getListMovieDefault() {
         let maNhom = "GP01"
         this.subListMovie.add(this.listMovieService.getListMovie(maNhom).subscribe((data) => {
             this.arrListMovie = data
