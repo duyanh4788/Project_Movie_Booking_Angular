@@ -110,6 +110,10 @@
         border: $border;
         border-radius: $boderR5;
         background-color: $background-3;
+        mat-panel-title {
+            color: $colorOne;
+            font-weight: 500;
+        }
         .btnLogo {
             ::ng-deep .mat-button-ripple.mat-ripple,
             ::ng-deep .mat-button-focus-overlay {
@@ -150,13 +154,14 @@
                         font-size: $fs13;
                         font-weight: $fw-300;
                         @include colorCinema;
+                        color: $colorOne;
                         .timerStart {
                             border-radius: 5px;
                             border: 1px solid;
                             padding: 2px;
                             cursor: pointer;
                             .timerEnd {
-                                color: $color-gray-1;
+                                color: $colorOne;
                             }
                         }
                     }

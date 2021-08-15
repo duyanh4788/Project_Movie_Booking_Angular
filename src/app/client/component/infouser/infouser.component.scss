@@ -1,0 +1,100 @@
+@import "../../../../assets/scss/index.scss";
+
+.bgInfoUser {
+    width: 100%;
+    padding: 50px 0;
+    background: url(../../../../assets/images/background.jpg);
+    background-size: cover;
+    mat-tab-group {
+        ::ng-deep .mat-tab-label-content {
+            color: $color-white-2;
+        }
+        ::ng-deep .mat-tab-body-content {
+            display: flex;
+            justify-content: space-around;
+        }
+        ::ng-deep .mat-ink-bar {
+            background-color: $background-3 !important;
+        }
+        ::ng-deep .mat-tab-label {
+            padding: 0 24px !important;
+            min-width: 160px !important;
+        }
+
+        ::ng-deep.mat-tab-body-content {
+            overflow: hidden !important;
+        }
+        .account {
+            width: 100%;
+            max-width: 400px;
+            @include blockProfile;
+            h5 {
+                @include h5title;
+            }
+            .block {
+                border: $border;
+                border-radius: $boderR5;
+                box-shadow: $box-shadow;
+                h6 {
+                    font-size: $fs13;
+                    font-weight: bold;
+                    color: $colorTwo;
+                }
+                p {
+                    font-size: $fs14;
+                    font-weight: 300;
+                    color: $colorOne;
+                }
+            }
+            .block:hover {
+                background: $color-white-2;
+            }
+            .btnEdit {
+                text-align: center;
+                margin-top: 20px;
+                ::ng-deep .mat-button-wrapper {
+                    color: $colorTwo ;
+                }
+            }
+        }
+        .ticket {
+            overflow-y: scroll;
+            overflow-x: scroll;
+            max-height: 350px;
+            width: 100%;
+            .inputSearch {
+                width: 100%;
+                border-radius: 5px;
+                padding: 10px 0;
+                border: none;
+                outline: none;
+                background-color: $color-white-2;
+                color: $color-gray-1;
+            }
+            .inputSearch::placeholder {
+                text-align: center;
+            }
+            @include blockProfile;
+            h5 {
+                @include h5title;
+            }
+            table {
+                width: 100%;
+                min-width: 800px;
+                tr td {
+                    color: $colorOne;
+                }
+                tr:hover {
+                    background-color: $color-white-2;
+                }
+            }
+        }
+    }
+}
+
+.ticket::-webkit-scrollbar {
+    @include scrollbar;
+}
+.ticket::-webkit-scrollbar-thumb {
+    @include scrollbarThumb;
+}

@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   }
   handleLogOut() {
     this.signinService.setCurrentUserName(localStorage.removeItem("hoTen"))
+    this.signinService.setCurrentAccount(localStorage.removeItem("taiKhoan"))
     this.signinService.setCurrentAccessToken(localStorage.removeItem("accessToken"))
     this.signinService.setCurrentUserTypeCode(localStorage.removeItem("maLoaiNguoiDung"))
     this.snackBar.open("Đăng Xuất Thành Công", "", {

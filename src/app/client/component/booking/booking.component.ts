@@ -63,8 +63,6 @@ export class BookingComponent implements OnInit {
         this.loadingService.hidden()
       }
     })
-    // set countdown timer
-    this.countdownTimerS();
     //  get value routerlink
     this.activated.params.subscribe((result) => {
       this.listTicketBooking.maLichChieu = result.maLichChieu
@@ -73,6 +71,8 @@ export class BookingComponent implements OnInit {
         .subscribe((data) => {
           const { danhSachGhe, thongTinPhim, ..._data } = data;
           this.danhSachGhe = danhSachGhe;
+          // set countdown timer
+          this.countdownTimerS();
           this.infoMovie = thongTinPhim;
         });
     });

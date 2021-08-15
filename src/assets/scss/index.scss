@@ -1,7 +1,9 @@
+@import "./Grid/mainGrid.scss";
 @import "./variables.scss";
 @import "./extendTab.scss";
 @import "./container.scss";
-@import "./Grid/mainGrid.scss";
+@import "./table.scss";
+@import "./mixinExtend.scss";
 
 // @import "../../../../../assets/scss/index.scss";
 
@@ -23,15 +25,23 @@
     display: none !important;
 }
 ::ng-deep .mat-select-value-text {
-    color: $color-gray-2 !important;
-    font-size: 12px !important;
+    color: $colorOne !important;
+    font-size: $fs13 !important;
 }
 ::ng-deep .mat-select-arrow {
-    color: $color-gray-2 !important;
+    color: $colorOne !important;
+    font-size: $fs13 !important;
 }
 ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-    color: $color-gray-2 !important;
+    color: $colorOne !important;
+    font-size: $fs13 !important;
 }
+::ng-deep .mat-option-text {
+    color: $colorOne !important;
+    font-size: $fs13 !important;
+}
+//  select
+
 // spinner
 ::ng-deep .mat-progress-spinner svg {
     width: 50px !important;
@@ -42,7 +52,32 @@
     font-weight: 500;
     background: $background-3;
 }
+// spinner
 
+// snackbar
 ::ng-deep .mat-simple-snackbar {
     justify-content: space-around !important;
 }
+// snackbar
+
+// input
+mat-label {
+    color: $colorTwo;
+    font-size: $fs13;
+}
+::ng-deep .mat-placeholder-required {
+    color: $colorOne !important;
+}
+::ng-deep .mat-input-element {
+    color: $colorOne !important;
+    font-size: $fs13 !important;
+}
+// input
+
+// modal
+::ng-deep .cdk-overlay-dark-backdrop {
+    background: #000000c7 !important;
+}
+// modal
+
+// button mat-fab

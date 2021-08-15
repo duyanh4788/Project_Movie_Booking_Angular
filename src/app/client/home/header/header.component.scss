@@ -6,6 +6,10 @@
     height: 40px;
     cursor: pointer;
   }
+  mat-panel-title {
+    color: $colorOne;
+    font-weight: 500;
+  }
   .btnLogo {
     ::ng-deep .mat-button-ripple.mat-ripple,
     ::ng-deep .mat-button-focus-overlay {
@@ -22,16 +26,15 @@
     }
   }
   .intro {
-    text-align: left;
     span {
-      font-size: 15px;
-      font-weight: 300;
+      font-size: $fs15;
+      font-weight: 500;
       margin-right: 10px;
-      color: $color-black-2;
+      color: $colorOne;
       cursor: pointer;
     }
     span:hover {
-      color: $color-red;
+      color: $colorTwo;
       transition: 0.5s;
     }
   }
@@ -41,24 +44,34 @@
   .login {
     .account {
       font-size: 15px;
-      font-weight: 300;
-      color: $color-black-2;
+      font-weight: 500;
+      color: $colorOne;
+      .spanTitle {
+        background: $colorOne;
+        color: $color-white;
+        border-radius: 50%;
+        padding: 10px 15px;
+        margin-right: 5px;
+      }
     }
     .iconHeader {
+      background: $colorOne;
       color: $color-white;
       font-size: $fs20;
       border-radius: 50%;
-      background: $color-gray-1;
       font-size: 15px;
       text-align: center;
       padding-top: 5px;
+    }
+    ::ng-deep .mat-button-wrapper {
+      color: $colorOne;
     }
   }
 }
 
 .header {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.541);
+  background-color: $background-2;
   border: $border;
   box-shadow: $box-shadow;
   @include cloneHeader;
@@ -66,8 +79,11 @@
 .headerSetHeight {
   width: 100%;
   height: 150px;
-  background-color: rgba(255, 255, 255, 0.541);
+  background-color: $background-2;
   border: $border;
   box-shadow: $box-shadow;
   @include cloneHeader;
+}
+.btnMenu {
+  color: $colorOne;
 }

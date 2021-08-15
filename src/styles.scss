@@ -7,6 +7,7 @@
 
 body {
   font-family: Roboto;
+  font: 500 13px/20px Roboto, "Helvetica Neue", sans-serif;
 }
 body::-webkit-scrollbar {
   width: 6px;
@@ -18,7 +19,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 6px;
 }
 @font-face {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   src: url(./assets/font/roboto/._Roboto-Light.ttf);
 }
 

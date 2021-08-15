@@ -5,6 +5,23 @@ mat-nav-list {
     width: 40px;
     height: 40px;
   }
+  .mat-list-item {
+    color: $colorOne;
+    .iconHeader {
+      background: $colorOne;
+      color: $color-white;
+      font-size: $fs20;
+      border-radius: 50%;
+      font-size: 15px;
+      text-align: center;
+      padding-top: 5px;
+      margin-right: 5px;
+    }
+  }
+  mat-panel-title {
+    color: $colorOne;
+    font-weight: 500;
+  }
   .btnLogo {
     ::ng-deep .mat-button-ripple.mat-ripple,
     ::ng-deep .mat-button-focus-overlay {
@@ -22,24 +39,20 @@ mat-nav-list {
   }
   .account {
     font-size: 15px;
-    font-weight: 300;
-    color: $color-black-2;
+    font-weight: 500;
+    color: $colorOne;
+    .spanTitle {
+      background: $colorOne;
+      color: $color-white;
+      border-radius: 50%;
+      padding: 10px 15px;
+      margin-right: 5px;
+    }
   }
-  .iconHeader {
-    color: $color-white;
-    font-size: $fs20;
-    border-radius: 50%;
-    background: $color-gray-1;
-    font-size: 15px;
-    text-align: center;
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    margin-right: 5px;
-    margin-top: 5px;
+  ::ng-deep .mat-button-wrapper {
+    color: $colorOne;
   }
 }
-.mat-list-item {
-  color: $color-black-2;
-  font-size: $fs15;
+.btnMenu {
+  color: $colorOne;
 }

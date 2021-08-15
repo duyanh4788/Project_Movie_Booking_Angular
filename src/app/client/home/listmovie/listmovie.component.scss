@@ -1,5 +1,21 @@
 @import "../../../../assets/scss/index.scss";
 
+
+.cardGroup {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    mat-card {
+        max-width: 600px;
+        button {
+            margin-right: 5px;
+            ::ng-deep .mat-button-wrapper{
+                font-size: $fs12;
+            }
+        }
+    }
+}
+
 .carouselListMovie {
     .slideListMovie {
         height: 350px;
@@ -27,7 +43,7 @@
                 }
                 .nameMovie {
                     font-size: 13px;
-                    color: $color-black;
+                    color: $colorOne;
                     font-weight: bold;
                 }
             }
@@ -35,6 +51,7 @@
         .btnMuaVe {
             color: $color-white;
             background-color: $color-red;
+            font-weight: $fw-bold;
             border: none;
             outline: none;
             cursor: pointer;
@@ -47,25 +64,7 @@
             left: 0%;
         }
         .modalPlay {
-            z-index: 2;
-            opacity: 0;
-            background-color: rgba(0, 0, 0, 0.356);
-            border-radius: 50%;
-            border: $border;
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            .iconPlay {
-                font-size: 20px;
-                color: $color-white;
-            }
+            @include ModalPlayer;
         }
         .indexListMovie::after {
             content: "";
@@ -91,11 +90,12 @@
 }
 
 ::ng-deep ngx-slick-carousel .slick-prev {
-    background-color: $color-red !important;
+    background-color: $colorOne !important;
     border-radius: 50% !important;
+    top: 47% !important;
 }
 ::ng-deep ngx-slick-carousel .slick-next {
-    background-color: $color-red !important;
+    background-color: $colorOne !important;
     border-radius: 50% !important;
+    top: 47% !important;
 }
-

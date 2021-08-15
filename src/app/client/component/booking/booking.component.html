@@ -18,9 +18,9 @@
 </div>
 
 <div *ngIf="!valid" class="expiredCheckout">
-    <div class="modalMesage">
+    <div class="modalMesage" matRipple (click)="bokingTicketAgain()">
         <span>Thời Gian Đặt Ghế Là 15s . Hãy Đặt Ghế Lại :D </span>
-        <p (click)="bokingTicketAgain()">Booking Again !</p>
+        <p>Booking Again !</p>
     </div>
 </div>
 
@@ -106,8 +106,9 @@
     <!-- step 3 -->
     <mat-step>
         <ng-template matStepLabel>Đặt Vé</ng-template>
-        <div class="bookingTicket">
-            <div class="example-ripple-container" matRipple (click)="bookingTicket()"><span>Đặt Vé</span></div>
+        <div class="bookingTicket" *ngIf="infoMovie">
+            <div class="example-ripple-container" id="cog" matRipple (click)="bookingTicket()"
+                [ngStyle]="{'background-image': 'url(' + infoMovie.hinhAnh + ')'}"></div>
         </div>
         <div class="btnStep">
             <button mat-mini-fab color="wram" class="btnRight" matStepperPrevious>Back</button>

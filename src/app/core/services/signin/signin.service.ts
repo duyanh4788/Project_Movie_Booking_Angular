@@ -32,7 +32,7 @@ export class SigninService {
   getCurrentAccount(): any {
     return this.currentAccount.value
   }
-  setCurrentAccount(value: any) {
+  setCurrentAccount(value: any) {    
     this.currentAccount.next(value)
   }
   // userTypeCode
