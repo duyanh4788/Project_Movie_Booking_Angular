@@ -1,0 +1,89 @@
+@import "../../../assets/scss/index.scss";
+
+@import "../../../assets/scss/index.scss";
+
+.movieManagement {
+    padding: 20px;
+    background: url(../../../assets/images/background.jpg);
+    background-size: cover;
+    min-width: 900px;
+    min-height: 100vh;
+    h5 {
+        font-size: 30px;
+        color: $color-white;
+        font-weight: 500;
+        text-align: center;
+    }
+    .cardGroup {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        mat-card {
+            max-width: 600px;
+            button {
+                margin-right: 5px;
+                ::ng-deep .mat-button-wrapper {
+                    font-size: $fs12;
+                }
+            }
+            ::ng-deep .mat-form-field-flex {
+                padding: 0 0.75em 0 0.75em !important;
+            }
+        }
+    }
+    .inputSearch {
+        margin: 10px 0;
+        @include inputSearch;
+    }
+    .inputSearch::placeholder {
+        text-align: center;
+    }
+    .menuGroup {
+        text-align: center;
+        display: none;
+    }
+    .mat-expansion-panel {
+        margin-bottom: 10px;
+        .searchDate {
+            width: 100%;
+        }
+        span {
+            color: $color-red;
+            font-size: $fs10;
+        }
+    }
+    table {
+        width: 100%;
+        padding: 10px;
+        tr td {
+            color: $colorOne;
+        }
+        tr:hover {
+            background-color: $color-white-2;
+        }
+        .delete {
+            color: $color-red;
+            cursor: pointer;
+        }
+        .edit {
+            color: $colorTwo;
+            cursor: pointer;
+        }
+        .schedule {
+            color: $colorBhd;
+            cursor: pointer;
+        }
+    }
+    ::ng-deep .mat-paginator-container {
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .cardGroup {
+        display: none !important;
+    }
+    .menuGroup {
+        display: block !important;
+    }
+}

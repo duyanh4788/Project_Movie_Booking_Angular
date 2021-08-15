@@ -8,10 +8,11 @@ import { ClientmannagementComponent } from './clientmannagement/clientmannagemen
 import { MoviemanagementComponent } from './moviemanagement/moviemanagement.component';
 import { PipeModule } from '../core/shared/pipe/pipe.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalediitclientComponent } from './component/modalediitclient/modalediitclient.component';
-
-
+import { ModaladdclientComponent } from './component/modaladdclient/modaladdclient.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DateAdapter } from '@angular/material/core';
+import { DateFormat } from './moviemanagement/dateFormat';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ModalediitclientComponent } from './component/modalediitclient/modaledi
     ClientmannagementComponent,
     MoviemanagementComponent,
     ModalediitclientComponent,
+    ModaladdclientComponent,
   ],
   imports: [
     CommonModule,
@@ -28,11 +30,19 @@ import { ModalediitclientComponent } from './component/modalediitclient/modaledi
     PipeModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ], exports: [
     DashboardComponent,
     ClientmannagementComponent,
     MoviemanagementComponent,
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: DateFormat },
   ]
 })
-export class AdminModule { }
+
+export class AdminModule {
+  constructor(private dateAdapter: DateAdapter<Date>) {
+    dateAdapter.setLocale('en-in'); // DD/MM/YYYY
+  }
+}

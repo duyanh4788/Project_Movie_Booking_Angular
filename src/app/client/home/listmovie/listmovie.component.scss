@@ -16,6 +16,12 @@
     }
 }
 
+.menuGroup {
+    text-align: center;
+    margin: 10px 0;
+    display: none;
+}
+
 .carouselListMovie {
     .slideListMovie {
         height: 350px;
@@ -98,4 +104,14 @@
     background-color: $colorOne !important;
     border-radius: 50% !important;
     top: 47% !important;
+}
+
+@media (max-width : 900px) {
+    .cardGroup{
+        display: none !important;
+    }
+    .menuGroup {
+        display: block !important;
+    }
+    
 }

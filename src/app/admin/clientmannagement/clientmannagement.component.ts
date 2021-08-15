@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ClientPagination, Item } from 'src/app/core/models/clientManagement';
 import { ClientmanagementService } from 'src/app/core/services/clientManagement/clientmanagement.service';
+import { ModaladdclientComponent } from '../component/modaladdclient/modaladdclient.component';
 import { ModalediitclientComponent } from '../component/modalediitclient/modalediitclient.component';
 
 @Component({
@@ -24,7 +25,6 @@ export class ClientmannagementComponent implements OnInit {
   // pagination
   pageIndex = 1
   pageSize = 5;
-  pageEvent: any;
   // pagination
 
   // snackbar
@@ -40,7 +40,13 @@ export class ClientmannagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListClientPaginations()
+    this.clientManagementService.shareStatusUpDate.subscribe(data=>{
+      if(data === 200){
+        this.getListClientPaginations()
+      }
+    })
   }
+  
 
   getListClientPaginations() {
     this.clientManagementService.getListClientPagination(this.maNhom, this.pageIndex, this.pageSize).subscribe(data => {
@@ -61,7 +67,6 @@ export class ClientmannagementComponent implements OnInit {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.clientManagementService.getListClientPagination(this.maNhom, this.pageIndex, this.pageSize).subscribe(data => {
-      this.listClientPagination = data;
       this.arrayListClient = data.items
     })
   }
@@ -78,7 +83,6 @@ export class ClientmannagementComponent implements OnInit {
   }
 
   getValueSearch(event: any) {
-    console.log(event.target.value);
     this.clientManagementService.getListClientPaginationSearch(this.maNhom, event.target.value, this.pageIndex, this.pageSize).subscribe(data => {
       this.listClientPagination = data;
       this.arrayListClient = data.items
@@ -115,6 +119,10 @@ export class ClientmannagementComponent implements OnInit {
     this.clientManagementService.setCurrentEditClient(item)
     this.clientManagementService.setCurrentCodeGroup(this.maNhom)
     this.modal.open(ModalediitclientComponent)
+  }
+
+  addClient(){
+    this.modal.open(ModaladdclientComponent)
   }
 
 }

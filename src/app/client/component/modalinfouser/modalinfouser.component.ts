@@ -82,3 +82,5 @@ export class ModalinfouserComponent implements OnInit {
   }
 
 }
+
+

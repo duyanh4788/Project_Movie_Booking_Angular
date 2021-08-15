@@ -1,10 +1,14 @@
 @import "../../../assets/scss/index.scss";
 
 .clientManagement {
-    padding: 0 20px;
+    padding: 20px;
+    background: url(../../../assets/images/background.jpg);
+    background-size: cover;
+    min-width: 768px;
+    min-height: 100vh;
     h5 {
         font-size: 30px;
-        color: $colorTwo;
+        color: $color-white;
         font-weight: 500;
         text-align: center;
     }
@@ -23,6 +27,7 @@
         }
     }
     .inputSearch {
+        margin: 10px 0;
         @include inputSearch;
     }
     .inputSearch::placeholder {
@@ -35,6 +40,12 @@
     table {
         width: 100%;
         padding: 10px;
+        tr td {
+            color: $colorOne;
+        }
+        tr:hover {
+            background-color: $color-white-2;
+        }
         .delete {
             color: $color-red;
             cursor: pointer;
@@ -47,4 +58,14 @@
     ::ng-deep .mat-paginator-container {
         justify-content: center !important;
     }
+}
+
+@media (max-width : 900px) {
+    .cardGroup{
+        display: none !important;
+    }
+    .menuGroup {
+        display: block !important;
+    }
+    
 }

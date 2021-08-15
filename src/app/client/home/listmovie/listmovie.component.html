@@ -7,6 +7,13 @@
         </mat-card>
     </div>
 
+    <div class="menuGroup">
+        <button mat-fab color="wram" [matMenuTriggerFor]="menu">{{this.maNhom}}</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let maNhom of arrMaNhom" (click)="getListMovie(maNhom)">{{maNhom}}</button>
+        </mat-menu>
+    </div>
+
     <ngx-slick-carousel class="carouselListMovie" [config]="slideConfigMovie">
         <div ngxSlickItem *ngFor="let item of arrListMovie" class="slideListMovie">
             <div class="indexListMovie">

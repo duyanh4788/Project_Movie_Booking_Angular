@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Item } from 'src/app/core/models/clientManagement';
 import { ClientmanagementService } from 'src/app/core/services/clientManagement/clientmanagement.service';
 import { ClientmannagementComponent } from '../../clientmannagement/clientmannagement.component';
@@ -17,7 +18,14 @@ export class ModalediitclientComponent implements OnInit {
   formEditClient: any; // tag form any ?
   maNhom: string = "";
 
-  constructor(@Inject(MAT_DIALOG_DATA) public clientMannagementComponent: ClientmannagementComponent, private clientManagementService: ClientmanagementService) { }
+   // snackbar
+   horizontalPosition: MatSnackBarHorizontalPosition = "center";
+   verticalPosition: MatSnackBarVerticalPosition = "top";
+   durationInSeconds = 2;
+   // snackbar
+
+  constructor(@Inject(MAT_DIALOG_DATA) public clientMannagementComponent: ClientmannagementComponent, private clientManagementService: ClientmanagementService ,private modal : MatDialog,   private snackBar: MatSnackBar,) { }
+  
   ngOnInit(): void {
     this.getEditClient()
     this.editFormEditClient()
@@ -45,7 +53,7 @@ export class ModalediitclientComponent implements OnInit {
       'maLoaiNguoiDung': new FormControl(this.infoClient?.maLoaiNguoiDung),
     }, {
       // ValidationMatchPass => import ./validationMatch.ts
-      validators: [ValidationMatchPass.match('matKhau', 'conFirmMatKhau')]
+      validators: [ValidationMatchPass.match('newPassWord', 'conFirmPassWord')]
     })
   }
 
@@ -56,9 +64,14 @@ export class ModalediitclientComponent implements OnInit {
     this.formEditClient.value.maNhom = this.maNhom
     const { conFirmPassWord, newPassWord, ..._data } = this.formEditClient.value;
     this.clientManagementService.putEditClient(_data).subscribe(data => {
-      console.log(data);
+      this.clientManagementService.setCurrentStatusUpDate(200)
+      this.modal.closeAll();
     })
-
+    this.snackBar.open("Cập Nhật Thành Công", "", {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.durationInSeconds * 1000,
+    });
   }
 
 }

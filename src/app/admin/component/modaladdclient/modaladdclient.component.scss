@@ -1,0 +1,31 @@
+@import "../../../../assets/scss/index.scss";
+
+.modalAddClient {
+    background: $background-3;
+    max-width: 400px;
+    padding: 20px 10px;
+    .fieldInputAccount {
+        width: 100%;
+        padding: 0 5px;
+    }
+    .fieldInput {
+        width: 50%;
+        padding: 0 5px;
+    }
+    .btnSubmit {
+        text-align: center;
+        ::ng-deep .mat-button-wrapper {
+            font-size: $fs12;
+            color: $colorTwo;
+        }
+    }
+    span {
+        color: $color-red;
+        font-size: $fs10;
+    }
+    section {
+        color: $colorOne;
+        font-size: $fs13;
+        margin: 10px 0;
+    }
+}

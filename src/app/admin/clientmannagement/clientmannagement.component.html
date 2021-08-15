@@ -1,5 +1,5 @@
 <div class="clientManagement">
-    <h5>Admin Page</h5>
+    <h5>Danh Sách Khách Hàng</h5>
     <div class="cardGroup">
         <mat-card>Nhóm :
             <button mat-mini-fab color="wram" *ngFor="let maNhom of arrMaNhom"
@@ -12,6 +12,9 @@
             <button mat-menu-item *ngFor="let maNhom of arrMaNhom" (click)="getGroupCode(maNhom)">{{maNhom}}</button>
         </mat-menu>
     </div>
+    <button mat-mini-fab color="wram" (click)="addClient()">
+        <mat-icon>add</mat-icon>
+    </button>
     <form #formSearchClient="ngForm" (ngSubmit)="handleSearchClient()">
         <input type="text" class="inputSearch" placeholder="Tìm Tài Khoản" name="searchClient"
             [(ngModel)]="searchClient" (input)="getValueSearch($event)">
@@ -78,11 +81,9 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
-    </table>
+    </table>    
     <mat-paginator [length]="listClientPagination?.totalCount" showFirstLastButtons
         [pageSize]="listClientPagination?.count" [pageSizeOptions]="[5, 10, 20]"
-        (page)="pageEvent = getValuePagination($event)"></mat-paginator>
+        (page)="getValuePagination($event)"></mat-paginator>
 
 </div>
