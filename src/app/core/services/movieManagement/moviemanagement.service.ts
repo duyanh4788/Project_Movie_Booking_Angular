@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ItemMovie, MoviePagination } from '../../models/movieManagement';
+import { GreatSchedule, InfoCinema, InfoGroupCinema, ItemMovie, MoviePagination } from '../../models/movieManagement';
 import { ApiService } from '../apiService/api.service';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { ApiService } from '../apiService/api.service';
 })
 export class MoviemanagementService {
   statusUpdate: number = 0;
+  statusAddMovie: number = 0;
 
   // update movie
   private currentEditMovie = new BehaviorSubject({} as ItemMovie)
@@ -32,6 +33,18 @@ export class MoviemanagementService {
   }
   // update movie status
 
+  // AddMovie movie status
+  private currentStatusAddMovie = new BehaviorSubject(this.statusAddMovie)
+  shareStatusAddMovie = this.currentStatusAddMovie.asObservable()
+  getCurrentStatusAddMovie() {
+    return this.currentStatusAddMovie.value
+  }
+  setCurrentStatusAddMovie(value: any) {
+    this.statusAddMovie = value
+    this.currentStatusAddMovie.next(this.statusAddMovie)
+  }
+  // AddMovie movie status
+
   // maPhim
   private currentCodeMovie = new BehaviorSubject(0 as number)
   shareCodeMovie = this.currentCodeMovie.asObservable()
@@ -46,6 +59,9 @@ export class MoviemanagementService {
   constructor(private apiService: ApiService) {
     if (this.statusUpdate == 200) {
       this.setCurrentEditMovie(this.statusUpdate)
+    }
+    if (this.statusAddMovie == 200) {
+      this.setCurrentStatusAddMovie(this.statusAddMovie)
     }
   }
 
@@ -73,5 +89,24 @@ export class MoviemanagementService {
   updateMovie(data: any) {
     let url = 'QuanLyPhim/CapNhatPhimUpload';
     return this.apiService.postApiToken(url, data, { responseType: "text" })
+  }
+  // add movie
+  addMovie(data: any) {
+    let url = "QuanLyPhim/ThemPhimUploadHinh";
+    return this.apiService.postApiToken(url, data, { responseType: "text" })
+  }
+
+  // schedule
+  getInfoCinema(): Observable<InfoCinema[]> {
+    let url = "QuanLyRap/LayThongTinHeThongRap";
+    return this.apiService.getApi<InfoCinema[]>(url)
+  }
+  getInfoGroupCinema(maHeThongRap: string): Observable<InfoGroupCinema[]> {
+    let url = `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`;
+    return this.apiService.getApi<InfoGroupCinema[]>(url)
+  }
+  creatSchedule(data: Object): Observable<GreatSchedule> {
+    let url = "QuanLyDatVe/TaoLichChieu";
+    return this.apiService.postApiToken<GreatSchedule>(url, data, { responseType: "text" })
   }
 }

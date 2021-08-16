@@ -3,7 +3,7 @@
     <form [formGroup]="formEditClient" (ngSubmit)="handleEditClient()">
 
         <!-- tài khoản -->
-        <mat-form-field class="fieldInput" appearance="fill">
+        <mat-form-field class="fieldInputDisabled" appearance="fill">
             <mat-label>Account</mat-label>
             <input type="text" matInput disabled value={{infoClient?.taiKhoan}}>
 

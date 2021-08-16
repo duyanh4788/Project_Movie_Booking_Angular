@@ -28,6 +28,7 @@ import { ModalschedulemovieComponent } from './component/modalschedulemovie/moda
     ModaleditmovieComponent,
     ModaladdmovieComponent,
     ModalschedulemovieComponent,
+
   ],
   imports: [
     CommonModule,

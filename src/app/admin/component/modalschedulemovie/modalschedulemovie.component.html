@@ -1,1 +1,96 @@
-<p>modalschedulemovie works!</p>
+<div class="modalSchedule">
+
+    <form [formGroup]="formCreatSchedule" (ngSubmit)="handleSubmit()">
+
+        <!-- maPhim -->
+        <mat-form-field class="fieldInputDisabled" appearance="fill">
+            <mat-label>Mã Phim</mat-label>
+            <input type="number" matInput disabled value={{maPhim}}>
+            <!-- check empty -->
+            <span
+                *ngIf="formCreatSchedule.get('maPhim').hasError('required') && formCreatSchedule.get('maPhim').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+        </mat-form-field>
+        <!-- maPhim -->
+
+        <!-- ngayChieuGioChieu -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Ngày Chiếu Giờ Chiếu</mat-label>
+            <input matInput [matDatepicker]="picker" matInput formControlName="ngayChieuGioChieu">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker type="time"></mat-datepicker>
+            <!-- Check empty -->
+            <span
+                *ngIf="formCreatSchedule.get('ngayChieuGioChieu').hasError('required') && formCreatSchedule.get('ngayChieuGioChieu').touched">
+                Do Not Empty !
+            </span>
+            <!-- Check empty -->
+        </mat-form-field>
+        <!-- ngayChieuGioChieu -->
+
+        <!-- maRapPhim -->
+        <div class="row">
+            <!-- chọn Rạp -->
+            <mat-form-field class="col-lg-4 fieldCinema" appearance="fill">
+                <mat-label>Chọn Rạp</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let item of infoCinema" [value]="item.maHeThongRap"
+                        (click)="getCodeCinema(item.maHeThongRap)">{{item.maHeThongRap}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- chọn Rạp -->
+
+            <!-- Cụm Rạp -->
+            <mat-form-field class="col-lg-4 fieldCinema" appearance="fill">
+                <mat-label>Cụm Rạp</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let item of infoGroupCinema" [value]="item.tenCumRap"
+                        (click)="getListCinema(item.maCumRap)">{{item.tenCumRap}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <!-- Cụm Rạp -->
+
+            <!-- mã Rạp -->
+            <mat-form-field class="col-lg-4 fieldCinema" appearance="fill">
+                <mat-label>Mã Rạp</mat-label>
+                <mat-select formControlName="maRap" required>
+                    <mat-option *ngFor="let item of danhSachRap" [value]="item.maRap"
+                        (click)="getTheaterCode(item.maRap)">{{item.tenRap}} - {{item.maRap}}
+                    </mat-option>
+                </mat-select>
+                <!-- check empty -->
+                <span
+                    *ngIf="formCreatSchedule.get('maRap').hasError('required') && formCreatSchedule.get('maRap').touched">
+                    Do Not Empty !
+                </span>
+                <!-- check empty -->
+            </mat-form-field>
+            <!-- mã Rạp -->
+        </div>
+        <!-- maRapPhim -->
+
+        <!-- giaVe -->
+        <mat-radio-group matInput name="giaVe" formControlName="giaVe">
+            <mat-label>Giá Vé : </mat-label>
+            <mat-radio-button value="70000" checked=true>70.000</mat-radio-button>
+            <mat-radio-button value="120000">120.000</mat-radio-button>
+            <mat-radio-button value="150000">150.000</mat-radio-button>
+            <mat-radio-button value="200000">200.000</mat-radio-button>
+            <!-- check empty -->
+            <span *ngIf="formCreatSchedule.get('giaVe').hasError('required') && formCreatSchedule.get('giaVe').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+        </mat-radio-group>
+        <!-- giaVe -->
+
+        <!-- invalid => nêú success tắt disable -->
+        <div class="btnSubmit">
+            <button type="submit" color="wram" [disabled]="formCreatSchedule.invalid" mat-fab>Add</button>
+        </div>
+    </form>
+
+</div>

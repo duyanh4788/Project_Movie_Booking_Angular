@@ -1,0 +1,32 @@
+@import "../../../../assets/scss/index.scss";
+
+.modalAddMovie {
+    background: $background-3;
+    max-width: 400px;
+    padding: 20px 10px;
+    .fieldInput {
+        width: 100%;
+        padding: 0 5px;
+    }
+    .btnSubmit {
+        text-align: center;
+        ::ng-deep .mat-button-wrapper {
+            font-size: $fs12;
+            color: $colorTwo;
+        }
+    }
+    span {
+        color: $color-red;
+        font-size: $fs10;
+    }
+    #uploadFile {
+        top: 0px;
+        left: 0px;
+        width: 100%;    
+        z-index: 9;
+        opacity: 0;
+        height: 100%;
+        cursor: pointer;
+        position: absolute;
+    }
+}

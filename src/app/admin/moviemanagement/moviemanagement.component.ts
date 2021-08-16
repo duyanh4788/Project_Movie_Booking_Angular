@@ -79,6 +79,11 @@ export class MoviemanagementComponent implements OnInit {
         this.getMoviePaginations();
       }
     })
+    this.movieManagementService.shareStatusAddMovie.subscribe(data => {
+      if (data === 200) {
+        this.getMoviePaginations();
+      }
+    })
   }
 
   getMoviePaginations() {
@@ -218,7 +223,7 @@ export class MoviemanagementComponent implements OnInit {
   }
 
   scheduleMovie(maPhim: number) {
-    this.movieManagementService.setCurrentEditMovie(maPhim)
+    this.movieManagementService.setCurrentCodeMovie(maPhim)
     this.modal.open(ModalschedulemovieComponent)
   }
 
