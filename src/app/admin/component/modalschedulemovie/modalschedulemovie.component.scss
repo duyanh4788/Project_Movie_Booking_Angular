@@ -45,3 +45,19 @@
         }
     }
 }
+::ng-deep .mat-datetimepicker-calendar-header {
+    background: $color-gray-1 !important;
+    color: $color-white !important;
+}
+::ng-deep .mat-datetimepicker-clock-cell.mat-datetimepicker-clock-cell-selected {
+    background-color: #850aff;
+}
+::ng-deep .mat-datetimepicker-clock-hand {
+    background-color: #850aff;
+}
+::ng-deep .mat-datetimepicker-clock-hand::before {
+    background-color: #850aff;
+}
+::ng-deep .mat-datetimepicker-clock-center {
+    background-color: #850aff;
+}

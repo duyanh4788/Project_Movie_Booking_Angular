@@ -18,15 +18,9 @@
         <!-- ngayChieuGioChieu -->
         <mat-form-field class="fieldInput" appearance="fill">
             <mat-label>Ngày Chiếu Giờ Chiếu</mat-label>
-            <input matInput [matDatepicker]="picker" matInput formControlName="ngayChieuGioChieu">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker type="time"></mat-datepicker>
-            <!-- Check empty -->
-            <span
-                *ngIf="formCreatSchedule.get('ngayChieuGioChieu').hasError('required') && formCreatSchedule.get('ngayChieuGioChieu').touched">
-                Do Not Empty !
-            </span>
-            <!-- Check empty -->
+            <input matInput [matDatetimepicker]="dts" required autocomplete="false" formControlName="ngayChieuGioChieu">
+            <mat-datetimepicker-toggle [for]="dts" matSuffix></mat-datetimepicker-toggle>
+            <mat-datetimepicker #dts type="datetime"></mat-datetimepicker>
         </mat-form-field>
         <!-- ngayChieuGioChieu -->
 
@@ -75,7 +69,7 @@
         <!-- giaVe -->
         <mat-radio-group matInput name="giaVe" formControlName="giaVe">
             <mat-label>Giá Vé : </mat-label>
-            <mat-radio-button value="70000" checked=true>70.000</mat-radio-button>
+            <mat-radio-button value="75000" checked=true>75.000</mat-radio-button>
             <mat-radio-button value="120000">120.000</mat-radio-button>
             <mat-radio-button value="150000">150.000</mat-radio-button>
             <mat-radio-button value="200000">200.000</mat-radio-button>

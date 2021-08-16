@@ -16,7 +16,7 @@ import { DateFormat } from './moviemanagement/dateFormat';
 import { ModaleditmovieComponent } from './component/modaleditmovie/modaleditmovie.component';
 import { ModaladdmovieComponent } from './component/modaladdmovie/modaladdmovie.component';
 import { ModalschedulemovieComponent } from './component/modalschedulemovie/modalschedulemovie.component';
-
+import { MatDatetimepickerModule, MatNativeDatetimeModule } from "@mat-datetimepicker/core";
 @NgModule({
   declarations: [
     AdminComponent,
@@ -28,7 +28,6 @@ import { ModalschedulemovieComponent } from './component/modalschedulemovie/moda
     ModaleditmovieComponent,
     ModaladdmovieComponent,
     ModalschedulemovieComponent,
-
   ],
   imports: [
     CommonModule,
@@ -38,6 +37,8 @@ import { ModalschedulemovieComponent } from './component/modalschedulemovie/moda
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    MatNativeDatetimeModule,
+    MatDatetimepickerModule
   ], exports: [
     DashboardComponent,
     ClientmannagementComponent,

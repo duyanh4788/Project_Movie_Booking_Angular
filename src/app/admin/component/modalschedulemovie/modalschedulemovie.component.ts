@@ -2,11 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import * as dayjs from 'dayjs';
 import { DanhSachRap, InfoCinema, InfoGroupCinema } from 'src/app/core/models/movieManagement';
 import { MoviemanagementService } from 'src/app/core/services/movieManagement/moviemanagement.service';
 import { MoviemanagementComponent } from '../../moviemanagement/moviemanagement.component';
-
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-modalschedulemovie',
@@ -70,10 +69,8 @@ export class ModalschedulemovieComponent implements OnInit {
   handleSubmit() {
     this.formCreatSchedule.value.maRap = this.maRap
     this.formCreatSchedule.value.giaVe = parseInt(this.formCreatSchedule.value.giaVe)
-    this.formCreatSchedule.value.ngayChieuGioChieu = dayjs(this.formCreatSchedule.value.ngayChieuGioChieu).format("DD/MM/YYYY");
-    console.log(this.formCreatSchedule.value);
+    this.formCreatSchedule.value.ngayChieuGioChieu = dayjs(this.formCreatSchedule.value.ngayChieuGioChieu).format("DD/MM/YYYY hh:mm:ss");
     this.movieManagementService.creatSchedule(this.formCreatSchedule.value).subscribe(data => {
-      console.log(data);
       this.snackBar.open("Tạo Lịch Chiếu Thành Công", "", {
         horizontalPosition: this.horizontalPosition,
         verticalPosition: this.verticalPosition,
