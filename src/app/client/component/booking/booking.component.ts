@@ -73,6 +73,9 @@ export class BookingComponent implements OnInit {
           this.danhSachGhe = danhSachGhe;
           // set countdown timer
           this.countdownTimerS();
+          let https = thongTinPhim.hinhAnh.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          thongTinPhim.hinhAnh = fixHttps
           this.infoMovie = thongTinPhim;
         });
     });

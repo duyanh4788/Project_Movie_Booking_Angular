@@ -14,7 +14,9 @@ import { ModalvideoComponent } from '../../component/modalvideo/modalvideo.compo
 export class ListMoveComponent implements OnInit {
 
     public arrListMovie?: ArrayListMovie[] | null;
-    maNhom: string = "GP01"
+    maNhom: string = "GP01";
+    imgFixHttps?: any = [];
+    img = { hinhAnh: "" }
 
     constructor(
         private listMovieService: ListmovieService,
@@ -72,6 +74,11 @@ export class ListMoveComponent implements OnInit {
         this.arrListMovie = null
         if (this.arrListMovie === null) {
             this.subMaNhom.add(this.listMovieService.getListMovie(maNhom).subscribe((data) => {
+                data.forEach(item => {
+                    let https = item.hinhAnh.split(":");
+                    let fixHttps = https[0] + "s:" + https[1];
+                    item.hinhAnh = fixHttps
+                })
                 this.arrListMovie = data
             }))
         }
@@ -80,7 +87,12 @@ export class ListMoveComponent implements OnInit {
     getListMovieDefault() {
         let maNhom = "GP01"
         this.subListMovie.add(this.listMovieService.getListMovie(maNhom).subscribe((data) => {
-            this.arrListMovie = data
+            data.forEach(item => {
+                let https = item.hinhAnh.split(":");
+                let fixHttps = https[0] + "s:" + https[1];
+                item.hinhAnh = fixHttps
+            })
+            this.arrListMovie = data;
         }))
     }
 

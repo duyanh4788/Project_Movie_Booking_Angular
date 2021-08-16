@@ -42,7 +42,7 @@
             </mat-expansion-panel-header>
             <form #formSearchMovieDate="ngForm" class="formSearchMovie" (ngSubmit)="handleSearchMovieDate()">
                 <div class="row">
-                    <div class="col-sm-5 col-lg-5">
+                    <div class="col-xs-5 col-lg-5">
                         <mat-form-field appearance="fill" class="searchDate">
                             <mat-label>Tìm Phim</mat-label>
                             <input matInput name="searchMovieDate" ngModel name="searchDate" required
@@ -56,7 +56,7 @@
                             <!-- Check empty -->
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-3 col-lg-3">
+                    <div class="col-xs-3 col-lg-3">
                         <mat-form-field appearance="fill" class="searchDate">
                             <mat-label>Từ Ngày</mat-label>
                             <input matInput [matDatepicker]="picker" ngModel name="formDate" required
@@ -72,7 +72,7 @@
                             <!-- Check empty -->
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-3 col-lg-3">
+                    <div class="col-xs-3 col-lg-3">
                         <mat-form-field appearance="fill" class="searchDate">
                             <mat-label>Đến Ngày</mat-label>
                             <input matInput [matDatepicker]="picker2" ngModel name="toDate" required #toDate="ngModel">
@@ -87,7 +87,7 @@
                             <!-- Check empty -->
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-1 col-lg-1" style="text-align: center;">
+                    <div class="col-xs-1 col-lg-1" style="text-align: center;">
                         <button type="submit" [disabled]="formSearchMovieDate.invalid" mat-fab color="wran">Tìm</button>
                     </div>
                 </div>

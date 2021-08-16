@@ -86,6 +86,11 @@ export class MoviemanagementComponent implements OnInit {
       .getMoviePagination(this.maNhom, this.pageIndex, this.pageSize)
       .subscribe((data) => {
         this.listMoviePagination = data;
+        data.items.forEach(item => {
+          let https = item.hinhAnh.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          item.hinhAnh = fixHttps
+        })
         this.arrayListMovie = data.items;
       });
   }
@@ -96,6 +101,11 @@ export class MoviemanagementComponent implements OnInit {
       .getMoviePagination(maNhom, this.pageIndex, this.pageSize)
       .subscribe((data) => {
         this.listMoviePagination = data;
+        data.items.forEach(item => {
+          let https = item.hinhAnh.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          item.hinhAnh = fixHttps
+        })
         this.arrayListMovie = data.items;
       });
   }
@@ -106,6 +116,11 @@ export class MoviemanagementComponent implements OnInit {
     this.movieManagementService
       .getMoviePagination(this.maNhom, this.pageIndex, this.pageSize)
       .subscribe((data) => {
+        data.items.forEach(item => {
+          let https = item.hinhAnh.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          item.hinhAnh = fixHttps
+        })
         this.arrayListMovie = data.items;
       });
   }
@@ -121,6 +136,11 @@ export class MoviemanagementComponent implements OnInit {
       )
       .subscribe((data) => {
         this.listMoviePagination = data;
+        data.items.forEach(item => {
+          let https = item.hinhAnh.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          item.hinhAnh = fixHttps
+        })
         this.arrayListMovie = data.items;
       });
     if (this.searchMovie === "") {
@@ -157,6 +177,11 @@ export class MoviemanagementComponent implements OnInit {
       )
       .subscribe((data) => {
         this.listMoviePagination = data;
+        data.items.forEach(item => {
+          let https = item.hinhAnh.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          item.hinhAnh = fixHttps
+        })
         this.arrayListMovie = data.items;
       });
   }

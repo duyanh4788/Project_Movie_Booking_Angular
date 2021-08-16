@@ -1,6 +1,11 @@
 @import "../../../../assets/scss/index.scss";
 
 @mixin cloneHeader {
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  transition: 0.5s;
+  z-index: 2;
   .logo {
     width: 40px;
     height: 40px;
@@ -26,14 +31,15 @@
     }
   }
   .intro {
-    span {
+    a {
       font-size: $fs15;
+      text-decoration: none;
       font-weight: 500;
       margin-right: 10px;
       color: $colorOne;
       cursor: pointer;
     }
-    span:hover {
+    a:hover {
       color: $colorTwo;
       transition: 0.5s;
     }

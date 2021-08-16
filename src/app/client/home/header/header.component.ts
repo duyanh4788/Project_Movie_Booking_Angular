@@ -58,6 +58,11 @@ export class HeaderComponent implements OnInit {
 
   getListLogoCinemaS() {
     this.headerService.getListLogoCinema().subscribe((data) => {
+      data.forEach(item => {
+        let https = item.logo.split(":");
+        let fixHttps = https[0] + "s:" + https[1];
+        item.logo = fixHttps
+      })
       this.logoCinemaHeader = data
     })
   }
