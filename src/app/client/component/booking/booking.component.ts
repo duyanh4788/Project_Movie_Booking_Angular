@@ -134,6 +134,7 @@ export class BookingComponent implements OnInit {
     clearInterval(this.clearTimer);
   }
   backOne() {
+    this.intoMoney = 0;
     this.ngOnInit();
     this.count = 15;
     this.valid = true;

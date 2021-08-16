@@ -150,13 +150,13 @@
         <ng-container matColumnDef="setting">
             <th mat-header-cell *matHeaderCellDef> Setting</th>
             <td mat-cell *matCellDef="let item">
-                <mat-icon class="delete" (click)="deleteMovie(item.maPhim)">
+                <mat-icon class="delete" (click)="deleteMovies(item.maPhim)">
                     delete_outline
                 </mat-icon>
                 <mat-icon class="edit" (click)="editMovie(item)">
                     edit
                 </mat-icon>
-                <mat-icon class="schedule" (click)="scheduleMovie(item)">schedule</mat-icon>
+                <mat-icon class="schedule" (click)="scheduleMovie(item.maPhim)">schedule</mat-icon>
             </td>
         </ng-container>
 

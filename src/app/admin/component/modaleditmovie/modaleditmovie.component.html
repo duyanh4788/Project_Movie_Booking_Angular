@@ -1,0 +1,122 @@
+<div class="modaleditMovie">
+
+    <form [formGroup]="formEditMovie" (ngSubmit)="handleEditMovie()">
+
+        <!-- maPhim -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mã Phim</mat-label>
+            <input type="text" matInput disabled value={{itemMovies?.maPhim}}>
+
+            <!-- check empty -->
+            <span *ngIf="formEditMovie.get('maPhim').hasError('required') && formEditMovie.get('maPhim').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- maPhim -->
+
+        <!-- tenPhim -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Tên Phim</mat-label>
+            <input type="text" matInput formControlName="tenPhim">
+
+            <!-- check empty -->
+            <span *ngIf="formEditMovie.get('tenPhim').hasError('required') && formEditMovie.get('tenPhim').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+        </mat-form-field>
+        <!-- tenPhim -->
+
+        <!-- biDanh -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Bí Danh</mat-label>
+            <input type="text" matInput formControlName="biDanh">
+
+            <!-- check empty -->
+            <span *ngIf="formEditMovie.get('biDanh').hasError('required') && formEditMovie.get('biDanh').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- biDanh -->
+
+        <!-- Mã Nhóm -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mã Nhóm</mat-label>
+            <mat-select disabled value={{itemMovies?.maNhom}}>
+                <mat-option>{{itemMovies?.maNhom}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- Mã Nhóm -->
+
+        <!-- danhGia -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Đánh Giá</mat-label>
+            <input type="text" matInput formControlName="danhGia">
+
+            <!-- check empty -->
+            <span *ngIf="formEditMovie.get('danhGia').hasError('required') && formEditMovie.get('danhGia').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- danhGia -->
+
+        <!-- trailer -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Trailer</mat-label>
+            <input type="text" matInput formControlName="trailer">
+
+            <!-- check empty -->
+            <span *ngIf="formEditMovie.get('trailer').hasError('required') && formEditMovie.get('trailer').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- trailer -->
+
+        <!-- hinhAnh -->
+        <mat-form-field class="fieldInput">
+            <mat-label>Hình Ảnh</mat-label>
+            <ng-container *ngIf="imgShowLocal else imgShowUpload">
+                <img src={{imgShowLocal}} alt="" width="50px" height="50px">
+            </ng-container>
+            <ng-template #imgShowUpload>
+                <img src={{itemMovies?.hinhAnh}} alt="" width="50px" height="50px">
+            </ng-template>
+            <mat-toolbar>
+                <input matInput formControlName="hinhAnh" />
+                <button mat-mini-fab color="warn">File</button>
+            </mat-toolbar>
+            <input type="file" #fileInput id="uploadFile" multiple="multiple" accept="image/*"
+                (change)="getFileImage($event)" />
+        </mat-form-field>
+        <!-- hinhAnh -->
+
+        <!-- moTa -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mô Tả</mat-label>
+            <textarea type="text" matInput formControlName="moTa"></textarea>
+            <!-- check empty -->
+            <span *ngIf="formEditMovie.get('moTa').hasError('required') && formEditMovie.get('moTa').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- moTa -->
+
+        <!-- button -->
+        <div class="btnSubmit">
+            <button type="submit" [disabled]="formEditMovie.invalid" mat-fab color="wram">Update</button>
+        </div>
+        <!-- button -->
+
+    </form>
+
+</div>

@@ -13,6 +13,9 @@ import { ModaladdclientComponent } from './component/modaladdclient/modaladdclie
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { DateFormat } from './moviemanagement/dateFormat';
+import { ModaleditmovieComponent } from './component/modaleditmovie/modaleditmovie.component';
+import { ModaladdmovieComponent } from './component/modaladdmovie/modaladdmovie.component';
+import { ModalschedulemovieComponent } from './component/modalschedulemovie/modalschedulemovie.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { DateFormat } from './moviemanagement/dateFormat';
     MoviemanagementComponent,
     ModalediitclientComponent,
     ModaladdclientComponent,
+    ModaleditmovieComponent,
+    ModaladdmovieComponent,
+    ModalschedulemovieComponent,
   ],
   imports: [
     CommonModule,
