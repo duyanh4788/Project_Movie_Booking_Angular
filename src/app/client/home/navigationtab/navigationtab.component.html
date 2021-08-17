@@ -86,9 +86,11 @@
                                     <ng-container *ngIf="movieSchedule else showMovieSchedule">
                                         <p>Code : {{movieSchedule?.maRap}} - {{movieSchedule?.tenRap}}</p>
                                         <p>Giá Vé : {{giaVe}}</p>
-                                        <p>Giờ Chiếu : <span class="timerStart {{itemImages.code}}"
-                                                (click)="bookingTicket(movieSchedule?.maLichChieu)">{{timerStart}}<span
-                                                    class="timerEnd"> ~ {{timerEnd}}</span></span></p>
+                                        <p>Giờ Chiếu : 
+                                            <span class="timerStart {{itemImages.code}}" (click)="bookingTicket(movieSchedule?.maLichChieu)">{{timerStart}}
+                                                <span class="timerEnd"> ~ {{timerEnd}}</span>
+                                            </span>
+                                        </p>
                                     </ng-container>
                                     <ng-template #showMovieSchedule>
                                         <p>Chọn Phim & Ngày Chiếu Để Đặt Vé</p>
