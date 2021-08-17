@@ -96,22 +96,23 @@
         </mat-form-field>
         <!-- phone -->
 
-        <!-- mã loại người dùng -->
-        <section class="example-section">
-            <label>Vai Trò : </label>
-            <input type="radio" value="KhachHang" ngModel name="maLoaiNguoiDung" required #maLoaiNguoiDung="ngModel">
-            Khách Hàng
-            <input type="radio" value="QuanTri" ngModel name="maLoaiNguoiDung" required #maLoaiNguoiDung="ngModel">
-            Admin
+        <!-- maLoaiNguoiDung -->
+        <mat-radio-group matInput ngModel name="maLoaiNguoiDung" required #maLoaiNguoiDung="ngModel">
+            <mat-label>Vai Trò : </mat-label>
+            <mat-radio-button value="KhachHang" checked=true>Khách Hàng</mat-radio-button>
+            <mat-radio-button value="QuanTri">Admin
+            </mat-radio-button>
+            <!-- check empty -->
             <ng-container *ngIf="maLoaiNguoiDung.errors &&(maLoaiNguoiDung.dirty || maLoaiNguoiDung.touched)">
                 <span *ngIf="maLoaiNguoiDung.errors.required">Do Not Empty !</span>
             </ng-container>
-        </section>
-        <!-- mã loại người dùng -->
+            <!-- check empty -->
+        </mat-radio-group>
+        <!-- maLoaiNguoiDung -->
 
         <!-- invalid => nêú success tắt disable -->
         <div class="btnSubmit">
-            <button type="submit" [disabled]="formAddClient.invalid" mat-fab>Add</button>
+            <button type="submit" color="wram" [disabled]="formAddClient.invalid" mat-fab>Add</button>
         </div>
     </form>
 </div>

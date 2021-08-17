@@ -37,11 +37,12 @@
         padding: 0 5px;
         display: flex;
         justify-content: space-around;
-        .mat-radio-button ~ .mat-radio-button {
-            margin-left: 16px;
-        }
+
         ::ng-deep .mat-radio-inner-circle {
-            background-color: $color-red !important;
+            background-color: $colorOne !important;
+        }
+        ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+            border-color: $colorTwo !important;
         }
     }
 }

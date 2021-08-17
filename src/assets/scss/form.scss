@@ -12,6 +12,7 @@
     }
     .btnSubmit {
         text-align: center;
+        margin: 10px 0;
         ::ng-deep .mat-button-wrapper {
             font-size: $fs12;
             color: $colorTwo;
@@ -30,12 +31,26 @@
     #uploadFile {
         top: 0px;
         left: 0px;
-        width: 100%;    
+        width: 100%;
         z-index: 9;
         opacity: 0;
         height: 100%;
         cursor: pointer;
         position: absolute;
+    }
+    mat-radio-group {
+        font-size: $fs13;
+        color: $colorOne;
+        padding: 0 5px;
+        .mat-radio-button ~ .mat-radio-button {
+            margin-left: 5px;
+        }
+        ::ng-deep .mat-radio-inner-circle {
+            background-color: $colorOne !important;
+        }
+        ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+            border-color: $colorTwo !important;
+        }
     }
 }
 
@@ -57,6 +72,7 @@
     }
     .btnSubmit {
         text-align: center;
+        margin: 10px 0;
         ::ng-deep .mat-button-wrapper {
             font-size: $fs12;
             color: $colorTwo;
@@ -69,16 +85,32 @@
     section {
         color: $colorOne;
         font-size: $fs13;
-        margin: 10px 0;
+        margin-top: 20px;
     }
     #uploadFile {
         top: 0px;
         left: 0px;
-        width: 100%;    
+        width: 100%;
         z-index: 9;
         opacity: 0;
         height: 100%;
         cursor: pointer;
         position: absolute;
     }
+    mat-radio-group {
+        font-size: $fs13;
+        color: $colorOne;
+        padding: 0 5px;
+        .mat-radio-button ~ .mat-radio-button {
+            margin-left: 5px;
+        }
+        ::ng-deep .mat-radio-inner-circle {
+            background-color: $colorOne !important;
+        }
+        ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+            border-color: $colorTwo !important;
+        }
+    }
 }
+
+

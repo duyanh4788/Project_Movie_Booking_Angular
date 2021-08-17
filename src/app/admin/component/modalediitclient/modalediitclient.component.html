@@ -104,18 +104,23 @@
         <!-- phone -->
 
         <!-- maLoaiNguoiDung -->
-        <section class="example-section">
-            <label>Vai Trò : </label>
+        <mat-radio-group matInput name="giaVe" formControlName="maLoaiNguoiDung">
+            <mat-label>Vai Trò : </mat-label>
             <ng-container *ngIf="infoClient?.maLoaiNguoiDung === 'QuanTri' else khachHang ">
-                <input type="radio" value="KhachHang" name="maLoaiNguoiDung" (change)="getTypeCode($event)"> Khách Hàng
-                <input type="radio" value="QuanTri" name="maLoaiNguoiDung" (change)="getTypeCode($event)" checked> Admin
+                <mat-radio-button value="KhachHang">Khách Hàng</mat-radio-button>
+                <mat-radio-button value="QuanTri" checked=true>Admin</mat-radio-button>
             </ng-container>
             <ng-template #khachHang>
-                <input type="radio" value="KhachHang" name="maLoaiNguoiDung" (change)="getTypeCode($event)" checked>
-                Khách Hàng
-                <input type="radio" value="QuanTri" name="maLoaiNguoiDung" (change)="getTypeCode($event)"> Admin
+                <mat-radio-button value="KhachHang" checked=true>Khách Hàng</mat-radio-button>
+                <mat-radio-button value="QuanTri">Admin</mat-radio-button>
             </ng-template>
-        </section>
+            <!-- check empty -->
+            <span
+                *ngIf="formEditClient.get('maLoaiNguoiDung').hasError('required') && formEditClient.get('maLoaiNguoiDung').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+        </mat-radio-group>
         <!-- maLoaiNguoiDung -->
 
         <!-- button -->
