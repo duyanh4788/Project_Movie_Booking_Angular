@@ -1,12 +1,17 @@
-<div class="container" *ngIf="arrListMovie">
+<div class="container" *ngIf="arrListMovie" id="lichChieu">
 
-    <div style="text-align: center;">
-        <mat-form-field>
-            <mat-select value={{maNhom}}>
-                <mat-option *ngFor="let ma of arrMaNhom" [value]="ma" (click)="getListCourses(ma)">Nhóm : {{ma}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <div class="cardGroup">
+        <mat-card>Nhóm Phim :
+            <button mat-mini-fab color="wram" *ngFor="let maNhom of arrMaNhom"
+                (click)="getListMovie(maNhom)">{{maNhom}}</button>
+        </mat-card>
+    </div>
+
+    <div class="menuGroup">
+        <button mat-fab color="wram" [matMenuTriggerFor]="menu">{{this.maNhom}}</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let maNhom of arrMaNhom" (click)="getListMovie(maNhom)">{{maNhom}}</button>
+        </mat-menu>
     </div>
 
     <ngx-slick-carousel class="carouselListMovie" [config]="slideConfigMovie">

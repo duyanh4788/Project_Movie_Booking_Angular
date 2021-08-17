@@ -1,0 +1,89 @@
+<div class="clientManagement">
+    <h5>Danh Sách Khách Hàng</h5>
+    <div class="cardGroup">
+        <mat-card>Nhóm :
+            <button mat-mini-fab color="wram" *ngFor="let maNhom of arrMaNhom"
+                (click)="getGroupCode(maNhom)">{{maNhom}}</button>
+        </mat-card>
+    </div>
+    <div class="menuGroup">
+        <button mat-fab color="wram" [matMenuTriggerFor]="menu">{{this.maNhom}}</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let maNhom of arrMaNhom" (click)="getGroupCode(maNhom)">{{maNhom}}</button>
+        </mat-menu>
+    </div>
+    <button mat-mini-fab color="wram" (click)="addClient()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <form #formSearchClient="ngForm" (ngSubmit)="handleSearchClient()">
+        <input type="text" class="inputSearch" placeholder="Tìm Tài Khoản" name="searchClient"
+            [(ngModel)]="searchClient" (input)="getValueSearch($event)">
+    </form>
+    <table mat-table [dataSource]="arrayListClient">
+        <!-- stt -->
+        <ng-container matColumnDef="stt">
+            <th mat-header-cell *matHeaderCellDef> STT </th>
+            <td mat-cell *matCellDef="let stt = index"> {{stt + 1}} </td>
+        </ng-container>
+
+        <!-- taiKhoan -->
+        <ng-container matColumnDef="taiKhoan">
+            <th mat-header-cell *matHeaderCellDef> Tài Khoản </th>
+            <td mat-cell *matCellDef="let item"> {{item.taiKhoan}} </td>
+        </ng-container>
+
+        <!-- matKhau -->
+        <ng-container matColumnDef="matKhau">
+            <th mat-header-cell *matHeaderCellDef> Mật Khẩu </th>
+            <td mat-cell *matCellDef="let item"> {{item.matKhau}} </td>
+        </ng-container>
+
+        <!--hoTen-->
+        <ng-container matColumnDef="hoTen">
+            <th mat-header-cell *matHeaderCellDef> Họ Tên </th>
+            <td mat-cell *matCellDef="let item"> {{item.hoTen}} </td>
+        </ng-container>
+
+        <!-- email -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let item"> {{item.email}} </td>
+        </ng-container>
+
+        <!-- soDt -->
+        <ng-container matColumnDef="soDt">
+            <th mat-header-cell *matHeaderCellDef> Phone </th>
+            <td mat-cell *matCellDef="let item"> {{item.soDt}} </td>
+        </ng-container>
+
+        <!-- maLoaiNguoiDung -->
+        <ng-container matColumnDef="maLoaiNguoiDung">
+            <th mat-header-cell *matHeaderCellDef> Vai Trò </th>
+            <td mat-cell *matCellDef="let item">
+                <ng-container *ngIf="item.maLoaiNguoiDung === 'QuanTri' else khachHang">Admin</ng-container>
+                <ng-template #khachHang>Khách Hàng</ng-template>
+            </td>
+        </ng-container>
+
+        <!-- setting -->
+        <ng-container matColumnDef="setting">
+            <th mat-header-cell *matHeaderCellDef> Setting</th>
+            <td mat-cell *matCellDef="let item">
+                <mat-icon class="delete" (click)="deleteClient(item.taiKhoan)">
+                    delete_outline
+                </mat-icon>
+                <mat-icon class="edit" (click)="editClient(item)">
+                    edit
+                </mat-icon>
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>    
+    <mat-paginator [length]="listClientPagination?.totalCount" showFirstLastButtons
+        [pageSize]="listClientPagination?.count" [pageSizeOptions]="[5, 10, 20]"
+        (page)="getValuePagination($event)"></mat-paginator>
+
+</div>

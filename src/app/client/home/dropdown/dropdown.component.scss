@@ -14,7 +14,7 @@
         padding: 0 20px;
         border-radius: 10px;
         background: $background-3;
-        color: $color-black-2;
+        color: $colorOne;
         display: flex;
         align-items: center;
         .drop {
@@ -31,12 +31,10 @@
     max-height: 200px !important;
 }
 ::ng-deep .mat-menu-panel::-webkit-scrollbar {
-    width: 6px;
-    background-color: $background-3;
+    @include scrollbar;
 }
-::ng-deep .mat-menu-panel::-webkit-scrollbar {
-    background: $color-gray-1;
-    border-radius: 6px;
+::ng-deep .mat-menu-panel::-webkit-scrollbar-thumb {
+    @include scrollbarThumb;
 }
 
 @media (max-width: 1000px) {

@@ -1,0 +1,9 @@
+@import "../../../../assets/scss/index.scss";
+
+.modalAddMovie {
+    @include formAdd;
+    .fieldInput {
+        width: 100%;
+        padding: 0 5px;
+    }
+}

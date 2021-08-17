@@ -63,8 +63,6 @@ export class BookingComponent implements OnInit {
         this.loadingService.hidden()
       }
     })
-    // set countdown timer
-    this.countdownTimerS();
     //  get value routerlink
     this.activated.params.subscribe((result) => {
       this.listTicketBooking.maLichChieu = result.maLichChieu
@@ -73,6 +71,11 @@ export class BookingComponent implements OnInit {
         .subscribe((data) => {
           const { danhSachGhe, thongTinPhim, ..._data } = data;
           this.danhSachGhe = danhSachGhe;
+          // set countdown timer
+          this.countdownTimerS();
+          let https = thongTinPhim.hinhAnh.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          thongTinPhim.hinhAnh = fixHttps
           this.infoMovie = thongTinPhim;
         });
     });
@@ -134,6 +137,7 @@ export class BookingComponent implements OnInit {
     clearInterval(this.clearTimer);
   }
   backOne() {
+    this.intoMoney = 0;
     this.ngOnInit();
     this.count = 15;
     this.valid = true;

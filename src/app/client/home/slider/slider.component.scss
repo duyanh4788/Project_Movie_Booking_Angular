@@ -3,24 +3,9 @@
 .slide {
   position: relative;
   .modalPlay {
-    opacity: 0;
-    background-color: rgba(0, 0, 0, 0.356);
-    border-radius: 50%;
-    border: $border;
+    @include ModalPlayer;
     width: 70px;
     height: 70px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    .iconPlay {
-      font-size: 20px;
-      color: $color-white;
-    }
   }
 }
 .slide:hover .modalPlay {

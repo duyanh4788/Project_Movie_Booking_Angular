@@ -37,7 +37,12 @@ export class NavigationtabComponent implements OnInit {
 
   getLocoCinema() {
     this.navigaTiontabService.getLogoCinema().subscribe((data) => {
-      this.logoCinema = data;
+      data.forEach(item => {
+        let https = item.logo.split(":");
+        let fixHttps = https[0] + "s:" + https[1];
+        item.logo = fixHttps
+      })
+      this.logoCinema = data
     })
   }
 
@@ -57,6 +62,11 @@ export class NavigationtabComponent implements OnInit {
     this.movieSchedule = undefined;
     this.maCumRap = maCumRap;
     let items = this.systemCinema?.lstCumRap.find(item => item.maCumRap === maCumRap)
+    items?.danhSachPhim.forEach(item => {
+      let https = item.hinhAnh.split(":");
+      let fixHttps = https[0] + "s:" + https[1];
+      item.hinhAnh = fixHttps
+    })
     this.listMovieCinema = items?.danhSachPhim
   }
 

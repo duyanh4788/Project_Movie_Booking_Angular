@@ -1,0 +1,134 @@
+<div class="modaleditClient">
+
+    <form [formGroup]="formEditClient" (ngSubmit)="handleEditClient()">
+
+        <!-- tài khoản -->
+        <mat-form-field class="fieldInputDisabled" appearance="fill">
+            <mat-label>Account</mat-label>
+            <input type="text" matInput disabled value={{infoClient?.taiKhoan}}>
+
+            <!-- check empty -->
+            <span *ngIf="formEditClient.get('taiKhoan').hasError('required') && formEditClient.get('taiKhoan').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- tài khoản -->
+
+        <!-- Mật Khẩu -->
+        <mat-form-field class="fieldInputDisabled" appearance="fill">
+            <mat-label>Mật Khẩu</mat-label>
+            <input type="text" matInput disabled value={{infoClient?.matKhau}}>
+
+            <!-- check empty -->
+            <span *ngIf="formEditClient.get('matKhau').hasError('required') && formEditClient.get('matKhau').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+        </mat-form-field>
+        <!-- Mật Khẩu -->
+
+        <!--newPassWord -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mật Khẩu Mới</mat-label>
+            <input type="text" matInput formControlName="newPassWord">
+
+        </mat-form-field>
+        <!--newPassWord -->
+
+        <!-- conFirmPassWord -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Xác Nhận Mật Khẩu</mat-label>
+            <input type="text" matInput formControlName="conFirmPassWord">
+
+            <!-- check match -->
+            <span
+                *ngIf=" formEditClient.get('conFirmPassWord').hasError('matching') && formEditClient.get('conFirmPassWord').touched">
+                Password Not Match
+            </span>
+            <!-- check match -->
+
+        </mat-form-field>
+        <!-- conFirmPassWord  -->
+
+        <!-- User Name -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input type="text" matInput formControlName="hoTen">
+
+            <!-- check empty -->
+            <span *ngIf="formEditClient.get('hoTen').hasError('required') && formEditClient.get('hoTen').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- User Name -->
+
+        <!-- Mã Nhóm -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mã Nhóm {{maNhom}}</mat-label>
+            <mat-select disabled value={{maNhom}}>
+                <mat-option>{{maNhom}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- Mã Nhóm -->
+
+        <!-- Email -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email">
+
+            <!-- check empty -->
+            <span *ngIf="formEditClient.get('email').hasError('required') && formEditClient.get('email').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- Email -->
+
+        <!-- phone -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>phone</mat-label>
+            <input type="text" matInput formControlName="soDt">
+
+            <!-- check empty -->
+            <span *ngIf="formEditClient.get('soDt').hasError('required') && formEditClient.get('soDt').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- phone -->
+
+        <!-- maLoaiNguoiDung -->
+        <mat-radio-group matInput name="giaVe" formControlName="maLoaiNguoiDung">
+            <mat-label>Vai Trò : </mat-label>
+            <ng-container *ngIf="infoClient?.maLoaiNguoiDung === 'QuanTri' else khachHang ">
+                <mat-radio-button value="KhachHang">Khách Hàng</mat-radio-button>
+                <mat-radio-button value="QuanTri" checked=true>Admin</mat-radio-button>
+            </ng-container>
+            <ng-template #khachHang>
+                <mat-radio-button value="KhachHang" checked=true>Khách Hàng</mat-radio-button>
+                <mat-radio-button value="QuanTri">Admin</mat-radio-button>
+            </ng-template>
+            <!-- check empty -->
+            <span
+                *ngIf="formEditClient.get('maLoaiNguoiDung').hasError('required') && formEditClient.get('maLoaiNguoiDung').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+        </mat-radio-group>
+        <!-- maLoaiNguoiDung -->
+
+        <!-- button -->
+        <div class="btnSubmit">
+            <button type="submit" [disabled]="formEditClient.invalid" mat-fab color="wram">Update</button>
+        </div>
+        <!-- button -->
+
+    </form>
+
+</div>

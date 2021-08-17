@@ -17,15 +17,22 @@ $color-black: #222;
 $color-black-2: #212321;
 $color-red: #ff0000;
 
-$background-1: linear-gradient(to right, white 0%, #edeff5 40%, #c0b5b5 60%);
-$background-2: linear-gradient(to right, #f9d423 0%, #ff4e50 100%);
-$background-3: #FFFFFF;
-$background-4:  #000000d4;
+// color test material
+$colorOne: #969491;
+$colorTwo: #787196;
+
+// background
+$background-1: linear-gradient(#09181f, #133241);
+$background-2: #fff;
+$background-3: #ffffff;
+$background-4: #000000d4;
+
 // font-size
 $fs8: 8px;
 $fs10: 10px;
 $fs12: 12px;
 $fs13: 13px;
+$fs14: 14px;
 $fs15: 15px;
 $fs17: 17px;
 $fs20: 20px;

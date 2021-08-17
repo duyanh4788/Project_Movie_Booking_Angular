@@ -1,0 +1,121 @@
+<div class="modalInfoUser">
+
+    <form [formGroup]="formEditUser" (ngSubmit)="handleEditInfoUser()">
+
+        <!-- tài khoản -->
+        <mat-form-field class="fieldInputDisabled" appearance="fill">
+            <mat-label>Account</mat-label>
+            <input type="text" matInput disabled value={{infoUser?.taiKhoan}}>
+
+            <!-- check empty -->
+            <span *ngIf="formEditUser.get('taiKhoan').hasError('required') && formEditUser.get('taiKhoan').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- tài khoản -->
+
+        <!-- Mật Khẩu -->
+        <mat-form-field class="fieldInputDisabled" appearance="fill">
+            <mat-label>Mật Khẩu</mat-label>
+            <input type="text" matInput disabled value={{infoUser?.matKhau}}>
+
+            <!-- check empty -->
+            <span *ngIf="formEditUser.get('matKhau').hasError('required') && formEditUser.get('matKhau').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+        </mat-form-field>
+        <!-- Mật Khẩu -->
+
+        <!--newPassWord -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mật Khẩu Mới</mat-label>
+            <input type="text" matInput formControlName="newPassWord">
+
+        </mat-form-field>
+        <!--newPassWord -->
+
+        <!-- conFirmPassWord -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Xác Nhận Mật Khẩu</mat-label>
+            <input type="text" matInput formControlName="conFirmPassWord">
+
+            <!-- check match -->
+            <span
+                *ngIf=" formEditUser.get('conFirmPassWord').hasError('matching') && formEditUser.get('conFirmPassWord').touched">
+                Password Not Match
+            </span>
+            <!-- check match -->
+
+        </mat-form-field>
+        <!-- conFirmPassWord  -->
+
+        <!-- User Name -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input type="text" matInput formControlName="hoTen">
+
+            <!-- check empty -->
+            <span *ngIf="formEditUser.get('hoTen').hasError('required') && formEditUser.get('hoTen').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- User Name -->
+
+        <!-- Mã Nhóm -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mã Nhóm</mat-label>
+            <mat-select disabled value={{infoUser?.maNhom}}>
+                <mat-option *ngFor="let ma of arrMaNhom" value={{ma}}>{{ma}}</mat-option>
+            </mat-select>
+
+            <!-- check empty -->
+            <span *ngIf="formEditUser.get('maNhom').hasError('required') && formEditUser.get('maNhom').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- Mã Nhóm -->
+
+        <!-- Email -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email">
+
+            <!-- check empty -->
+            <span *ngIf="formEditUser.get('email').hasError('required') && formEditUser.get('email').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- Email -->
+
+        <!-- phone -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>phone</mat-label>
+            <input type="text" matInput formControlName="soDT">
+
+            <!-- check empty -->
+            <span *ngIf="formEditUser.get('soDT').hasError('required') && formEditUser.get('soDT').touched">
+                Do Not Empty !
+            </span>
+            <!-- check empty -->
+
+        </mat-form-field>
+        <!-- phone -->
+
+        <!-- button -->
+        <div class="btnSubmit">
+            <button type="submit" [disabled]="formEditUser.invalid" mat-fab color="wram">Update</button>
+        </div>
+        <!-- button -->
+
+    </form>
+
+</div>

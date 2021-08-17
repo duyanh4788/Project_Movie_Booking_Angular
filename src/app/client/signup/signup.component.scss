@@ -21,7 +21,7 @@
         h5 {
             text-align: center;
             font-size: $fs20;
-            color: $color-black-2;
+            color: $colorTwo;
         }
         .example-full-width {
             width: 100%;
@@ -38,16 +38,12 @@
         .btnSubmit {
             text-align: center;
             margin-top: 20px;
-            button {
+            .submit {
                 margin-right: 10px;
+                ::ng-deep .mat-button-wrapper {
+                    color: $colorTwo;
+                }
             }
         }
     }
-}
-mat-label {
-    color: $color-black-2;
-    font-size: $fs13;
-}
-::ng-deep .mat-placeholder-required {
-    color: $color-black-2 !important;
 }

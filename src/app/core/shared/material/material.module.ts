@@ -26,6 +26,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatRippleModule} from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   exports: [
@@ -56,6 +57,7 @@ import {MatRippleModule} from '@angular/material/core';
     MatSnackBarModule,
     MatStepperModule,
     MatRippleModule,
+    MatSlideToggleModule,
   ]
 })
 export class MaterialModule { }
