@@ -27,7 +27,7 @@
         <!-- maRapPhim -->
         <div class="row">
             <!-- chọn Rạp -->
-            <mat-form-field class="col-lg-4 fieldCinema" appearance="fill">
+            <mat-form-field class="col-xs-4 fieldCinema" appearance="fill">
                 <mat-label>Chọn Rạp</mat-label>
                 <mat-select>
                     <mat-option *ngFor="let item of infoCinema" [value]="item.maHeThongRap"
@@ -37,7 +37,7 @@
             <!-- chọn Rạp -->
 
             <!-- Cụm Rạp -->
-            <mat-form-field class="col-lg-4 fieldCinema" appearance="fill">
+            <mat-form-field class="col-xs-4 fieldCinema" appearance="fill">
                 <mat-label>Cụm Rạp</mat-label>
                 <mat-select>
                     <mat-option *ngFor="let item of infoGroupCinema" [value]="item.tenCumRap"
@@ -48,7 +48,7 @@
             <!-- Cụm Rạp -->
 
             <!-- mã Rạp -->
-            <mat-form-field class="col-lg-4 fieldCinema" appearance="fill">
+            <mat-form-field class="col-xs-4 fieldCinema" appearance="fill">
                 <mat-label>Mã Rạp</mat-label>
                 <mat-select formControlName="maRap" required>
                     <mat-option *ngFor="let item of danhSachRap" [value]="item.maRap"

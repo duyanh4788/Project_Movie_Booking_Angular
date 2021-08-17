@@ -11,10 +11,14 @@
     height: 40px;
     cursor: pointer;
   }
-  mat-panel-title {
-    color: $colorOne;
-    font-weight: 500;
+  mat-accordion {
+    max-width: 460px;
+    mat-panel-title {
+      color: $colorOne;
+      font-weight: 500;
+    }
   }
+
   .btnLogo {
     ::ng-deep .mat-button-ripple.mat-ripple,
     ::ng-deep .mat-button-focus-overlay {

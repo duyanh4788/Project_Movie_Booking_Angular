@@ -62,6 +62,11 @@ export class CinemadetailComponent implements OnInit {
     this.infoTimeMovie = undefined;
     this.scheDuleMovie = undefined;
     this.showImageMovie = undefined;
+    danhSachPhim.forEach(item => {
+      let https = item.hinhAnh.split(":");
+      let fixHttps = https[0] + "s:" + https[1];
+      item.hinhAnh = fixHttps
+    })
     this.danhSachPhims = danhSachPhim;
   }
   showScheduleMovie(lichChieuPhim: Array<any>, maPhim: number, items: any) {

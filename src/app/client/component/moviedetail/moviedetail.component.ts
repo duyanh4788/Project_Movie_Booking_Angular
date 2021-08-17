@@ -96,6 +96,11 @@ export class MoviedetailComponent implements OnInit {
   getLogoCinema() {
     this.subLogoCinema.add(
       this.movieDetailService.getLogoCinemaDetailMovie().subscribe((data) => {
+        data.forEach(item => {
+          let https = item.logo.split(":");
+          let fixHttps = https[0] + "s:" + https[1];
+          item.logo = fixHttps
+        })
         this.logoCinemaMovieDetail = data;
       })
     );

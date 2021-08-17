@@ -2,6 +2,9 @@
 
 .modaleditMovie {
     @include formEdit;
+    .fieldInputDisabled{
+        width: 100%;
+    }
     .fieldInput {
         width: 100%;
         padding: 0 5px;
