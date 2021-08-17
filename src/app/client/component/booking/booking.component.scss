@@ -26,12 +26,6 @@
     @include modalBg;
     .modalMesage {
         @include modalMessage;
-        p {
-            color: $color-red;
-            font-weight: bolder;
-            cursor: pointer;
-            margin-top: 10px;
-        }
     }
 }
 // step 1
@@ -104,18 +98,6 @@
     margin: 0 auto;
     .cardInfoMovie {
         width: 100%;
-        @include avatarCinema;
-        .mat-card-avatar {
-            border-radius: 50%;
-            color: $color-white;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        mat-card-title {
-            font-size: $fs15;
-        }
         .bgImages {
             overflow: hidden;
             position: relative;
@@ -138,6 +120,7 @@
             max-height: 300px;
             color: $color-black;
             font-size: $fs13;
+            color: $colorOne;
             table {
                 width: 100%;
                 padding: 10px;
@@ -157,6 +140,10 @@
                 tr {
                     text-align: center;
                 }
+                tr td {
+                    color: $colorTwo;
+                    font-weight: bold;
+                }
             }
         }
     }
@@ -166,42 +153,60 @@
     display: flex;
     justify-content: space-around;
     .example-ripple-container {
-        background: url(../../../../assets/images/logotitle.png);
+        // background: url(../../../../assets/images/logotitle.png);
         background-size: cover;
-        color: $colorBhd;
-        font-size: $fs15;
-        font-weight: bolder;
         width: 150px;
         height: 150px;
         border-radius: 50%;
         cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        box-shadow: $box-shadow;
+        border: $border;
+    }
+    #cog {
+        -webkit-animation: cog 10s infinite;			
+        -moz-animation: cog 10s infinite;
+        -ms-animation: cog 10s infinite; 			
+        animation: cog 10s infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-timing-function: linear;		
+        -ms-animation-timing-function: linear;
+        animation-timing-function: linear	
+    }
+    @keyframes cog {
+        100% {
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
     }
 }
 
-// btn step
-.btnStep {
-    text-align: center;
-    margin: 20px 0;
-    .btnRight {
-        margin-right: 10px;
+mat-stepper {
+    ::ng-deep .mat-horizontal-stepper-header {
+        pointer-events: none !important;
     }
-}
-// scroll css
-mat-card-content::-webkit-scrollbar {
-    @include scrollbar;
-}
-mat-card-content::-webkit-scrollbar-thumb {
-    @include scrollbarThumb;
-}
-::ng-deep .mat-horizontal-stepper-header {
-    pointer-events: none !important;
-}
-::ng-deep .mat-step-icon {
-    background-color: #3e515d !important;
-}
-::ng-deep .mat-step-icon-state-edit {
-    background-color: $colorBhd !important;
+    ::ng-deep .mat-step-icon {
+        background-color: $colorOne !important;
+    }
+    ::ng-deep .mat-step-icon-state-edit {
+        background-color: $colorTwo !important;
+    }
+    ::ng-deep .mat-button-wrapper {
+        color: $colorOne;
+    }
+    // btn step
+    .btnStep {
+        text-align: center;
+        margin: 20px 0;
+        .btnRight {
+            margin-right: 10px;
+        }
+    }
+    // scroll css
+    mat-card-content::-webkit-scrollbar {
+        @include scrollbar;
+    }
+    mat-card-content::-webkit-scrollbar-thumb {
+        @include scrollbarThumb;
+    }
 }

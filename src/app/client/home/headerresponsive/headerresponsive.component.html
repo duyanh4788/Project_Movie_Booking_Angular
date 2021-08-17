@@ -15,17 +15,17 @@
   <ng-template #signInSuccess>
     <a mat-list-item *ngIf="userNameSigin">
       <button mat-button [matMenuTriggerFor]="menu" class="account">
-        <mat-icon> account_circle </mat-icon>{{ userNameSigin | uppercase}}
-
+        <span class="spanTitle">{{ userNameSigin.slice(0,1).toUpperCase()}}</span>{{ userNameSigin}}
         <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="admin" (click)="onSidenavClose()" *ngIf="userTypeCode==='QuanTri'">
-            <mat-icon class="iconHeader">admin_panel_settings</mat-icon> Admin
+          <button mat-menu-item routerLink="admin" style="color: #ff0000;" (click)="onSidenavClose()"
+            *ngIf="userTypeCode==='QuanTri'">
+            <mat-icon>admin_panel_settings</mat-icon> ADMIN
           </button>
-          <button mat-menu-item>
-            <mat-icon>info</mat-icon> Thông Tin Người Dùng
+          <button mat-menu-item routerLink="/infoUser">
+            <mat-icon>info</mat-icon> <span class="btnMenu">Thông Tin Người Dùng</span>
           </button>
           <button mat-menu-item (click)="handleLogOut()">
-            <mat-icon class="iconHeader">exit_to_app</mat-icon> Đăng Xuất
+            <mat-icon>exit_to_app</mat-icon><span class="btnMenu">Đăng Xuất</span>
           </button>
         </mat-menu>
       </button>

@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   }
   handleLogOut() {
     this.signinService.setCurrentUserName(localStorage.removeItem("hoTen"))
+    this.signinService.setCurrentAccount(localStorage.removeItem("taiKhoan"))
     this.signinService.setCurrentAccessToken(localStorage.removeItem("accessToken"))
     this.signinService.setCurrentUserTypeCode(localStorage.removeItem("maLoaiNguoiDung"))
     this.snackBar.open("Đăng Xuất Thành Công", "", {
@@ -57,6 +58,11 @@ export class HeaderComponent implements OnInit {
 
   getListLogoCinemaS() {
     this.headerService.getListLogoCinema().subscribe((data) => {
+      data.forEach(item => {
+        let https = item.logo.split(":");
+        let fixHttps = https[0] + "s:" + https[1];
+        item.logo = fixHttps
+      })
       this.logoCinemaHeader = data
     })
   }

@@ -1,0 +1,88 @@
+<div class="bgInfoUser">
+    <div class="container">
+        <mat-tab-group>
+            <mat-tab label="Thông Tin Tài Khoản">
+                <div class="account">
+                    <h5>Thông Tin Tài Khoản</h5>
+                    <div class="row">
+                        <div class="block col-xs-6">
+                            <h6>Tài Khoản</h6>
+                            <p>{{infoUser?.taiKhoan}}</p>
+                        </div>
+                        <div class="block col-xs-6">
+                            <h6>Mật Khẩu </h6>
+                            <p>{{infoUser?.matKhau}}</p>
+                        </div>
+                        <div class="block col-xs-6">
+                            <h6>Họ Tên </h6>
+                            <p>{{infoUser?.hoTen}}</p>
+                        </div>
+                        <div class="block col-xs-6">
+                            <h6>Email </h6>
+                            <p>{{infoUser?.email}}</p>
+                        </div>
+                        <div class="block col-xs-6">
+                            <h6>Phone </h6>
+                            <p>{{infoUser?.soDT}}</p>
+                        </div>
+                        <div class="block col-xs-6">
+                            <h6>Nhóm </h6>
+                            <p>{{infoUser?.maNhom}}</p>
+                        </div>
+                    </div>
+                    <div class="btnEdit">
+                        <button mat-mini-fab color="wram" (click)="updateInfoUser()" >Edit</button>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Lịch Sử Đặt Vé">
+                <div class="ticket">
+                    <h5>Lịch Sử Đặt Vé</h5>
+                    <input type="text" placeholder="Tìm Phim" class="inputSearch" (keyup)="searchHistory($event)">
+
+                    <table mat-table [dataSource]="historyTicKet">
+                        <ng-container matColumnDef="stt">
+                            <th mat-header-cell *matHeaderCellDef> STT </th>
+                            <td mat-cell *matCellDef="let stt = index">{{stt + 1}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="tenPhim">
+                            <th mat-header-cell *matHeaderCellDef> Tên Phim </th>
+                            <td mat-cell *matCellDef="let item">{{item.tenPhim}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="tenHeThongRap">
+                            <th mat-header-cell *matHeaderCellDef> Rạp </th>
+                            <td mat-cell *matCellDef="let item">{{item.danhSachGhe[0].tenHeThongRap}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="ngayDat">
+                            <th mat-header-cell *matHeaderCellDef> Ngày Chiếu </th>
+                            <td mat-cell *matCellDef="let item">{{item.ngayDat | date : "dd-MM-YYYY"}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="gioDat">
+                            <th mat-header-cell *matHeaderCellDef> Giờ Chiếu </th>
+                            <td mat-cell *matCellDef="let item">{{item.ngayDat | date : "HH:MM"}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="danhSachGhe">
+                            <th mat-header-cell *matHeaderCellDef> Số Lượng Vé </th>
+                            <td mat-cell *matCellDef="let item">{{item.danhSachGhe.length}}</td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="giaVe">
+                            <th mat-header-cell *matHeaderCellDef> Giá Vé </th>
+                            <td mat-cell *matCellDef="let item">{{(item.danhSachGhe.length *
+                                item.giaVe).toLocaleString()}}</td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    </table>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

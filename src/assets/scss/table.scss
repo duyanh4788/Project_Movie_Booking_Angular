@@ -1,0 +1,21 @@
+@mixin blockProfile {
+    padding: 10px;
+    background-color: $background-3;
+    border: $border;
+    box-shadow: $box-shadow;
+    border-radius: $boderR5;
+}
+
+@mixin table {
+    width: 100%;
+    color: $color-black-2;
+}
+
+@mixin tableTd {
+    padding: 5px 0;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: $fw-500;
+    font-size: $fs13;
+    border-bottom: $borderTable;
+}

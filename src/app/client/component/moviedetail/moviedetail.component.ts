@@ -69,6 +69,9 @@ export class MoviedetailComponent implements OnInit {
   getInfoMovieS() {
     this.subInfoMovie.add(
       this.movieDetailService.getInfoMovie(this.maPhim).subscribe((data) => {
+        let https = data.hinhAnh.split(":");
+        let fixHttps = https[0] + "s:" + https[1];
+        data.hinhAnh = fixHttps
         this.movieDetail = data;
         this.danhGia = this.movieDetail.danhGia * 10;
       })

@@ -25,9 +25,9 @@
     <span class="example-spacer"></span>
     <!-- intro -->
     <div class="intro">
-      <span>Lịch Chiếu</span>
-      <span>Cụm Rạp</span>
-      <span>Ứng Dụng</span>
+      <a href="#lichChieu">Lịch Chiếu</a>
+      <a href="#cumRap">Cụm Rạp</a>
+      <a href="#ungDung">Ứng Dụng</a>
     </div>
     <!-- intro -->
     <span class="example-spacer"></span>
@@ -46,19 +46,19 @@
       <!-- else -->
       <ng-template #signInSuccess>
         <button mat-button [matMenuTriggerFor]="menu" class="account">
-          <mat-icon> account_circle </mat-icon>{{ userNameSigin | uppercase}}
+          <span class="spanTitle">{{ userNameSigin.slice(0,1).toUpperCase()}}</span>{{ userNameSigin}}
 
           <mat-menu #menu="matMenu">
             <!-- admin -->
-            <button mat-menu-item style="color: red;" routerLink="/admin" *ngIf="userTypeCode === 'QuanTri'">
-              <mat-icon class="iconHeader">admin_panel_settings</mat-icon> Admin
+            <button mat-menu-item style="color: #ff0000;" routerLink="/admin" *ngIf="userTypeCode === 'QuanTri'">
+              <mat-icon>admin_panel_settings</mat-icon> ADMIN
             </button>
             <!-- admin -->
-            <button mat-menu-item>
-              <mat-icon>info</mat-icon> Thông Tin Người Dùng
+            <button mat-menu-item routerLink="/infoUser">
+              <mat-icon>info</mat-icon> <span class="btnMenu">Thông Tin Người Dùng</span>
             </button>
             <button mat-menu-item (click)="handleLogOut()">
-              <mat-icon class="iconHeader">exit_to_app</mat-icon> Đăng Xuất
+              <mat-icon>exit_to_app</mat-icon><span class="btnMenu">Đăng Xuất</span> 
             </button>
           </mat-menu>
         </button>

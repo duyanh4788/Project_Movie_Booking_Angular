@@ -1,0 +1,118 @@
+<div class="modalAddClient">
+
+    <form #formAddClient="ngForm" (ngSubmit)="handelSubmit()">
+
+        <!-- tài khoản -->
+        <mat-form-field class="fieldInputAccount" appearance="fill">
+            <mat-label>Account</mat-label>
+            <input matInput ngModel name="taiKhoan" required #taiKhoan="ngModel" />
+            <ng-container *ngIf="taiKhoan.errors && (taiKhoan.dirty || taiKhoan.touched)">
+                <!-- Check empty -->
+                <span *ngIf="taiKhoan.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+
+        <!-- tài khoản -->
+
+        <!-- Password -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput ngModel name="matKhau" required #matKhau="ngModel"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$" />
+            <ng-container *ngIf="matKhau.errors && (matKhau.dirty || matKhau.touched)">
+                <!-- Check empty -->
+                <span *ngIf="matKhau.errors.required">Do Not Empty !</span>
+                <!-- Check password -->
+                <span *ngIf="matKhau.errors.pattern">Mật Khẩu Không Hợp Lệ !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- Password -->
+
+        <!-- Confirm Password -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput ngModel name="rematKhau" required #rematKhau="ngModel"
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$"
+                [ngClass]="{'ng-invalid': (matKhau.value!= rematKhau.value),'ng-valid': !(matKhau.value!=rematKhau.value)}" />
+            <ng-container
+                *ngIf="rematKhau.errors && (rematKhau.dirty || rematKhau.touched) && (matKhau.value!= rematKhau.value) ">
+                <!-- Check empty -->
+                <span *ngIf="rematKhau.errors.required">Do Not Empty !</span>
+                <!-- Check match -->
+                <span *ngIf="matKhau.value != rematKhau.value">PassWord Not Match !</span>
+            </ng-container>
+        </mat-form-field>
+
+        <!-- Confirm Password -->
+
+        <!-- User Name -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input matInput ngModel name="hoTen" required #hoTen="ngModel"
+                [pattern]='"^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"' />
+            <ng-container *ngIf="hoTen.errors && (hoTen.dirty || hoTen.touched)">
+                <!-- Check empty -->
+                <span *ngIf="hoTen.errors.required">Do Not Empty !</span>
+                <!-- Check string -->
+                <span *ngIf="hoTen.errors.pattern">Chỉ Nhập Chữ !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- User Name -->
+
+        <!-- Mã Nhóm -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mã Nhóm</mat-label>
+            <mat-select ngModel name="maNhom" required #maNhom="ngModel">
+                <mat-option *ngFor="let ma of arrMaNhom" value={{ma}}>{{ma}}</mat-option>
+            </mat-select>
+            <ng-container *ngIf="maNhom.errors && (maNhom.dirty || maNhom.touched)">
+                <span *ngIf="maNhom.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- Mã Nhóm -->
+
+        <!-- Email -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput ngModel name="email" required #email="ngModel"
+                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" />
+            <ng-container *ngIf="email.errors && (email.dirty || email.touched)">
+                <!-- Check empty -->
+                <span *ngIf="email.errors.required">Do Not Empty !</span>
+                <!-- Check email -->
+                <span *ngIf="email.errors.pattern">Email Không Hợp Lệ !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- Email -->
+
+        <!-- phone -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Phone</mat-label>
+            <input matInput ngModel name="soDt" required #soDt="ngModel" pattern="^[0-9]+$" />
+            <ng-container *ngIf="soDt.errors && (soDt.dirty || soDt.touched)">
+                <span *ngIf="soDt.errors.required">Do Not Empty !</span>
+                <span *ngIf="soDt.errors.pattern">Chỉ Nhập Số !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- phone -->
+
+        <!-- maLoaiNguoiDung -->
+        <mat-radio-group matInput ngModel name="maLoaiNguoiDung" required #maLoaiNguoiDung="ngModel">
+            <mat-label>Vai Trò : </mat-label>
+            <mat-radio-button value="KhachHang" checked=true>Khách Hàng</mat-radio-button>
+            <mat-radio-button value="QuanTri">Admin
+            </mat-radio-button>
+            <!-- check empty -->
+            <ng-container *ngIf="maLoaiNguoiDung.errors &&(maLoaiNguoiDung.dirty || maLoaiNguoiDung.touched)">
+                <span *ngIf="maLoaiNguoiDung.errors.required">Do Not Empty !</span>
+            </ng-container>
+            <!-- check empty -->
+        </mat-radio-group>
+        <!-- maLoaiNguoiDung -->
+
+        <!-- invalid => nêú success tắt disable -->
+        <div class="btnSubmit">
+            <button type="submit" color="wram" [disabled]="formAddClient.invalid" mat-fab>Add</button>
+        </div>
+    </form>
+</div>

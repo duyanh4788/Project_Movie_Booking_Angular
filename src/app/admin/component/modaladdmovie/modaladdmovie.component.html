@@ -1,0 +1,118 @@
+<div class="modalAddMovie">
+
+    <form #formAddMovie="ngForm" (ngSubmit)="handelSubmit()">
+
+        <!-- maPhim -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mã Phim</mat-label>
+            <input matInput ngModel name="maPhim" required #maPhim="ngModel" />
+            <ng-container *ngIf="maPhim.errors && (maPhim.dirty || maPhim.touched)">
+                <!-- Check empty -->
+                <span *ngIf="maPhim.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+
+        <!-- maPhim -->
+
+        <!-- tenPhim -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Tên Phim</mat-label>
+            <input matInput ngModel name="tenPhim" required #tenPhim="ngModel" />
+            <ng-container *ngIf="tenPhim.errors && (tenPhim.dirty || tenPhim.touched)">
+                <!-- Check empty -->
+                <span *ngIf="tenPhim.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- tenPhim -->
+
+        <!-- biDanh -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Bí Danh</mat-label>
+            <input matInput ngModel name="biDanh" required #biDanh="ngModel" />
+            <ng-container *ngIf="biDanh.errors && (biDanh.dirty || biDanh.touched)">
+                <!-- Check empty -->
+                <span *ngIf="biDanh.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- biDanh -->
+
+        <!-- trailer -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Trailer</mat-label>
+            <input matInput ngModel name="trailer" required #trailer="ngModel" />
+            <ng-container *ngIf="trailer.errors && (trailer.dirty || trailer.touched)">
+                <!-- Check empty -->
+                <span *ngIf="trailer.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- trailer -->
+
+        <!-- hinhAnh -->
+        <mat-form-field class="fieldInput">
+            <mat-label>Hình Ảnh</mat-label>
+            <img src={{imgShowLocal}} alt="" width="50px" height="50px" *ngIf="imgShowLocal">
+            <mat-toolbar>
+                <input matInput ngModel name="hinhAnh" required #hinhAnh="ngModel" />
+                <button mat-mini-fab color="warn">File</button>
+            </mat-toolbar>
+            <input type="file" #fileInput id="uploadFile" multiple="multiple" accept="image/*"
+                (change)="getFileImage($event)" />
+        </mat-form-field>
+        <!-- hinhAnh -->
+
+        <!-- ngayKhoiChieu -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Ngày Khởi Chiếu</mat-label>
+            <input matInput [matDatepicker]="picker2" ngModel name="ngayKhoiChieu" required #ngayKhoiChieu="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <!-- Check empty -->
+            <ng-container *ngIf="ngayKhoiChieu.errors && (ngayKhoiChieu.dirty || ngayKhoiChieu.touched)">
+                <!-- Check empty -->
+                <span *ngIf="ngayKhoiChieu.errors.required">Do Not Empty !</span>
+                <!-- Check password -->
+            </ng-container>
+            <!-- Check empty -->
+        </mat-form-field>
+        <!-- ngayKhoiChieu -->
+
+        <!-- Mã Nhóm -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mã Nhóm</mat-label>
+            <mat-select ngModel name="maNhom" required #maNhom="ngModel">
+                <mat-option *ngFor="let ma of arrMaNhom" value={{ma}}>{{ma}}</mat-option>
+            </mat-select>
+            <ng-container *ngIf="maNhom.errors && (maNhom.dirty || maNhom.touched)">
+                <span *ngIf="maNhom.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- Mã Nhóm -->
+
+        <!-- danhGia -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Đánh Giá</mat-label>
+            <input matInput ngModel name="danhGia" required #danhGia="ngModel" />
+            <ng-container *ngIf="danhGia.errors && (danhGia.dirty || danhGia.touched)">
+                <!-- Check empty -->
+                <span *ngIf="danhGia.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- danhGia -->
+
+        <!-- moTa -->
+        <mat-form-field class="fieldInput" appearance="fill">
+            <mat-label>Mô Tả</mat-label>
+            <textarea matInput ngModel name="moTa" required #moTa="ngModel"></textarea>
+            <ng-container *ngIf="moTa.errors && (moTa.dirty || moTa.touched)">
+                <!-- Check empty -->
+                <span *ngIf="moTa.errors.required">Do Not Empty !</span>
+            </ng-container>
+        </mat-form-field>
+        <!-- moTa -->
+
+        <!-- invalid => nêú success tắt disable -->
+        <div class="btnSubmit">
+            <button type="submit" color="wram" [disabled]="formAddMovie.invalid" mat-fab>Add</button>
+        </div>
+    </form>
+</div>

@@ -1,1 +1,33 @@
-<p>admin works!</p>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <button mat-mini-fab color="wram" routerLink="/admin">
+            <mat-icon>
+                dashboard
+            </mat-icon>
+        </button>
+        <button mat-mini-fab color="wram" routerLink="clientManagement">
+            <mat-icon>
+                manage_accounts
+            </mat-icon>
+        </button>
+        <button mat-mini-fab color="wram" routerLink="movieManagement">
+            <mat-icon>
+                movie_filter
+            </mat-icon>
+        </button>
+        <button mat-mini-fab color="wram" routerLink="">
+            <mat-icon>
+                home
+            </mat-icon>
+        </button>
+    </mat-drawer>
+
+    <button type="button" color="wram" mat-mini-fab (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+
+</mat-drawer-container>

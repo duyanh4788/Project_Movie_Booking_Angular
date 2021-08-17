@@ -1,0 +1,69 @@
+@import "../../../assets/scss/index.scss";
+
+.dashboard {
+    background: url(../../../assets/images/background.jpg);
+    background-size: cover;
+    height: 100vh;
+    color: $colorOne;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    h5 {
+        font-size: 30px;
+        color: $color-white-2;
+        font-weight: 500;
+        text-align: center;
+    }
+    .cardGroup {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        mat-card {
+            max-width: 600px;
+            button {
+                margin-right: 5px;
+                ::ng-deep .mat-button-wrapper{
+                    font-size: $fs12;
+                }
+            }
+        }
+    }
+    .menuGroup {
+        text-align: center;
+        display: none;
+    }
+    .infoMovie {
+        width: 100%;
+        min-width: 190px;
+        padding: 20px;
+        margin: 5px;
+        background: $background-3;
+        border: $border;
+        border-radius: $boderR5;
+        box-shadow: $box-shadow;
+    }
+    .infoClient {
+        width: 100%;
+        min-width: 190px;
+        padding: 20px;
+        margin: 5px;
+        background: $background-3;
+        border: $border;
+        border-radius: $boderR5;
+        box-shadow: $box-shadow;
+    }
+    .length {
+        color: $colorTwo;
+        font-weight: $fw-bold;
+    }
+}
+
+@media (max-width : 900px) {
+    .cardGroup{
+        display: none !important;
+    }
+    .menuGroup {
+        display: block !important;
+    }
+    
+}

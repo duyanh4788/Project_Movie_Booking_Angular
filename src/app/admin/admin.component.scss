@@ -1,1 +1,14 @@
 @import "../../assets/scss/index.scss";
+
+.example-container {
+    width: 100%;
+    mat-drawer {
+        background: $background-3;
+        ::ng-deep .mat-drawer-inner-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding: 0 20px;
+        }
+    }
+}

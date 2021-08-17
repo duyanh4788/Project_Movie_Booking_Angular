@@ -4,9 +4,11 @@
     color: $color-gray-2;
     padding: 50px 0;
     .info {
-        color: $color-gray-1;
+        color: $colorOne;
         h5 {
             color: $color-white;
+            font-size: $fs15;
+            font-weight: $fw-500;
         }
         ul li {
             list-style: none;
@@ -37,6 +39,8 @@
         text-align: center;
         h5 {
             color: $color-white;
+            font-size: $fs15;
+            font-weight: $fw-500;
         }
         .imgLogo {
             width: 25px;
