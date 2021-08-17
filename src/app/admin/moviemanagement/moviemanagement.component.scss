@@ -80,9 +80,9 @@
     }
 }
 
-::ng-deep .mat-drawer-content {
-    overflow: unset !important;
-}
+// ::ng-deep .mat-drawer-content {
+//     overflow: unset !important;
+// }
 
 @media (max-width: 900px) {
     .cardGroup {
