@@ -40,7 +40,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <button mat-button *ngFor="let item of logoCinemaHeader" class="btnLogo"
-        routerLink="/cinemadetail/{{item.maHeThongRap}}" (click)="onSidenavClose()">
+        (click)="routerLinkCinema(item.maHeThongRap)">
         <img src={{item.logo}} alt="" width="35px" height="35px">
       </button>
     </mat-expansion-panel>

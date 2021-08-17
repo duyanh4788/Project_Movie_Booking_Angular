@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CinemaDetail,LstCumRap,MovieSchedule } from 'src/app/core/models/cinemadetail';
+import { CinemaDetail, MovieSchedule, ShowImageMovie } from 'src/app/core/models/cinemadetail';
+import { DanhSachPhim, LstLichChieuTheoPhim } from 'src/app/core/models/navigationtab';
 import { CinemaDetailService } from 'src/app/core/services/cinemaDetail/cinema-detail.service';
 import { LoadingService } from 'src/app/core/services/loading/loading.service';
 
@@ -12,19 +13,20 @@ import { LoadingService } from 'src/app/core/services/loading/loading.service';
 export class CinemadetailComponent implements OnInit {
 
   cinemaDetails!: CinemaDetail[];
-  lstCumRap!: LstCumRap;
-  maHeThongRap : string = "";
-  danhSachPhims: any;
-  timeMovie: any;
+  danhSachPhims?: DanhSachPhim[];
+  detailCinema?: CinemaDetail;
+  scheDuleMovie?: LstLichChieuTheoPhim[];
+  showImageMovie?: ShowImageMovie;
+
   infoTimeMovie?: MovieSchedule;
-  maPhim?: string;
+
+  maHeThongRap: string = "";
+  maPhim?: number;
   giaVe?: string;
   timerStart: any;
   timerEnd: any;
-  itemDetails:any;
-  detailCinema?:CinemaDetail;
 
-  constructor(public loadingService: LoadingService, public cinemaDetailService: CinemaDetailService , private activatedRoute : ActivatedRoute, public router:Router) { }
+  constructor(public loadingService: LoadingService, public cinemaDetailService: CinemaDetailService, private activatedRoute: ActivatedRoute, public router: Router) { }
 
   imageCinema = [
     { code: "BHDStar", img: "../../../../assets/images/BHDStar.jpg" },
@@ -38,35 +40,39 @@ export class CinemadetailComponent implements OnInit {
   ngOnInit(): void {
     this.loadingService.hidden();
     this.getListCinema();
+    this.cinemaDetailService.shareSetCinemaDetail.subscribe(data => {
+      if (data === 200) {
+        this.danhSachPhims = undefined;
+        this.infoTimeMovie = undefined;
+        this.scheDuleMovie = undefined;
+        this.showImageMovie = undefined;
+      }
+    })
   }
 
-  getListCinema(){
+  getListCinema() {
     this.activatedRoute.params.subscribe((res) => {
       this.maHeThongRap = res.maHeThongRap;
-      this.cinemaDetailService.getListCinemaDetail(res.maHeThongRap).subscribe(data=>{
+      this.cinemaDetailService.getListCinemaDetail(res.maHeThongRap).subscribe(data => {
         this.cinemaDetails = data;
-
       })
     })
   }
-  getCodeImg(maHeThongRap:string){
-    this.cinemaDetailService.getListCinemaDetail(maHeThongRap).subscribe((data) =>{
-      this.itemDetails = this.imageCinema.find(item=>item.code === maHeThongRap);
-      let items = data.find(item=>item.maHeThongRap === maHeThongRap);
-      this.detailCinema = items;
-    })
+  showGroupCinema(danhSachPhim: Array<any>) {
+    this.infoTimeMovie = undefined;
+    this.scheDuleMovie = undefined;
+    this.showImageMovie = undefined;
+    this.danhSachPhims = danhSachPhim;
   }
-  showGroupCinema(dsPhim:any){
-    this.danhSachPhims = dsPhim;
-  }
-  showTime(dsLichChieu: any, maPhim: any){
-    this.timeMovie = dsLichChieu;
+  showScheduleMovie(lichChieuPhim: Array<any>, maPhim: number, items: any) {
+    this.showImageMovie = items;
+    this.infoTimeMovie = undefined;
+    this.scheDuleMovie = lichChieuPhim;
     this.maPhim = maPhim;
   }
-  showInfoMovieTime(dsNgayChieu: any){
-    this.infoTimeMovie = dsNgayChieu;
+  showInfoMovieTime(items: any) {
+    this.infoTimeMovie = items;
     this.giaVe = this.infoTimeMovie?.giaVe.toLocaleString();
-
     //set time + 2 hours
     this.timerStart = this.infoTimeMovie?.ngayChieuGioChieu.slice(11, 16);
     let dateFormat = new Date()
@@ -75,7 +81,7 @@ export class CinemadetailComponent implements OnInit {
     this.timerEnd = dateFormat.toLocaleTimeString("en-GB").slice(0, 5)
     this.timerEnd.slice(11, 16)
   }
-  bookingTicket(maLichChieu:any){
+  bookingTicket(maLichChieu: any) {
     this.router.navigate([`/booking/${maLichChieu}`]);
   }
 }

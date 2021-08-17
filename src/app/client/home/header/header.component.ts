@@ -4,6 +4,7 @@ import { LogoCinemaHeader } from 'src/app/core/models/header';
 import { HeaderService } from 'src/app/core/services/header/header.service';
 import { SigninService } from 'src/app/core/services/signin/signin.service';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { CinemaDetailService } from 'src/app/core/services/cinemaDetail/cinema-detail.service';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() sidenavOpen = new EventEmitter(); // emits event đến client/client.component.html open logo responsive
 
-  constructor(private router: Router, private signinService: SigninService, private headerService: HeaderService, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private signinService: SigninService, private cinemaDetailService: CinemaDetailService, private headerService: HeaderService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.setUserNameLogin();
@@ -65,5 +66,10 @@ export class HeaderComponent implements OnInit {
       })
       this.logoCinemaHeader = data
     })
+  }
+
+  routerLinkCinema(maHeThongRap: string) {
+    this.cinemaDetailService.setCurrentSetCinemaDetail(200)
+    this.router.navigate([`/cinemadetail/${maHeThongRap}`])
   }
 }

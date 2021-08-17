@@ -16,7 +16,7 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <button mat-button *ngFor="let item of logoCinemaHeader" class="btnLogo"
-          routerLink="/cinemadetail/{{item.maHeThongRap}}">
+          (click)="routerLinkCinema(item.maHeThongRap)">
           <img src={{item.logo}} alt="" width="40px" height="40px">
         </button>
       </mat-expansion-panel>
@@ -58,7 +58,7 @@
               <mat-icon>info</mat-icon> <span class="btnMenu">Thông Tin Người Dùng</span>
             </button>
             <button mat-menu-item (click)="handleLogOut()">
-              <mat-icon>exit_to_app</mat-icon><span class="btnMenu">Đăng Xuất</span> 
+              <mat-icon>exit_to_app</mat-icon><span class="btnMenu">Đăng Xuất</span>
             </button>
           </mat-menu>
         </button>

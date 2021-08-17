@@ -1,22 +1,44 @@
+<ng-container *ngIf="showImageMovie else hidden">
+    <div class="showImageMovie">
+        <div class="wrapMovieDetail">
+            <div class="bgMovieDetail">
+                <img src="{{ showImageMovie?.hinhAnh }}" alt="" />
+            </div>
+            <div class="introMovieDetail">
+                <img src="{{ showImageMovie?.hinhAnh }}" alt="" />
+                <p><span class="maPhim">{{ showImageMovie?.maPhim}}</span> {{ showImageMovie?.tenPhim}}</p>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #hidden>
+    <div class="hidenImageMovie">
+        <img src="../../../../assets/images/background.jpg" alt="" />
+    </div>
+</ng-template>
+
+
 <div class="bgCinemaDetail">
-    <div class="container row cinemaDetail">
-        <div class="col-lg-4">
-            <div class="addresCinema" >
+    <div class="container">
+        <div class="row cinemaDetail">
+            <div class="col-xs-12 col-sm-6 col-md-5 addresCinema">
                 <mat-accordion>
                     <mat-expansion-panel>
-                        <mat-expansion-panel-header *ngIf="cinemaDetails" (click)="getCodeImg(maHeThongRap)">
+                        <mat-expansion-panel-header>
                             <mat-panel-title>
-                                Hệ Thống Rạp: {{maHeThongRap}}
+                                Hệ Thống Rạp : <span class={{maHeThongRap}}> {{ maHeThongRap}}</span>
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-container *ngIf="cinemaDetails">
-                            <div class="infoCinema row" *ngFor="let item of cinemaDetails[0].lstCumRap">
+                            <div class="infoCinema row" *ngFor="let item of cinemaDetails[0].lstCumRap"
+                                (click)="showGroupCinema(item.danhSachPhim)">
                                 <ng-container *ngFor="let img of imageCinema">
                                     <ng-container *ngIf="maHeThongRap === img.code">
-                                        <div class="images col-lg-4">
-                                            <img src="{{img.img}}" width="60px" height="80px" alt="">
+                                        <div class="images col-xs-12 col-md-4 col-lg-3">
+                                            <img src="{{img.img}}" alt="">
                                         </div>
-                                        <div class="address col-lg-8" (click)="showGroupCinema(item.danhSachPhim)">
+                                        <div class="address col-xs-12 col-md-8 col-lg-9">
                                             <p class={{img.code}}> {{item.tenCumRap}}</p>
                                             <p>Địa chỉ: {{item.diaChi}}</p>
                                         </div>
@@ -27,37 +49,48 @@
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
-        </div>
-        <div class="col-lg-8">
-            <nav mat-tab-nav-bar class="dateTime">
-                <a mat-tab-link *ngFor="let item of timeMovie" (click)="showInfoMovieTime(item)">
-                    {{item.ngayChieuGioChieu | date : "dd-MM-YYYY"}}
-                </a>
-            </nav>
-            <div class="infoMovie" fxLayout="row">
-                <div *ngFor="let item of danhSachPhims" (click)="showTime(item.lstLichChieuTheoPhim, item.maPhim)">
-                    <div class="inMovie" fxFlex.gt-sm="50%">
-                        <img src="{{item.hinhAnh}}" width="60px" height="80px" alt="">
-                        <span>
-                            <span class="labelMaPhim">{{item.maPhim}} - </span>
-                            <span>{{item.tenPhim}}</span>
-                        </span>
-                    </div>
-                    <div class="timeMovie" fxFlex.gt-sm="50%">
-                        <ng-container *ngIf="infoTimeMovie" >
-                            <span (click)="bookingTicket(infoTimeMovie.maLichChieu)">
-                                <p>Mã Rạp: {{infoTimeMovie.maRap}} - {{infoTimeMovie.tenRap}}</p>
-                                <p>Giá Vé: {{giaVe}}</p>
-                                <p>Giờ Chiếu:
-                                    <span class="timerStart {{itemDetails.code}}">
-                                        {{timerStart}}
-                                    </span>
-                                    <span class="timerEnd">
-                                       - {{timerStart}}
-                                    </span>
-                                </p>
-                            </span>
-                        </ng-container>
+            <div class="col-xs-12 col-sm-6 col-md-7">
+                <ng-container *ngIf="scheDuleMovie else showTitle">
+                    <nav mat-tab-nav-bar class="dateTime">
+                        <a mat-tab-link *ngFor="let item of scheDuleMovie" (click)="showInfoMovieTime(item)">
+                            {{item.ngayChieuGioChieu | date : "dd-MM-YYYY"}}
+                        </a>
+                    </nav>
+                </ng-container>
+                <ng-template #showTitle>
+                    <nav mat-tab-nav-bar class="dateTime">
+                        <a mat-tab-link>Vui Lòng Chọn Rạp và Phim</a>
+                    </nav>
+                </ng-template>
+
+                <div class="infoMovie">
+
+                    <div class="row" *ngFor="let item of danhSachPhims">
+                        <div class="listMovie col-xs-12 col-md-6"
+                            (click)="showScheduleMovie(item.lstLichChieuTheoPhim , item.maPhim , item)">
+                            <img src="{{item.hinhAnh}}" class="imgMovie" alt="">
+                            <span class="maPhim">{{item.maPhim}}</span>
+                            <span class={{maHeThongRap}}>{{item.tenPhim}}</span>
+                        </div>
+                        <div class="timeMovie col-xs-12 col-md-6">
+                            <ng-container *ngIf="item.maPhim === maPhim && infoTimeMovie else hiden">
+                                <span (click)="bookingTicket(infoTimeMovie?.maLichChieu)">
+                                    <p>Mã Rạp: {{infoTimeMovie?.maRap}} - {{infoTimeMovie?.tenRap}}</p>
+                                    <p>Giá Vé: {{giaVe}}</p>
+                                    <p>Giờ Chiếu:
+                                        <span class="timerStart {{maHeThongRap}}">
+                                            {{timerStart}}
+                                            <span class="timerEnd">
+                                                - {{timerEnd}}
+                                            </span>
+                                        </span>
+                                    </p>
+                                </span>
+                            </ng-container>
+                            <ng-template #hiden>
+                                <span>Vui Lòng Chọn Phim Và Ngày Chiếu</span>
+                            </ng-template>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -43,3 +43,9 @@ export interface MovieSchedule {
     ngayChieuGioChieu: string;
     tenRap: string;
 }
+
+export interface ShowImageMovie {
+    hinhAnh: string;
+    maPhim: string;
+    tenPhim: string;
+}
