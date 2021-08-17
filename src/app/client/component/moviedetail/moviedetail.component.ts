@@ -11,7 +11,6 @@ import {
   ScheDuleListMovie,
   ScheDuleMovie,
 } from "src/app/core/models/movieDetail";
-import { LoadingService } from "src/app/core/services/loading/loading.service";
 import { MoviedetailService } from "src/app/core/services/movieDetail/moviedetail.service";
 import { SharemodalvideoService } from "src/app/core/shared/shareData/shareModalVideo/sharemodalvideo.service";
 import { ModalvideoComponent } from "../modalvideo/modalvideo.component";

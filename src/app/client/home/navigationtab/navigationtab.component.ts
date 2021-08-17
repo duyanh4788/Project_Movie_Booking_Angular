@@ -37,7 +37,7 @@ export class NavigationtabComponent implements OnInit {
 
   getLocoCinema() {
     this.navigaTiontabService.getLogoCinema().subscribe((data) => {
-      this.logoCinema = data
+      this.logoCinema = data;
     })
   }
 

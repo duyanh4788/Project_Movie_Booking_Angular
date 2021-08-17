@@ -1,0 +1,122 @@
+@import "../../../../assets/scss/index.scss";
+
+.bgCinemaDetail {
+    background: linear-gradient(#09181f, #133241);
+    padding: 50px 0;
+    .cinemaDetail {
+        background: $background-3;
+        .addresCinema {
+            overflow-y: scroll;
+            max-height: 400px;
+            .infoCinema {
+                border-bottom: $border;
+                cursor: pointer;
+                .address {
+                    @include colorCinema;
+                    p {
+                        font-size: 13px;
+                        color: $color-gray-1;
+                    }
+                }
+            }
+        }
+
+        .infoMovie {
+            border: $border;
+            cursor: pointer;
+            overflow-y: scroll;
+            max-height: 400px;
+            flex-direction: column !important;
+            .inMovie {
+                height: 100px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin: 5px;
+                padding: 10px;
+                border-bottom: $border;
+                cursor: pointer;
+                border: $border;
+                box-shadow: $box-shadow;
+                border-radius: $boderR5;
+                .labelMaPhim {
+                    background-color: $color-red;
+                    color: $color-white-2;
+                    padding: 2px;
+                    margin: 0 5px;
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                    border-radius: $boderR5;
+                }
+                @include colorCinema;
+                p {
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                }
+            }
+            .timeMovie {
+                height: 100px;
+                margin: 5px;
+                padding: 10px;
+                border: $border;
+                box-shadow: $box-shadow;
+                border-radius: $boderR5;
+                line-height: 15px;
+                font-size: $fs13;
+                color: $color-gray-1;
+                @include colorCinema;
+                .timerStart {
+                    border-radius: 5px;
+                    border: 1px solid;
+                    padding: 2px;
+                    cursor: pointer;
+                    .timerEnd {
+                        color: $color-gray-1;
+                    }
+                }
+            }
+            .infoMovie:hover,
+            .inMovie:hover {
+                background-color: $color-white-2;
+            }
+        }
+    }
+}
+
+.addresCinema::-webkit-scrollbar,
+.infoMovie::-webkit-scrollbar {
+    @include scrollbar;
+}
+.addresCinema::-webkit-scrollbar-thumb,
+.infoMovie::-webkit-scrollbar {
+    @include scrollbarThumb;
+}
+@media (max-width: 1400px) {
+    .infoMovie {
+        p {
+            font-size: 10px !important;
+        }
+    }
+    .timeMovie {
+        font-size: 10px;
+    }
+}
+@media (max-width: 1200px) {
+    .addresCinema {
+        img {
+            width: 50px;
+            height: 60px;
+        }
+        .address {
+            line-height: 5px !important;
+            p {
+                font-size: 11px !important;
+            }
+        }
+    }
+}
+@media (max-width: 1000px) {
+    .bgCinemaDetail {
+        display: none;
+    }
+}
