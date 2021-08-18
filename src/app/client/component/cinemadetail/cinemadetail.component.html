@@ -2,10 +2,10 @@
     <div class="showImageMovie">
         <div class="wrapMovieDetail">
             <div class="bgMovieDetail">
-                <img src="{{ showImageMovie?.hinhAnh }}" alt="" />
+                <img src="{{https}}{{showImageMovie?.hinhAnh?.substring(4)}}" alt="" />
             </div>
             <div class="introMovieDetail">
-                <img src="{{ showImageMovie?.hinhAnh }}" alt="" />
+                <img src="{{https}}{{showImageMovie?.hinhAnh?.substring(4)}}" alt="" />
                 <p><span class="maPhim">{{ showImageMovie?.maPhim}}</span> {{ showImageMovie?.tenPhim}}</p>
             </div>
         </div>
@@ -31,8 +31,9 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <ng-container *ngIf="cinemaDetails">
-                            <div class="infoCinema row" *ngFor="let item of cinemaDetails[0].lstCumRap"
-                                (click)="showGroupCinema(item.danhSachPhim)">
+                            <div [ngClass]="item.maCumRap === maCumRap ? 'showInfoCinema row' : 'hidenInfoCinema row'"
+                                *ngFor="let item of cinemaDetails[0].lstCumRap"
+                                (click)="showGroupCinema(item.maCumRap , item.danhSachPhim)">
                                 <ng-container *ngFor="let img of imageCinema">
                                     <ng-container *ngIf="maHeThongRap === img.code">
                                         <div class="images col-xs-12 col-md-4 col-lg-3">
@@ -66,9 +67,9 @@
                 <div class="infoMovie">
 
                     <div class="row" *ngFor="let item of danhSachPhims">
-                        <div class="listMovie col-xs-12 col-md-6"
+                        <div [ngClass]="item.maPhim === maPhim ? 'showListMovie col-xs-12 col-md-6' : 'hidenListMovie col-xs-12 col-md-6'"
                             (click)="showScheduleMovie(item.lstLichChieuTheoPhim , item.maPhim , item)">
-                            <img src="{{item.hinhAnh}}" class="imgMovie" alt="">
+                            <img src="{{https}}{{item.hinhAnh.substring(4)}}" class="imgMovie" alt="">
                             <span class="maPhim">{{item.maPhim}}</span>
                             <span class={{maHeThongRap}}>{{item.tenPhim}}</span>
                         </div>

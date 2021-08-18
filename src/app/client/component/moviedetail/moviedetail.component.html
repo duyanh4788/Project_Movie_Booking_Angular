@@ -74,7 +74,8 @@
                                     <mat-panel-title> Hệ Thống Rạp </mat-panel-title>
                                 </mat-expansion-panel-header>
                                 <div class="row">
-                                    <button mat-button class="btnLogo col-xs-4 col-md-4 col-lg-2"
+                                    <button mat-button
+                                        [ngClass]="item.maHeThongRap === maHeThongRap ? 'showBtnLogo col-xs-4 col-md-4 col-lg-2' : 'hiddenBtnLogo col-xs-4 col-md-4 col-lg-2'"
                                         *ngFor="let item of logoCinemaMovieDetail"
                                         (click)="getCodeCinema(item.maHeThongRap)">
                                         <img src="{{ item.logo }}" alt="" width="40px" height="40px"

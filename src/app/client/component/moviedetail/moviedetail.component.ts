@@ -22,6 +22,7 @@ import { ModalvideoComponent } from "../modalvideo/modalvideo.component";
 })
 export class MoviedetailComponent implements OnInit {
   maPhim: string = "";
+  maHeThongRap: string = "";
   danhGia: number = 0;
   imagesCinema?: ImagesCinema;
   timerStart: any;
@@ -107,6 +108,7 @@ export class MoviedetailComponent implements OnInit {
   }
 
   getCodeCinema(maHeThongRap: string) {
+    this.maHeThongRap = maHeThongRap;
     this.scheDuleListMovie = undefined;
     this.scheDuleMovie = this.movieDetail?.lichChieu;
     if (this.scheDuleMovie) {

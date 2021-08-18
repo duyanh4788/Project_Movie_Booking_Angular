@@ -67,7 +67,28 @@
                 color: $colorOne;
                 @include colorCinema;
             }
-            .infoCinema {
+            .hidenInfoCinema {
+                opacity: 0.5;
+                border-bottom: $border;
+                cursor: pointer;
+                align-items: center !important;
+                .images {
+                    img {
+                        width: 70px;
+                        height: 90px;
+                        border-radius: $boderR5;
+                    }
+                }
+                .address {
+                    @include colorCinema;
+                    p {
+                        font-size: 13px;
+                        color: $colorOne;
+                    }
+                }
+            }
+            .showInfoCinema {
+                opacity: 1.5;
                 border-bottom: $border;
                 cursor: pointer;
                 align-items: center !important;
@@ -91,7 +112,40 @@
         .infoMovie {
             overflow-y: scroll;
             max-height: 400px;
-            .listMovie {
+            .hidenListMovie {
+                opacity: 0.5;
+                height: 100px;
+                border: $border;
+                box-shadow: $box-shadow;
+                border-radius: $boderR5;
+                line-height: 15px;
+                font-size: $fs13;
+                color: $color-gray-1;
+                cursor: pointer;
+                display: flex;
+                align-items: flex-start;
+                .imgMovie {
+                    width: 60px;
+                    height: 80px;
+                    border-radius: $boderR5;
+                }
+                .maPhim {
+                    background-color: $color-red;
+                    color: $color-white-2;
+                    padding: 2px;
+                    margin: 0 5px;
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                    border-radius: $boderR5;
+                }
+                @include colorCinema;
+                .tenPhim {
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                }
+            }
+            .showListMovie {
+                opacity: 1.5;
                 height: 100px;
                 border: $border;
                 box-shadow: $box-shadow;

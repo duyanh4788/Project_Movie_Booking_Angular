@@ -41,7 +41,7 @@
       </mat-expansion-panel-header>
       <button mat-button *ngFor="let item of logoCinemaHeader" class="btnLogo"
         (click)="routerLinkCinema(item.maHeThongRap)">
-        <img src={{item.logo}} alt="" width="35px" height="35px">
+        <img src={{https}}{{item.logo.substring(4)}} alt="" width="35px" height="35px">
       </button>
     </mat-expansion-panel>
   </mat-accordion>

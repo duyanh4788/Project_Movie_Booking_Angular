@@ -17,10 +17,11 @@ export class CinemadetailComponent implements OnInit {
   detailCinema?: CinemaDetail;
   scheDuleMovie?: LstLichChieuTheoPhim[];
   showImageMovie?: ShowImageMovie;
-
   infoTimeMovie?: MovieSchedule;
 
   maHeThongRap: string = "";
+  https: string = "https";
+  maCumRap: string = "";
   maPhim?: number;
   giaVe?: string;
   timerStart: any;
@@ -38,7 +39,6 @@ export class CinemadetailComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.loadingService.hidden();
     this.getListCinema();
     this.cinemaDetailService.shareSetCinemaDetail.subscribe(data => {
       if (data === 200) {
@@ -58,15 +58,11 @@ export class CinemadetailComponent implements OnInit {
       })
     })
   }
-  showGroupCinema(danhSachPhim: Array<any>) {
+  showGroupCinema(maCumRap: string, danhSachPhim: Array<any>) {
+    this.maCumRap = maCumRap;
     this.infoTimeMovie = undefined;
     this.scheDuleMovie = undefined;
     this.showImageMovie = undefined;
-    danhSachPhim.forEach(item => {
-      let https = item.hinhAnh.split(":");
-      let fixHttps = https[0] + "s:" + https[1];
-      item.hinhAnh = fixHttps
-    })
     this.danhSachPhims = danhSachPhim;
   }
   showScheduleMovie(lichChieuPhim: Array<any>, maPhim: number, items: any) {

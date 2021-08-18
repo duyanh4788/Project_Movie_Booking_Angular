@@ -4,8 +4,9 @@
 
             <!-- logoCinema -->
             <ng-template mat-tab-label>
-                <button mat-button (click)="getCodeSysTemCinema(item.maHeThongRap)" class="btnLogo">
-                    <img src={{item.logo}} alt="" width="50px" height="50px">
+                <button mat-button (click)="getCodeSysTemCinema(item.maHeThongRap)"
+                    [ngClass]="item.maHeThongRap === maHeThongRap ? 'showLogo' : 'hidenLogo'">
+                    <img src={{https}}{{item.logo.substring(4)}} alt="" width="50px" height="50px">
                 </button>
             </ng-template>
             <!-- logoCinema -->
@@ -14,31 +15,15 @@
                 <!-- addressCinema -->
                 <div class="tabAddresCinema" fxFlex.gt-xs="45%">
                     <div class="addresCinema" *ngFor="let item of systemCinema?.lstCumRap">
-                        <ng-container *ngIf="maCumRap === item.maCumRap else notActive">
-                            <div class="active">
-                                <img src={{itemImages.img}} alt="" width="60px" height="70px"
-                                    style="border-radius: 5px;">
-                                <span class="address">
-                                    <p class={{itemImages.code}}>{{item.tenCumRap}}</p>
-                                    <p>Địa Chỉ : {{item.diaChi}}</p>
-                                    <p class="chiTiet" (click)="getCodeGroupCinema(item.maCumRap)">[Chi Tiết]</p>
-                                </span>
-                            </div>
-                        </ng-container>
-                        <ng-template #notActive>
-                            <div class="notActive">
-                                <img src={{itemImages.img}} alt="" width="60px" height="70px"
-                                    style="border-radius: 5px;">
-                                <span class="address">
-                                    <p class={{itemImages.code}}>{{item.tenCumRap}}</p>
-                                    <p>Địa Chỉ : {{item.diaChi}}</p>
-                                    <p class="chiTiet" (click)="getCodeGroupCinema(item.maCumRap)">[Chi Tiết]</p>
-                                </span>
-                            </div>
-                        </ng-template>
-
+                        <div [ngClass]="maCumRap === item.maCumRap ? 'active' : 'notActive' ">
+                            <img src={{https}}{{itemImages.img.substring(4)}} alt="" width="60px" height="70px" style="border-radius: 5px;">
+                            <span class="address">
+                                <p class={{itemImages.code}}>{{item.tenCumRap}}</p>
+                                <p>Địa Chỉ : {{item.diaChi}}</p>
+                                <p class="chiTiet" (click)="getCodeGroupCinema(item.maCumRap)">[Chi Tiết]</p>
+                            </span>
+                        </div>
                     </div>
-
                 </div>
                 <!-- addressCinema -->
 
@@ -72,7 +57,7 @@
                     <div class="listMovie">
                         <div fxLayout="row" *ngFor="let item of listMovieCinema">
                             <!-- movie -->
-                            <div class="infoMovie" fxFlex.gt-sm="50%"
+                            <div [ngClass]="item.maPhim === maPhim ? 'showInfoMovie': 'infoMovie'" fxFlex.gt-sm="50%"
                                 (click)="getShowTimeCodes(item.lstLichChieuTheoPhim ,item.maPhim)">
                                 <img src={{item.hinhAnh}} alt="" width="60px" height="70px" style="border-radius: 5px;">
                                 <span class="labelMaPhim">{{item.maPhim}}</span>
@@ -86,8 +71,9 @@
                                     <ng-container *ngIf="movieSchedule else showMovieSchedule">
                                         <p>Code : {{movieSchedule?.maRap}} - {{movieSchedule?.tenRap}}</p>
                                         <p>Giá Vé : {{giaVe}}</p>
-                                        <p>Giờ Chiếu : 
-                                            <span class="timerStart {{itemImages.code}}" (click)="bookingTicket(movieSchedule?.maLichChieu)">{{timerStart}}
+                                        <p>Giờ Chiếu :
+                                            <span class="timerStart {{itemImages.code}}"
+                                                (click)="bookingTicket(movieSchedule?.maLichChieu)">{{timerStart}}
                                                 <span class="timerEnd"> ~ {{timerEnd}}</span>
                                             </span>
                                         </p>

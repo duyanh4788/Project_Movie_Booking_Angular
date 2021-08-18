@@ -114,7 +114,25 @@
             color: $colorOne;
             font-weight: 500;
         }
-        .btnLogo {
+        .showBtnLogo {
+            opacity: 1.5;
+            ::ng-deep .mat-button-ripple.mat-ripple,
+            ::ng-deep .mat-button-focus-overlay {
+                top: 15px;
+                left: 50px;
+                right: 50px;
+                bottom: 15px;
+                position: absolute;
+                pointer-events: none;
+                border-radius: 50%;
+                border: $border;
+            }
+            ::ng-deep .mat-ripple {
+                padding: 0 !important;
+            }
+        }
+        .hiddenBtnLogo {
+            opacity: 0.5;
             ::ng-deep .mat-button-ripple.mat-ripple,
             ::ng-deep .mat-button-focus-overlay {
                 top: 15px;
@@ -198,7 +216,6 @@
         display: block !important;
     }
 }
-
 
 ::ng-deep .mat-tab-label-content {
     color: $color-white-2;

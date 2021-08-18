@@ -13,6 +13,7 @@ import { CinemaDetailService } from 'src/app/core/services/cinemaDetail/cinema-d
 })
 export class HeaderresponsiveComponent implements OnInit {
 
+  https: string = "https";
   userNameSigin: any = null;
   userTypeCode: any = null;
   panelOpenState = false;
@@ -58,11 +59,6 @@ export class HeaderresponsiveComponent implements OnInit {
 
   getListLogoCinemaS() {
     this.headerService.getListLogoCinema().subscribe((data) => {
-      data.forEach(item => {
-        let https = item.logo.split(":");
-        let fixHttps = https[0] + "s:" + https[1];
-        item.logo = fixHttps
-      })
       this.logoCinemaHeader = data
     })
   }

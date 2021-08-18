@@ -42,7 +42,13 @@ mat-tab-body {
     border: $border;
 }
 
-.btnLogo {
+.showLogo {
+    opacity: 1.5;
+    width: 100px;
+    height: 100px;
+}
+.hidenLogo {
+    opacity: 0.5;
     width: 100px;
     height: 100px;
 }
@@ -105,9 +111,38 @@ mat-tab-body {
     .tabInfoMovieCinema {
         padding: 5px;
         .listMovie {
-                overflow-y: scroll;
-                max-height: 422px;
+            overflow-y: scroll;
+            max-height: 422px;
             .infoMovie {
+                opacity: 0.5;
+                height: 100px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin: 5px;
+                padding: 10px;
+                border-bottom: $border;
+                cursor: pointer;
+                border: $border;
+                box-shadow: $box-shadow;
+                border-radius: $boderR5;
+                .labelMaPhim {
+                    background-color: $color-red;
+                    color: $color-white-2;
+                    padding: 2px;
+                    margin: 0 5px;
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                    border-radius: $boderR5;
+                }
+                @include colorCinema;
+                p {
+                    font-size: $fs13;
+                    font-weight: $fw-bold;
+                }
+            }
+            .showInfoMovie {
+                opacity: 1.5;
                 height: 100px;
                 display: flex;
                 justify-content: flex-start;

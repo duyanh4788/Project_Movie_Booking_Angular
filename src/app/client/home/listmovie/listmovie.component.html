@@ -17,7 +17,7 @@
     <ngx-slick-carousel class="carouselListMovie" [config]="slideConfigMovie">
         <div ngxSlickItem *ngFor="let item of arrListMovie" class="slideListMovie">
             <div class="indexListMovie">
-                <img src={{item.hinhAnh}} alt="" width="100%" height="100%" />
+                <img src={{https}}{{item.hinhAnh.substring(4)}} alt="" width="100%" height="100%" />
                 <div class="infoMovie">
                     <span class="codeMovie">{{item.maPhim}}</span>
                     <span class="nameMovie">{{item.tenPhim | shortcut : 20}}</span>
