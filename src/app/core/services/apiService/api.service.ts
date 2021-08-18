@@ -32,7 +32,6 @@ export class ApiService {
     getApi<T>(url: string, options = {} as Options): Observable<T> {
         this.loadingService.show()
         return this.http.get<T>(`${this.urlMovie}/${url}`, options).pipe(tap((data) => {
-            console.log(data);
             setTimeout(() => {
                 this.loadingService.hidden()
             }, 500);
@@ -45,7 +44,6 @@ export class ApiService {
     postApi<T>(url: string, data: any, opitons = {} as Options): Observable<T> {
         this.loadingService.show()
         return this.http.post<T>(`${this.urlMovie}/${url}`, data, opitons).pipe(tap(data => {
-            console.log(data);
             setTimeout(() => {
                 this.loadingService.hidden()
             }, 500);
@@ -57,7 +55,6 @@ export class ApiService {
     postApiToken<T>(url: string, data: any, opitons = {}): Observable<T> {
         this.loadingService.show()
         return this.http.post<T>(`${this.urlMovie}/${url}`, data, opitons).pipe(tap(data => {
-            console.log(data);
             setTimeout(() => {
                 this.loadingService.hidden()
             }, 500);
@@ -69,7 +66,6 @@ export class ApiService {
     putApi<T>(url: string, data: any, opitons = {} as Options): Observable<T> {
         this.loadingService.show()
         return this.http.put<T>(`${this.urlMovie}/${url}`, data, opitons).pipe(tap(data => {
-            console.log(data);
             setTimeout(() => {
                 this.loadingService.hidden()
             }, 500);
@@ -81,7 +77,6 @@ export class ApiService {
     deleteApi<T>(url: string, options = {}): Observable<T> {
         this.loadingService.show()
         return this.http.delete<T>(`${this.urlMovie}/${url}`, options).pipe(tap(data => {
-            console.log(data);
             setTimeout(() => {
                 this.loadingService.hidden()
             }, 500);

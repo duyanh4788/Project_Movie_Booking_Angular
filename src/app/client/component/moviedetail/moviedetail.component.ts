@@ -118,8 +118,6 @@ export class MoviedetailComponent implements OnInit {
 
   getSchedule(ngayChieuGioChieu: string) {
     this.scheDuleListMovie = this.scheDuleMovie?.find(item => item.ngayChieuGioChieu === ngayChieuGioChieu)
-    console.log(this.scheDuleListMovie);
-
     // code set time + 2h
     this.timerStart = this.scheDuleListMovie?.ngayChieuGioChieu.slice(11, 16);
     let dateFormat = new Date()

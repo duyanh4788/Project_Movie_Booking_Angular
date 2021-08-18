@@ -16,7 +16,6 @@ export class BookingService {
   }
 
   postBookingMovie(listTicket: object): Observable<ListTicketBooking> {
-    console.log(listTicket);
     let url = "QuanLyDatVe/DatVe";
     return this.apiService.postApiToken(url, listTicket, { responseType: "text" })
   }

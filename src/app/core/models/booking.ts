@@ -41,11 +41,11 @@ export interface BookingChair {
 }
 
 export interface ListTicketBooking {
-    maLichChieu?: number;
-    danhSachVe?: DanhSachVe[];
-    taiKhoanNguoiDung?: string;
+    maLichChieu: number;
+    danhSachVe: DanhSachVe[];
+    taiKhoanNguoiDung?: null;
 }
 export interface DanhSachVe {
-    maGhe?: number;
-    giaVe?: number;
+    maGhe: number;
+    giaVe: number;
 }

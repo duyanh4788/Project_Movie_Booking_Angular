@@ -70,7 +70,7 @@
                     <img mat-card-image src={{infoMovie.hinhAnh}} alt="" class="imgShow">
                 </div>
                 <mat-card-content>
-                    <table *ngIf="intoMoney > 0">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Mã Ghế</th>
@@ -87,7 +87,7 @@
                                 <td>{{item.giaVe.toLocaleString()}} VND</td>
                             </tr>
                         </tbody>
-                        <tbody class="intoMoney" *ngIf="intoMoney > 0">
+                        <tbody class="intoMoney">
                             <tr>
                                 <td colspan="4">Thành Tiền : {{intoMoney.toLocaleString()}} VND</td>
                             </tr>

@@ -7,7 +7,6 @@ import {
   ListTicket,
   DanhSachGhe,
   ThongTinPhim,
-  BookingChair,
 } from "src/app/core/models/booking";
 import { SigninService } from "src/app/core/services/signin/signin.service";
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from "@angular/material/snack-bar";
@@ -20,15 +19,15 @@ import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition
 export class BookingComponent implements OnInit {
 
   listTicket?: ListTicket;
-  bookingChair?: BookingChair;
   infoMovie!: ThongTinPhim;
   danhSachGhe?: DanhSachGhe[];
   intoMoney: number = 0;
   bookingSuccess: any;
 
+  danhSachVe?: any=[];
   listTicketBooking = {
     maLichChieu: "",
-    danhSachVe: [{}],
+    danhSachVe: [],
     taiKhoanNguoiDung: null,
   }
 
@@ -89,7 +88,8 @@ export class BookingComponent implements OnInit {
         let oldChair = cloneArray[index];
         let newChair = { ...oldChair, choiceChair: !oldChair.choiceChair };
         cloneArray[index] = newChair;
-        this.bookingChair = newChair
+        const { choiceChair, daDat, tenGhe, loaiGhe, maRap, stt, taiKhoanNguoiDat, ..._data } = newChair
+        this.danhSachVe.push(_data)
         this.danhSachGhe = cloneArray;
         let ketQua = this.danhSachGhe
           .filter((item) => item.choiceChair)
@@ -144,23 +144,18 @@ export class BookingComponent implements OnInit {
   }
 
   bookingTicket() {
-    this.listTicketBooking.danhSachVe = this.listTicketBooking.danhSachVe.splice(0, 0)
     this.signinService.shareAccount.subscribe(data => {
       this.listTicketBooking.taiKhoanNguoiDung = data
     })
-    if (this.bookingChair) {
-      const { choiceChair, daDat, tenGhe, loaiGhe, maRap, stt, taiKhoanNguoiDat, ..._data } = this.bookingChair
-      this.listTicketBooking.danhSachVe.push(_data)
-      this.bookingService.postBookingMovie(this.listTicketBooking).subscribe((data) => {
-        this.bookingSuccess = data
-        this.snackBar.open(this.bookingSuccess, "", {
-          horizontalPosition: this.horizontalPosition,
-          verticalPosition: this.verticalPosition,
-          duration: this.durationInSeconds * 1000,
-        });
-        this.router.navigate(['/'])
-      })
-    }
+    this.listTicketBooking.danhSachVe = this.danhSachVe;
+    this.bookingService.postBookingMovie(this.listTicketBooking).subscribe((data) => {
+      this.bookingSuccess = data
+      this.snackBar.open(this.bookingSuccess, "", {
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+        duration: this.durationInSeconds * 1000,
+      });
+      this.router.navigate(['/'])
+    })
   }
-
 }
