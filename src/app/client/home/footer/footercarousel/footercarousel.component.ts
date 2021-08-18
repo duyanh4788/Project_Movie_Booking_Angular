@@ -27,7 +27,7 @@ export class FootercarouselComponent implements OnInit {
     { img: "../../../../assets/images/slide15.jpg" },
     { img: "../../../../assets/images/slide16.jpg" },
   ];
-  slideConfig = { "slidesToShow": 1, "slidesToScroll": 1, "dot": false, "arrows": false, "autoplay": false, "autoplaySpeed": 2000 };
+  slideConfig = { "slidesToShow": 1, "slidesToScroll": 1, "dot": false, "arrows": false, "autoplay": true, "autoplaySpeed": 2000 };
 
   ngOnInit(): void {
   }
