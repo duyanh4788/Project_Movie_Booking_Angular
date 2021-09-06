@@ -10,7 +10,7 @@ import { SigninService } from "src/app/core/services/signin/signin.service";
 })
 export class SigninComponent implements OnInit {
     notifySignIn: string = "";
-
+    hide = true;
     userLogin = {
         taiKhoan: "",
         matKhau: "",

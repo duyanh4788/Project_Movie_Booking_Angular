@@ -21,7 +21,12 @@
             <!-- password -->
             <mat-form-field class="example-full-width">
                 <mat-label>Mật Khẩu</mat-label>
-                <input matInput ngModel name="password" required #password="ngModel" [(ngModel)]="userLogin.matKhau" />
+                <input matInput type="password" ngModel name="password" required #password="ngModel"
+                    [(ngModel)]="userLogin.matKhau" [type]="hide ? 'password' : 'text'" />
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
             </mat-form-field>
             <ng-container *ngIf="password.invalid && (password.dirty || password.touched)">
                 <span class="errorValid" *ngIf="password.errors?.required">(*) Nhập Mật Khẩu !</span>

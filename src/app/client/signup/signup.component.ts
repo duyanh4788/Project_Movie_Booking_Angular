@@ -16,6 +16,8 @@ import ValidationMatchPass from "./validationMatch";
   styleUrls: ["./signup.component.scss"],
 })
 export class SignupComponent implements OnInit {
+  hide = true;
+  hideCP = true;
   notifySignUp: string = "";
   formSignUp!: FormGroup;
   showInfoSignUp?: UserSignUp; // edit chỗ này xem xong xoá comment nha gái
@@ -55,7 +57,7 @@ export class SignupComponent implements OnInit {
       matKhau: new FormControl("", [
         Validators.required,
         Validators.pattern(
-          "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"
+          "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$"
         ),
       ]),
       conFirmMatKhau: new FormControl(null),
@@ -121,5 +123,5 @@ export class SignupComponent implements OnInit {
   onClear() {
     this.formSignUp.reset();
   }
-  
+
 }

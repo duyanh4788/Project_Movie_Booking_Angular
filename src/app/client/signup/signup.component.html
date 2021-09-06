@@ -8,14 +8,20 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Tài khoản</mat-label>
                     <input matInput required formControlName="taiKhoan" />
-                    <mat-error *ngIf="formSignUp?.get('taiKhoan')?.errors?.required">(*) Không được để trống </mat-error>
+                    <mat-error *ngIf="formSignUp?.get('taiKhoan')?.errors?.required">(*) Không được để trống
+                    </mat-error>
                     <mat-error *ngIf="formSignUp?.get('taiKhoan')?.errors?.minlength">(*) Cần trên 3 ký tự </mat-error>
                 </mat-form-field>
 
                 <!-- matKhau -->
                 <mat-form-field class="example-full-width">
                     <mat-label>Mật khẩu</mat-label>
-                    <input matInput required formControlName="matKhau" />
+                    <input matInput type="password" required formControlName="matKhau"
+                        [type]="hide ? 'password' : 'text'" />
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
                     <mat-error *ngIf="formSignUp?.get('matKhau')?.errors?.required">(*) Không được để trống
                     </mat-error>
                     <mat-error *ngIf="formSignUp?.get('matKhau')?.errors?.pattern">(*) Mật Khẩu Không Hợp Lệ</mat-error>
@@ -24,8 +30,14 @@
                 <!-- Confirm Mật Khẩu -->
                 <mat-form-field class="example-full-width">
                     <mat-label>Xác Nhận Mật khẩu</mat-label>
-                    <input matInput formControlName="conFirmMatKhau" />
-                    <mat-error *ngIf=" formSignUp?.get('conFirmMatKhau')?.hasError('matching') && formSignUp.get('conFirmMatKhau')?.touched">
+                    <input matInput type="password" formControlName="conFirmMatKhau"
+                        [type]="hideCP ? 'password' : 'text'" />
+                    <button type="button" mat-icon-button matSuffix (click)="hideCP = !hideCP"
+                        [attr.aria-label]="'hideCP password'" [attr.aria-pressed]="hideCP">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error
+                        *ngIf=" formSignUp?.get('conFirmMatKhau')?.hasError('matching') && formSignUp.get('conFirmMatKhau')?.touched">
                         Password Not Match
                     </mat-error>
                 </mat-form-field>
@@ -75,7 +87,8 @@
 
                 <!-- button -->
                 <div class="btnSubmit">
-                    <button mat-fab color="wram" type="submit" [disabled]="formSignUp?.invalid" class="submit">Submit</button>
+                    <button mat-fab color="wram" type="submit" [disabled]="formSignUp?.invalid"
+                        class="submit">Submit</button>
                     <button mat-fab color="warn" (click)="onClear()">Clear</button>
                 </div>
             </form>
