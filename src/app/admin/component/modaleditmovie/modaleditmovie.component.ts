@@ -63,6 +63,8 @@ export class ModaleditmovieComponent implements OnInit {
 
   handleEditMovie() {
     this.formEditMovie.value.hinhAnh = this.itemMovies?.hinhAnh;
+    console.log(this.formEditMovie.value);
+    
     let formData = new FormData();
     for (let key in this.formEditMovie.value) {
       formData.append(key, this.formEditMovie.value[key])

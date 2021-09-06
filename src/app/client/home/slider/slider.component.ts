@@ -11,9 +11,9 @@ import { ModalvideoComponent } from '../../component/modalvideo/modalvideo.compo
 export class SliderComponent implements OnInit {
 
   slides = [
-    { img: "../../../../assets/images/1.png", trailer: "https://www.youtube.com/embed/uqJ9u7GSaYM" },
-    { img: "../../../../assets/images/2.png", trailer: "https://www.youtube.com/embed/kBY2k3G6LsM" },
-    { img: "../../../../assets/images/3.jpg", trailer: "https://www.youtube.com/embed/l2XBzUZidig" },
+    { img: "../../../../assets/images/4.jpg", trailer: "https://www.youtube.com/embed/vU3ZqtbIRPI" },
+    { img: "../../../../assets/images/5.jpg", trailer: "https://www.youtube.com/embed/Skpu5HaVkOc" },
+    { img: "../../../../assets/images/6.jpg", trailer: "https://www.youtube.com/embed/10r9ozshGVE" },
   ];
   slideConfig = { "slidesToShow": 1, "slidesToScroll": 1, "dot": false, "arrows": false, "autoplay": true, "autoplaySpeed": 2000 };
 
